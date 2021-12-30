@@ -13,7 +13,7 @@ The function we want to implement in our hardware is below:
 3. Object detection: detect the target objects, such as people, animals or boxs.
 * Advanced mode
 1. Detection with noise figures
->> median filter </br> Gaussian denoiser </br> Non-local means denoiser
+> median filter </br> Gaussian denoiser </br> Non-local means denoiser
 
 ## Specification
 * image: 640*480 pixels
@@ -25,8 +25,7 @@ The function we want to implement in our hardware is below:
 
 ## Implementation:
 1. Survey the algorithms on Internet, and decide to implement classical HOG (Histogram of Oriented Gradient) algorithm
-2. image preprocessing
-* denoise
+2. image preprocessing (denoise)
 <!-- * enhance resolution -->
 3. Compute gradients (cell / block)
 4. Use weighted vote to build orientation cells, so that it could construct the histogram.
