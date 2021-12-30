@@ -32,7 +32,7 @@ The function we want to implement in our hardware is below:
 
 ## Verification:
 1. Verify the calculated value with the golden file.
-2. $fwrite the value into a log file (processed output result).
+2. `$fwrite` the value into a log file (processed output result).
 3. Visualize the result after whole processed data is written. We expect to see the edges being highlighted.
 
 ## Reference:
