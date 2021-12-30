@@ -8,7 +8,6 @@ module denoise
     input [5*14*BIT_WIDTH-1:0] pix_in, // 70*8-1 = 559
     // input [25*BIT_WIDTH-1:0] block_in_1,
     // input [25*BIT_WIDTH-1:0] block_in_2,
-    // input [25*BIT_WIDTH-1:0] block_in_3,
     output reg [9*BIT_WIDTH-1:0] block_out_0,
     output reg [9*BIT_WIDTH-1:0] block_out_1,
     output reg [9*BIT_WIDTH-1:0] block_out_2,
