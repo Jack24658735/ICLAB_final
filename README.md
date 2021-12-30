@@ -1,6 +1,6 @@
 ## Implement Edge Detection and Object Detection on Image using HOG (Histogram of Oriented Gradient) Algorithm With Some Famous Filters
 ## 利用方向梯度直方圖演算法實現圖像邊緣檢測及物件識別
-## Team Members: 林暄傑、劉亦傑、謝霖泳
+#### Team Members: 林暄傑、劉亦傑、謝霖泳
 </br>
 
 ## Motivation and Objective
