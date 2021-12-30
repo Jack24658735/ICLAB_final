@@ -5,7 +5,7 @@ input [9-1:0] num;
 output reg [5-1:0] sqrt_num;
 
 always @* begin
-    else if (num < 1)
+    if (num < 1)
         sqrt_num = 0;
     else if (num >= 1 && num < 4)
         sqrt_num = 1;
