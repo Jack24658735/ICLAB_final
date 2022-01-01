@@ -1,5 +1,7 @@
+# EE4292 IC Design Laboratory Final Project (積體電路設計實驗)
 ## Implement Edge Detection and Object Detection on Image using HOG (Histogram of Oriented Gradient) Algorithm With Some Famous Filters
 ## 利用方向梯度直方圖演算法實現圖像邊緣檢測及物件識別
+#### Instructor: Prof. Chao Tsung Huang
 #### Team Members: 林暄傑、劉亦傑、謝霖泳
 
 ## Motivation and Objective
