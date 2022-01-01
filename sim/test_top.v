@@ -63,6 +63,7 @@ initial begin
     $display("\n========================================================");
     $display("Time limit exceeded!");
     $display("\n========================================================");
+    $finish;
 end
 
 initial begin
