@@ -292,7 +292,7 @@ always @(*) begin
     block_in_2[23] = pix_in[39:32];
     block_in_2[24] = pix_in[31:24];
 
-    block_in_1[0] = pix_in[487:480];
+    block_in_3[0] = pix_in[487:480];
     block_in_3[1] = pix_in[479:472];
     block_in_3[2] = pix_in[471:464];
     block_in_3[3] = pix_in[463:456];
