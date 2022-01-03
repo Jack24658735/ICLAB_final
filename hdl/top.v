@@ -7,6 +7,15 @@ module top(
 );
 
 wire [72-1:0] temp0, temp1, temp2, temp3;
+// reg [8-1:0] pixel_2D [0:70-1];
+// integer i;
+// always begin
+//     for (i = 0; i < 70; i = i + 1) begin
+//         pixel_2D[i] = pixel_in[i*8+:8];
+//     end 
+// end
+wire [8-1:0] test0;
+assign test0 = pixel_in[559:559-7];
 
 denoise #(
     .BIT_WIDTH(8)

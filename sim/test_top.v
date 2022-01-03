@@ -2,7 +2,7 @@
 
 module test_top;
 
-localparam END_CYCLES = 100000; // you can enlarge the cycle count limit for longer simulation
+localparam END_CYCLES = 10000; // you can enlarge the cycle count limit for longer simulation
 real CYCLE = 10;
 integer i, j;
 integer start_row, start_col;
@@ -33,7 +33,7 @@ end
 always #(CYCLE/2) clk = ~clk;
 
 initial begin
-    $readmemh("pix/padding_638_482.txt", picture);
+    $readmemh("pix/noise_638_482.txt", picture);
     wait(rst_n == 0);
     wait(rst_n == 1);
 
@@ -46,14 +46,16 @@ initial begin
     $display("%d ", picture[481][638*8-17:638*8-24]);
     $display("%d ", picture[481][638*8-25:638*8-32]);
 
-    // for (start_row = 0; start_row <= 477; start_row = start_row + 3) begin
-    //     for (start_col = 637; start_col >= 13; start_col = start_col - 12) begin
-    //         @(negedge clk)
-    //             pixel_in = {picture[start_row][8*(start_col+1)-1-:14*8], 
-    //                         picture[start_row+1][8*(start_col+1)-1-:14*8], 
-    //                         picture[start_row+2][8*(start_col+1)-1-:14*8]};
-    //     end
-    // end
+    for (start_row = 0; start_row <= 477; start_row = start_row + 3) begin
+        for (start_col = 637; start_col >= 13; start_col = start_col - 12) begin
+            @(negedge clk)
+                pixel_in = {picture[start_row][8*(start_col+1)-1-:14*8], 
+                            picture[start_row+1][8*(start_col+1)-1-:14*8], 
+                            picture[start_row+2][8*(start_col+1)-1-:14*8], 
+                            picture[start_row+3][8*(start_col+1)-1-:14*8], 
+                            picture[start_row+4][8*(start_col+1)-1-:14*8]};
+        end
+    end
 
 end
 
