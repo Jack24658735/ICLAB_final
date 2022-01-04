@@ -1,8 +1,8 @@
 # set your TOPLEVEL here
-set TOPLEVEL "median"
+set TOPLEVEL "top"
 
 # change your timing constraint here
-set TEST_CYCLE 1.85
+set TEST_CYCLE 2
 
 source -echo -verbose 0_readfile.tcl 
 source -echo -verbose 1_setting.tcl 

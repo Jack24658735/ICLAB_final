@@ -6,16 +6,23 @@ module denoise
     input clk,
     input rst_n,
     input [5*14*BIT_WIDTH-1:0] pix_in, // 70*8-1 = 559
-    // input [25*BIT_WIDTH-1:0] block_in_1,
-    // input [25*BIT_WIDTH-1:0] block_in_2,
     output reg [9*BIT_WIDTH-1:0] block_out_0,
     output reg [9*BIT_WIDTH-1:0] block_out_1,
     output reg [9*BIT_WIDTH-1:0] block_out_2,
     output reg [9*BIT_WIDTH-1:0] block_out_3, 
+
+
+    // output reg [9*20-1:0] hog_block_out_0,
+    // output reg [9*20-1:0] hog_block_out_1,
+    // output reg [9*20-1:0] hog_block_out_2,
+    // output reg [9*20-1:0] hog_block_out_3,
+
+
+
     output reg valid
 );
 
-reg  [5*14*BIT_WIDTH-1:0] pix_in_r;
+reg [2:0] cnt, cnt_n;
 
 reg [8-1:0] block_in_0[0:24];
 reg [8-1:0] block_in_1[0:24];
@@ -212,11 +219,19 @@ median Ud221(.clk(clk), .rst_n(rst_n), .val_0(b3_m8), .val_1(b3_m11), .val_2(b3_
 // ******** //
 
 always @* begin
-    if (block_out_0 & block_out_1 & block_out_2 & block_out_3)
+    if (cnt == 4)
+        cnt_n = cnt;
+    else
+        cnt_n = cnt + 1;
+end
+
+always @* begin
+    if (cnt == 4)
         valid = 1;
-    else 
+    else
         valid = 0;
-end 
+end
+
 
 // TODO: block 0
 always @(*) begin
@@ -330,32 +345,14 @@ always @(*) begin
     block_out_1 = {b1_out0, b1_out1, b1_out2, b1_out3, b1_out4, b1_out5, b1_out6, b1_out7, b1_out8};
     block_out_2 = {b2_out0, b2_out1, b2_out2, b2_out3, b2_out4, b2_out5, b2_out6, b2_out7, b2_out8};
     block_out_3 = {b3_out0, b3_out1, b3_out2, b3_out3, b3_out4, b3_out5, b3_out6, b3_out7, b3_out8};
-    // b0_p0, b0_p1, b0_p2 = {block_in_0[0], block_in_0[1], block_in_0[1]};
-    // b0_p3, b0_p4, b0_p5 = {block_in_0[1], block_in_0[1], block_in_0[1]};
-    // b0_p6, b0_p7, b0_p8 = {block_in_0[1], block_in_0[1], block_in_0[]};
-
-    // b0_p0, b0_p1, b0_p2 = {block_in_0[199:192], block_in_0[191:184], block_in_0[183:176]};
-    // b0_p3, b0_p4, b0_p5 = {block_in_0[159:152], block_in_0[151:144], block_in_0[143:136]};
-    // b0_p6, b0_p7, b0_p8 = {block_in_0[119:112], block_in_0[111:104], block_in_0[103:96]};
-    
-    // {b0_p0, b0_p1, b0_p2, b0_p3} = {block_in_0[71:64], block_in_0[63:56], block_in_0[55:48], block_in_0[47:40]};
-    // {b0_p4, b0_p5, b0_p6, b0_p7, b0_p8} = {block_in_0[39:32], block_in_0[31:24], block_in_0[23:16], block_in_0[15:8], block_in_0[7:0]};
 end
 
 always @(posedge clk) begin
     if (~rst_n) begin
-        pix_in_r <= 0;
-        // block_out_0 <= 0;
-        // block_out_1 <= 0;
-        // block_out_2 <= 0;
-        // block_out_3 <= 0;
+        cnt <= 0;
     end
     else begin
-        pix_in_r <= pix_in;
-        // block_out_0 <= block_out_0_n;
-        // block_out_1 <= block_out_1_n;
-        // block_out_2 <= block_out_2_n;
-        // block_out_3 <= block_out_3_n;
+        cnt <= cnt_n;
     end
 end
 endmodule

@@ -15,6 +15,9 @@ define_design_lib $TOPLEVEL -path ./$TOPLEVEL
 # Read Design File (add your files here)
 set HDL_DIR "../hdl"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/median.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/denoise.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/top.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/hog_counter.v"
 
 
 # elaborate your design

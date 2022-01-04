@@ -12,6 +12,7 @@ integer ans_start_row, ans_start_col;
 reg clk, rst_n;
 reg [8*70-1:0] pixel_in;
 wire valid;
+// wire [2*8*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
 wire [8*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
 reg [8*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
 
@@ -20,6 +21,10 @@ reg [8-1:0] block_out_1_2D [0:9-1];
 reg [8-1:0] block_out_2_2D [0:9-1];
 reg [8-1:0] block_out_3_2D [0:9-1];
 
+// reg [2*8-1:0] block_out_0_2D [0:9-1];
+// reg [2*8-1:0] block_out_1_2D [0:9-1];
+// reg [2*8-1:0] block_out_2_2D [0:9-1];
+// reg [2*8-1:0] block_out_3_2D [0:9-1];
 always @* begin
     for (k = 8; k >= 0; k = k - 1) begin
         block_out_0_2D[k] = block_out_0[8*(k+1)-1-:8];
@@ -31,19 +36,37 @@ end
 
 reg [638*8-1:0] picture [0:482-1];
 
-top mytop(
-    .clk(clk), 
-    .rst_n(rst_n), 
-    .pixel_in(pixel_in), 
-    .valid(valid), 
-    .block_out_0(block_out_0), 
-    .block_out_1(block_out_1), 
-    .block_out_2(block_out_2), 
-    .block_out_3(block_out_3)
-);
+
+`define SDFFILE "../syn/netlist/top_syn.sdf"
+`ifdef SDF
+    initial $sdf_annotate(`SDFFILE, mytop);
+    top mytop(
+        .clk(clk), 
+        .rst_n(rst_n), 
+        .pixel_in(pixel_in), 
+        .valid(valid), 
+        .block_out_0(block_out_0), 
+        .block_out_1(block_out_1), 
+        .block_out_2(block_out_2), 
+        .block_out_3(block_out_3)
+    );
+
+`else
+    top mytop(
+        .clk(clk), 
+        .rst_n(rst_n), 
+        .pixel_in(pixel_in), 
+        .valid(valid), 
+        .block_out_0(block_out_0), 
+        .block_out_1(block_out_1), 
+        .block_out_2(block_out_2), 
+        .block_out_3(block_out_3)
+    );
+`endif
+
 
 initial begin
-    clk = 1;
+    clk = 0;
     rst_n = 1;
     pixel_in = 0;
     #(CYCLE) rst_n = 0;

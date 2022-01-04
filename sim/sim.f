@@ -4,5 +4,7 @@ test_top.v
 ../hdl/denoise.v
 ../hdl/median.v
 ../hdl/sqrt.v
+../hdl/HOG.v
+../hdl/hog_counter.v
 
-+access+r 
++access+r
