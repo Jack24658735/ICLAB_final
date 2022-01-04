@@ -37,14 +37,14 @@ initial begin
     wait(rst_n == 0);
     wait(rst_n == 1);
 
-    $display("%d ", picture[1][638*8-1:638*8-8]);
-    $display("%d ", picture[1][638*8-9:638*8-16]);
-    $display("%d ", picture[1][638*8-17:638*8-24]);
-    $display("%d ", picture[1][638*8-25:638*8-32]);
-    $display("%d ", picture[481][638*8-1:638*8-8]);
-    $display("%d ", picture[481][638*8-9:638*8-16]);
-    $display("%d ", picture[481][638*8-17:638*8-24]);
-    $display("%d ", picture[481][638*8-25:638*8-32]);
+    // $display("%d ", picture[1][638*8-1:638*8-8]);
+    // $display("%d ", picture[1][638*8-9:638*8-16]);
+    // $display("%d ", picture[1][638*8-17:638*8-24]);
+    // $display("%d ", picture[1][638*8-25:638*8-32]);
+    // $display("%d ", picture[481][638*8-1:638*8-8]);
+    // $display("%d ", picture[481][638*8-9:638*8-16]);
+    // $display("%d ", picture[481][638*8-17:638*8-24]);
+    // $display("%d ", picture[481][638*8-25:638*8-32]);
 
     for (start_row = 0; start_row <= 477; start_row = start_row + 3) begin
         for (start_col = 637; start_col >= 13; start_col = start_col - 12) begin
