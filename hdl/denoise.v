@@ -11,7 +11,8 @@ module denoise
     output reg [9*BIT_WIDTH-1:0] block_out_0,
     output reg [9*BIT_WIDTH-1:0] block_out_1,
     output reg [9*BIT_WIDTH-1:0] block_out_2,
-    output reg [9*BIT_WIDTH-1:0] block_out_3
+    output reg [9*BIT_WIDTH-1:0] block_out_3, 
+    output reg valid
 );
 
 reg  [5*14*BIT_WIDTH-1:0] pix_in_r;
@@ -210,7 +211,12 @@ median Ud220(.clk(clk), .rst_n(rst_n), .val_0(block_in_3[22]), .val_1(block_in_3
 median Ud221(.clk(clk), .rst_n(rst_n), .val_0(b3_m8), .val_1(b3_m11), .val_2(b3_m14), .med(b3_out8)); // one of 9
 // ******** //
 
-
+always @* begin
+    if (block_out_0 & block_out_1 & block_out_2 & block_out_3)
+        valid = 1;
+    else 
+        valid = 0;
+end 
 
 // TODO: block 0
 always @(*) begin
