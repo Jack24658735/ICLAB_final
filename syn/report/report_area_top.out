@@ -1,0 +1,141 @@
+ 
+****************************************
+Report : area
+Design : top
+Version: R-2020.09-SP5
+Date   : Wed Jan  5 00:49:05 2022
+****************************************
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+Number of ports:                         4983
+Number of nets:                         15636
+Number of cells:                        11047
+Number of combinational cells:           8945
+Number of sequential cells:              1345
+Number of macros/black boxes:               0
+Number of buf/inv:                       3772
+Number of references:                       6
+
+Combinational area:              18683.142154
+Buf/Inv area:                     4794.680723
+Noncombinational area:            9912.886503
+Macro/Black Box area:                0.000000
+Net Interconnect area:            7330.479350
+
+Total cell area:                 28596.028657
+Total area:                      35926.508006
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ----------------------------- 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-  Black-
+                                  Total       Total    national    national   boxes   Design
+--------------------------------  ----------  -------  ----------  ---------  ------  ------------------
+top                               28596.0287    100.0     95.5581  4127.2985  0.0000  top
+U0                                24176.2104     84.5   1055.9683    22.1105  0.0000  denoise_BIT_WIDTH8
+U0/Ua000                            241.9451      0.8    182.9837    58.9614  0.0000  median_mydesign_95
+U0/Ua001                            240.9285      0.8    181.9671    58.9614  0.0000  median_mydesign_94
+U0/Ua002                            242.7075      0.8    183.7461    58.9614  0.0000  median_mydesign_93
+U0/Ua003                            241.4368      0.8    182.4754    58.9614  0.0000  median_mydesign_92
+U0/Ua010                            236.3539      0.8    177.3925    58.9614  0.0000  median_mydesign_91
+U0/Ua011                            239.4036      0.8    180.4422    58.9614  0.0000  median_mydesign_90
+U0/Ua012                            236.3539      0.8    177.3925    58.9614  0.0000  median_mydesign_89
+U0/Ua013                            237.6246      0.8    178.6632    58.9614  0.0000  median_mydesign_88
+U0/Ua020                            240.4202      0.8    181.4588    58.9614  0.0000  median_mydesign_87
+U0/Ua021                            240.6744      0.8    181.7130    58.9614  0.0000  median_mydesign_86
+U0/Ua022                            241.9451      0.8    182.9837    58.9614  0.0000  median_mydesign_85
+U0/Ua023                            239.4036      0.8    180.4422    58.9614  0.0000  median_mydesign_84
+U0/Ua100                            245.7572      0.9    186.7958    58.9614  0.0000  median_mydesign_83
+U0/Ua101                            237.6246      0.8    178.6632    58.9614  0.0000  median_mydesign_82
+U0/Ua110                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_81
+U0/Ua111                            242.4534      0.8    183.4920    58.9614  0.0000  median_mydesign_80
+U0/Ua120                            240.4202      0.8    181.4588    58.9614  0.0000  median_mydesign_79
+U0/Ua121                            237.6246      0.8    178.6632    58.9614  0.0000  median_mydesign_78
+U0/Ua200                            243.9782      0.9    185.0168    58.9614  0.0000  median_mydesign_77
+U0/Ua201                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_76
+U0/Ua210                            236.3539      0.8    177.3925    58.9614  0.0000  median_mydesign_75
+U0/Ua211                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_74
+U0/Ua220                            241.6909      0.8    182.7295    58.9614  0.0000  median_mydesign_73
+U0/Ua221                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_72
+U0/Ub000                            239.1495      0.8    180.1881    58.9614  0.0000  median_mydesign_71
+U0/Ub001                            238.8954      0.8    179.9340    58.9614  0.0000  median_mydesign_70
+U0/Ub002                            240.9285      0.8    181.9671    58.9614  0.0000  median_mydesign_69
+U0/Ub003                            239.4036      0.8    180.4422    58.9614  0.0000  median_mydesign_68
+U0/Ub010                            241.6909      0.8    182.7295    58.9614  0.0000  median_mydesign_67
+U0/Ub011                            240.9285      0.8    181.9671    58.9614  0.0000  median_mydesign_66
+U0/Ub012                            243.4700      0.9    184.5085    58.9614  0.0000  median_mydesign_65
+U0/Ub013                            237.6246      0.8    178.6632    58.9614  0.0000  median_mydesign_64
+U0/Ub020                            240.9285      0.8    181.9671    58.9614  0.0000  median_mydesign_63
+U0/Ub021                            240.9285      0.8    181.9671    58.9614  0.0000  median_mydesign_62
+U0/Ub022                            240.6744      0.8    181.7130    58.9614  0.0000  median_mydesign_61
+U0/Ub023                            239.1495      0.8    180.1881    58.9614  0.0000  median_mydesign_60
+U0/Ub100                            248.8070      0.9    189.8456    58.9614  0.0000  median_mydesign_59
+U0/Ub101                            237.6246      0.8    178.6632    58.9614  0.0000  median_mydesign_58
+U0/Ub110                            243.2158      0.9    184.2544    58.9614  0.0000  median_mydesign_57
+U0/Ub111                            237.6246      0.8    178.6632    58.9614  0.0000  median_mydesign_56
+U0/Ub120                            240.6744      0.8    181.7130    58.9614  0.0000  median_mydesign_55
+U0/Ub121                            236.6081      0.8    177.6467    58.9614  0.0000  median_mydesign_54
+U0/Ub200                            241.1827      0.8    182.2212    58.9614  0.0000  median_mydesign_53
+U0/Ub201                            235.5915      0.8    176.6301    58.9614  0.0000  median_mydesign_52
+U0/Ub210                            241.6909      0.8    182.7295    58.9614  0.0000  median_mydesign_51
+U0/Ub211                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_50
+U0/Ub220                            243.4700      0.9    184.5085    58.9614  0.0000  median_mydesign_49
+U0/Ub221                            235.5915      0.8    176.6301    58.9614  0.0000  median_mydesign_48
+U0/Uc000                            243.4700      0.9    184.5085    58.9614  0.0000  median_mydesign_47
+U0/Uc001                            242.9617      0.8    184.0003    58.9614  0.0000  median_mydesign_46
+U0/Uc002                            245.7572      0.9    186.7958    58.9614  0.0000  median_mydesign_45
+U0/Uc003                            245.5031      0.9    186.5417    58.9614  0.0000  median_mydesign_44
+U0/Uc010                            243.4700      0.9    184.5085    58.9614  0.0000  median_mydesign_43
+U0/Uc011                            239.9119      0.8    180.9505    58.9614  0.0000  median_mydesign_42
+U0/Uc012                            238.6412      0.8    179.6798    58.9614  0.0000  median_mydesign_41
+U0/Uc013                            247.7904      0.9    188.8290    58.9614  0.0000  median_mydesign_40
+U0/Uc020                            243.9782      0.9    185.0168    58.9614  0.0000  median_mydesign_39
+U0/Uc021                            243.4700      0.9    184.5085    58.9614  0.0000  median_mydesign_38
+U0/Uc022                            244.9948      0.9    186.0334    58.9614  0.0000  median_mydesign_37
+U0/Uc023                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_36
+U0/Uc100                            246.5197      0.9    187.5583    58.9614  0.0000  median_mydesign_35
+U0/Uc101                            239.6578      0.8    180.6964    58.9614  0.0000  median_mydesign_34
+U0/Uc110                            241.4368      0.8    182.4754    58.9614  0.0000  median_mydesign_33
+U0/Uc111                            236.6081      0.8    177.6467    58.9614  0.0000  median_mydesign_32
+U0/Uc120                            243.9782      0.9    185.0168    58.9614  0.0000  median_mydesign_31
+U0/Uc121                            236.6081      0.8    177.6467    58.9614  0.0000  median_mydesign_30
+U0/Uc200                            247.0280      0.9    188.0666    58.9614  0.0000  median_mydesign_29
+U0/Uc201                            236.8622      0.8    177.9008    58.9614  0.0000  median_mydesign_28
+U0/Uc210                            239.9119      0.8    180.9505    58.9614  0.0000  median_mydesign_27
+U0/Uc211                            239.4036      0.8    180.4422    58.9614  0.0000  median_mydesign_26
+U0/Uc220                            244.9948      0.9    186.0334    58.9614  0.0000  median_mydesign_25
+U0/Uc221                            235.5915      0.8    176.6301    58.9614  0.0000  median_mydesign_24
+U0/Ud000                            243.9782      0.9    185.0168    58.9614  0.0000  median_mydesign_23
+U0/Ud001                            241.1827      0.8    182.2213    58.9614  0.0000  median_mydesign_22
+U0/Ud002                            241.6909      0.8    182.7295    58.9614  0.0000  median_mydesign_21
+U0/Ud003                            239.9119      0.8    180.9505    58.9614  0.0000  median_mydesign_20
+U0/Ud010                            245.5031      0.9    186.5417    58.9614  0.0000  median_mydesign_19
+U0/Ud011                            240.6744      0.8    181.7130    58.9614  0.0000  median_mydesign_18
+U0/Ud012                            241.6909      0.8    182.7295    58.9614  0.0000  median_mydesign_17
+U0/Ud013                            236.6081      0.8    177.6467    58.9614  0.0000  median_mydesign_16
+U0/Ud020                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_15
+U0/Ud021                            239.4036      0.8    180.4422    58.9614  0.0000  median_mydesign_14
+U0/Ud022                            238.1329      0.8    179.1715    58.9614  0.0000  median_mydesign_13
+U0/Ud023                            241.1827      0.8    182.2212    58.9614  0.0000  median_mydesign_12
+U0/Ud100                            244.9948      0.9    186.0334    58.9614  0.0000  median_mydesign_11
+U0/Ud101                            242.1992      0.8    183.2378    58.9614  0.0000  median_mydesign_10
+U0/Ud110                            244.7407      0.9    185.7793    58.9614  0.0000  median_mydesign_9
+U0/Ud111                            237.3705      0.8    178.4091    58.9614  0.0000  median_mydesign_8
+U0/Ud120                            240.4202      0.8    181.4588    58.9614  0.0000  median_mydesign_7
+U0/Ud121                            237.3705      0.8    178.4091    58.9614  0.0000  median_mydesign_6
+U0/Ud200                            243.7241      0.9    184.7627    58.9614  0.0000  median_mydesign_5
+U0/Ud201                            237.8788      0.8    178.9174    58.9614  0.0000  median_mydesign_4
+U0/Ud210                            240.4202      0.8    181.4588    58.9614  0.0000  median_mydesign_3
+U0/Ud211                            237.3705      0.8    178.4091    58.9614  0.0000  median_mydesign_2
+U0/Ud220                            237.3705      0.8    178.4091    58.9614  0.0000  median_mydesign_1
+U0/Ud221                            237.8788      0.8    178.9174    58.9614  0.0000  median_mydesign_0
+U2                                  196.9616      0.7     93.7791   103.1825  0.0000  hog_counter
+--------------------------------  ----------  -------  ----------  ---------  ------  ------------------
+Total                                                  18683.1422  9912.8865  0.0000
+
+1
