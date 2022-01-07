@@ -347,26 +347,26 @@ end
 //////////// select n_sum_x ////////////////
 always @(*) begin
 	if(cnt_col == 0) begin
-	  n_sum_x[0][2] = 0;
-	  n_sum_x[0][1] = 0;
-	  n_sum_x[0][0] = 0;
-	  ///////////////////////
-	  n_sum_x[1][2] = blk0[7];
-	  n_sum_x[1][1] = blk0[4];
-	  n_sum_x[1][0] = blk0[1];
-	  ///////////////////////
-	  for(i=2;i<12;i=i+1) begin
-		for(j=0;j<3;j=j+1) begin
-			n_sum_x[i][j] = temp_x[i][j];
+		n_sum_x[0][2] = 0;
+		n_sum_x[0][1] = 0;
+		n_sum_x[0][0] = 0;
+		///////////////////////
+		n_sum_x[1][2] = blk0[7];
+		n_sum_x[1][1] = blk0[4];
+		n_sum_x[1][0] = blk0[1];
+		///////////////////////
+		for(i=2;i<12;i=i+1) begin
+			for(j=0;j<3;j=j+1) begin
+				n_sum_x[i][j] = temp_x[i][j];
+			end
 		end
-	  end
 	end
 	else begin
-	  for(i=0;i<12;i=i+1) begin
-		for(j=0;j<3;j=j+1) begin
-			n_sum_x[i][j] = temp_x[i][j];
+		for(i=0;i<12;i=i+1) begin
+			for(j=0;j<3;j=j+1) begin
+				n_sum_x[i][j] = temp_x[i][j];
+			end
 		end
-	  end
 	end
 end
 
