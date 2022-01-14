@@ -6,7 +6,7 @@ Report : timing
         -max_paths 4
 Design : top
 Version: R-2020.09-SP5
-Date   : Wed Jan  5 00:49:05 2022
+Date   : Sat Jan 15 02:46:52 2022
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -14,208 +14,234 @@ Date   : Wed Jan  5 00:49:05 2022
 Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
 Wire Load Model Mode: enclosed
 
-  Startpoint: pixel_in_r_reg_25_
+  Startpoint: U2/cnt_col_reg_1_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U0/Uc220/med_reg_0_
+  Endpoint: U1/sum_x_reg_3__2__7_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  top                35000                 saed32hvt_ss0p95v125c
-  denoise_BIT_WIDTH8 35000                 saed32hvt_ss0p95v125c
-  median_mydesign_25 8000                  saed32hvt_ss0p95v125c
+  top                540000                saed32hvt_ss0p95v125c
+  HOG_BITWIDTH8      280000                saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  pixel_in_r_reg_25_/CLK (DFFSSRX1_HVT)                   0.00 #     0.00 r
-  pixel_in_r_reg_25_/Q (DFFSSRX1_HVT)                     0.22       0.22 f
-  U0/pix_in[25] (denoise_BIT_WIDTH8)                      0.00       0.22 f
-  U0/U775/Y (INVX0_HVT)                                   0.03       0.26 r
-  U0/U55/Y (INVX0_HVT)                                    0.07       0.33 f
-  U0/Uc220/val_2[1] (median_mydesign_25)                  0.00       0.33 f
-  U0/Uc220/U70/Y (NAND2X0_HVT)                            0.07       0.41 r
-  U0/Uc220/U72/Y (AO22X1_HVT)                             0.14       0.54 r
-  U0/Uc220/U29/Y (AOI222X1_HVT)                           0.20       0.74 f
-  U0/Uc220/U73/Y (OAI222X1_HVT)                           0.15       0.89 r
-  U0/Uc220/U37/Y (AOI222X1_HVT)                           0.20       1.08 f
-  U0/Uc220/U74/Y (OA222X1_HVT)                            0.11       1.20 f
-  U0/Uc220/U15/Y (OA22X1_HVT)                             0.09       1.29 f
-  U0/Uc220/U14/Y (OA22X1_HVT)                             0.10       1.39 f
-  U0/Uc220/U19/Y (INVX0_HVT)                              0.04       1.42 r
-  U0/Uc220/U76/Y (NAND3X0_HVT)                            0.10       1.52 f
-  U0/Uc220/U77/Y (INVX0_HVT)                              0.05       1.57 r
-  U0/Uc220/U80/Y (OR3X1_HVT)                              0.13       1.70 r
-  U0/Uc220/U3/Y (OAI222X1_HVT)                            0.20       1.90 f
-  U0/Uc220/med_reg_0_/D (DFFSSRX1_HVT)                    0.00       1.90 f
-  data arrival time                                                  1.90
+  U2/cnt_col_reg_1_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
+  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
+  U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
+  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
+  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
+  U1/U3190/Y (AND3X1_HVT)                                 0.15       0.50 r
+  U1/U4080/Y (AND2X1_HVT)                                 0.09       0.60 r
+  U1/U670/Y (XNOR2X1_HVT)                                 0.15       0.75 r
+  U1/U1977/Y (AND3X1_HVT)                                 0.12       0.87 r
+  U1/U388/Y (AND2X4_HVT)                                  0.18       1.05 r
+  U1/U358/Y (INVX2_HVT)                                   0.12       1.16 f
+  U1/U390/Y (INVX4_HVT)                                   0.11       1.28 r
+  U1/U387/Y (INVX8_HVT)                                   0.06       1.34 f
+  U1/U1426/Y (INVX4_HVT)                                  0.07       1.41 r
+  U1/U3232/Y (AOI22X1_HVT)                                0.16       1.57 f
+  U1/U3256/Y (AND3X1_HVT)                                 0.07       1.64 f
+  U1/U3332/Y (AND4X1_HVT)                                 0.11       1.75 f
+  U1/U3463/Y (NAND3X0_HVT)                                0.08       1.83 r
+  U1/U403/Y (INVX0_HVT)                                   0.07       1.90 f
+  U1/U7538/Y (NAND2X0_HVT)                                0.09       1.99 r
+  U1/U7543/CO (FADDX1_HVT)                                0.17       2.16 r
+  U1/U7542/CO (FADDX1_HVT)                                0.14       2.31 r
+  U1/U7541/CO (FADDX1_HVT)                                0.14       2.45 r
+  U1/U7540/CO (FADDX1_HVT)                                0.14       2.59 r
+  U1/U7539/CO (FADDX1_HVT)                                0.14       2.73 r
+  U1/U7544/CO (FADDX1_HVT)                                0.14       2.87 r
+  U1/U7545/S (FADDX1_HVT)                                 0.21       3.08 f
+  U1/sum_x_reg_3__2__7_/D (DFFSSRX1_HVT)                  0.00       3.08 f
+  data arrival time                                                  3.08
 
-  clock clk (rise edge)                                   2.00       2.00
-  clock network delay (ideal)                             0.00       2.00
-  U0/Uc220/med_reg_0_/CLK (DFFSSRX1_HVT)                  0.00       2.00 r
-  library setup time                                     -0.10       1.90
-  data required time                                                 1.90
+  clock clk (rise edge)                                   3.20       3.20
+  clock network delay (ideal)                             0.00       3.20
+  U1/sum_x_reg_3__2__7_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
+  library setup time                                     -0.12       3.08
+  data required time                                                 3.08
   --------------------------------------------------------------------------
-  data required time                                                 1.90
-  data arrival time                                                 -1.90
+  data required time                                                 3.08
+  data arrival time                                                 -3.08
   --------------------------------------------------------------------------
   slack (MET)                                                        0.00
 
 
-  Startpoint: pixel_in_r_reg_25_
+  Startpoint: U2/cnt_col_reg_1_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U0/Uc220/med_reg_4_
+  Endpoint: U1/sum_y_reg_0__2__7_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  top                35000                 saed32hvt_ss0p95v125c
-  denoise_BIT_WIDTH8 35000                 saed32hvt_ss0p95v125c
-  median_mydesign_25 8000                  saed32hvt_ss0p95v125c
+  top                540000                saed32hvt_ss0p95v125c
+  HOG_BITWIDTH8      280000                saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  pixel_in_r_reg_25_/CLK (DFFSSRX1_HVT)                   0.00 #     0.00 r
-  pixel_in_r_reg_25_/Q (DFFSSRX1_HVT)                     0.22       0.22 f
-  U0/pix_in[25] (denoise_BIT_WIDTH8)                      0.00       0.22 f
-  U0/U775/Y (INVX0_HVT)                                   0.03       0.26 r
-  U0/U55/Y (INVX0_HVT)                                    0.07       0.33 f
-  U0/Uc220/val_2[1] (median_mydesign_25)                  0.00       0.33 f
-  U0/Uc220/U70/Y (NAND2X0_HVT)                            0.07       0.41 r
-  U0/Uc220/U72/Y (AO22X1_HVT)                             0.14       0.54 r
-  U0/Uc220/U29/Y (AOI222X1_HVT)                           0.20       0.74 f
-  U0/Uc220/U73/Y (OAI222X1_HVT)                           0.15       0.89 r
-  U0/Uc220/U37/Y (AOI222X1_HVT)                           0.20       1.08 f
-  U0/Uc220/U74/Y (OA222X1_HVT)                            0.11       1.20 f
-  U0/Uc220/U15/Y (OA22X1_HVT)                             0.09       1.29 f
-  U0/Uc220/U14/Y (OA22X1_HVT)                             0.10       1.39 f
-  U0/Uc220/U19/Y (INVX0_HVT)                              0.04       1.42 r
-  U0/Uc220/U76/Y (NAND3X0_HVT)                            0.10       1.52 f
-  U0/Uc220/U77/Y (INVX0_HVT)                              0.05       1.57 r
-  U0/Uc220/U80/Y (OR3X1_HVT)                              0.13       1.70 r
-  U0/Uc220/U7/Y (OAI222X1_HVT)                            0.20       1.90 f
-  U0/Uc220/med_reg_4_/D (DFFSSRX1_HVT)                    0.00       1.90 f
-  data arrival time                                                  1.90
+  U2/cnt_col_reg_1_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
+  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
+  U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
+  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
+  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
+  U1/U3194/Y (AND3X1_HVT)                                 0.15       0.51 r
+  U1/U35/Y (AND2X4_HVT)                                   0.18       0.69 r
+  U1/U4166/Y (NBUFFX2_HVT)                                0.15       0.84 r
+  U1/U1525/Y (NAND2X0_HVT)                                0.27       1.11 f
+  U1/U463/Y (INVX4_HVT)                                   0.21       1.32 r
+  U1/U12142/Y (AO22X1_HVT)                                0.18       1.50 r
+  U1/U12143/Y (OR4X1_HVT)                                 0.16       1.66 r
+  U1/U12161/Y (NOR4X1_HVT)                                0.13       1.79 f
+  U1/U12167/Y (NAND4X0_HVT)                               0.06       1.85 r
+  U1/U553/Y (INVX0_HVT)                                   0.04       1.89 f
+  U1/U19360/Y (NAND2X0_HVT)                               0.06       1.96 r
+  U1/U19398/CO (FADDX1_HVT)                               0.14       2.10 r
+  U1/U19436/CO (FADDX1_HVT)                               0.14       2.24 r
+  U1/U19474/CO (FADDX1_HVT)                               0.14       2.39 r
+  U1/U19512/CO (FADDX1_HVT)                               0.14       2.53 r
+  U1/U19550/CO (FADDX1_HVT)                               0.14       2.67 r
+  U1/U19588/CO (FADDX1_HVT)                               0.14       2.81 r
+  U1/U19590/S (FADDX1_HVT)                                0.21       3.02 f
+  U1/U19589/Y (AND2X1_HVT)                                0.07       3.09 f
+  U1/sum_y_reg_0__2__7_/D (DFFSSRX1_HVT)                  0.00       3.09 f
+  data arrival time                                                  3.09
 
-  clock clk (rise edge)                                   2.00       2.00
-  clock network delay (ideal)                             0.00       2.00
-  U0/Uc220/med_reg_4_/CLK (DFFSSRX1_HVT)                  0.00       2.00 r
-  library setup time                                     -0.10       1.90
-  data required time                                                 1.90
+  clock clk (rise edge)                                   3.20       3.20
+  clock network delay (ideal)                             0.00       3.20
+  U1/sum_y_reg_0__2__7_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
+  library setup time                                     -0.10       3.10
+  data required time                                                 3.10
   --------------------------------------------------------------------------
-  data required time                                                 1.90
-  data arrival time                                                 -1.90
+  data required time                                                 3.10
+  data arrival time                                                 -3.09
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.00
+  slack (MET)                                                        0.01
 
 
-  Startpoint: pixel_in_r_reg_25_
+  Startpoint: U2/cnt_col_reg_1_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U0/Uc220/med_reg_6_
+  Endpoint: U1/sum_x_reg_3__2__8_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  top                35000                 saed32hvt_ss0p95v125c
-  denoise_BIT_WIDTH8 35000                 saed32hvt_ss0p95v125c
-  median_mydesign_25 8000                  saed32hvt_ss0p95v125c
+  top                540000                saed32hvt_ss0p95v125c
+  HOG_BITWIDTH8      280000                saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  pixel_in_r_reg_25_/CLK (DFFSSRX1_HVT)                   0.00 #     0.00 r
-  pixel_in_r_reg_25_/Q (DFFSSRX1_HVT)                     0.22       0.22 f
-  U0/pix_in[25] (denoise_BIT_WIDTH8)                      0.00       0.22 f
-  U0/U775/Y (INVX0_HVT)                                   0.03       0.26 r
-  U0/U55/Y (INVX0_HVT)                                    0.07       0.33 f
-  U0/Uc220/val_2[1] (median_mydesign_25)                  0.00       0.33 f
-  U0/Uc220/U70/Y (NAND2X0_HVT)                            0.07       0.41 r
-  U0/Uc220/U72/Y (AO22X1_HVT)                             0.14       0.54 r
-  U0/Uc220/U29/Y (AOI222X1_HVT)                           0.20       0.74 f
-  U0/Uc220/U73/Y (OAI222X1_HVT)                           0.15       0.89 r
-  U0/Uc220/U37/Y (AOI222X1_HVT)                           0.20       1.08 f
-  U0/Uc220/U74/Y (OA222X1_HVT)                            0.11       1.20 f
-  U0/Uc220/U15/Y (OA22X1_HVT)                             0.09       1.29 f
-  U0/Uc220/U14/Y (OA22X1_HVT)                             0.10       1.39 f
-  U0/Uc220/U19/Y (INVX0_HVT)                              0.04       1.42 r
-  U0/Uc220/U76/Y (NAND3X0_HVT)                            0.10       1.52 f
-  U0/Uc220/U77/Y (INVX0_HVT)                              0.05       1.57 r
-  U0/Uc220/U80/Y (OR3X1_HVT)                              0.13       1.70 r
-  U0/Uc220/U9/Y (OAI222X1_HVT)                            0.20       1.90 f
-  U0/Uc220/med_reg_6_/D (DFFSSRX1_HVT)                    0.00       1.90 f
-  data arrival time                                                  1.90
+  U2/cnt_col_reg_1_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
+  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
+  U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
+  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
+  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
+  U1/U3190/Y (AND3X1_HVT)                                 0.15       0.50 r
+  U1/U4080/Y (AND2X1_HVT)                                 0.09       0.60 r
+  U1/U670/Y (XNOR2X1_HVT)                                 0.13       0.73 f
+  U1/U1977/Y (AND3X1_HVT)                                 0.11       0.84 f
+  U1/U388/Y (AND2X4_HVT)                                  0.18       1.02 f
+  U1/U358/Y (INVX2_HVT)                                   0.11       1.13 r
+  U1/U390/Y (INVX4_HVT)                                   0.12       1.24 f
+  U1/U387/Y (INVX8_HVT)                                   0.06       1.30 r
+  U1/U1426/Y (INVX4_HVT)                                  0.08       1.38 f
+  U1/U3232/Y (AOI22X1_HVT)                                0.15       1.53 r
+  U1/U3256/Y (AND3X1_HVT)                                 0.08       1.61 r
+  U1/U3332/Y (AND4X1_HVT)                                 0.14       1.75 r
+  U1/U3463/Y (NAND3X0_HVT)                                0.16       1.91 f
+  U1/U403/Y (INVX0_HVT)                                   0.10       2.01 r
+  U1/U7538/Y (NAND2X0_HVT)                                0.12       2.13 f
+  U1/U7543/CO (FADDX1_HVT)                                0.15       2.28 f
+  U1/U7542/CO (FADDX1_HVT)                                0.12       2.39 f
+  U1/U7541/CO (FADDX1_HVT)                                0.12       2.51 f
+  U1/U7540/CO (FADDX1_HVT)                                0.11       2.62 f
+  U1/U7539/CO (FADDX1_HVT)                                0.11       2.73 f
+  U1/U7544/CO (FADDX1_HVT)                                0.11       2.85 f
+  U1/U7545/CO (FADDX1_HVT)                                0.10       2.95 f
+  U1/U350/Y (INVX1_HVT)                                   0.03       2.98 r
+  U1/sum_x_reg_3__2__8_/D (DFFSSRX1_HVT)                  0.00       2.98 r
+  data arrival time                                                  2.98
 
-  clock clk (rise edge)                                   2.00       2.00
-  clock network delay (ideal)                             0.00       2.00
-  U0/Uc220/med_reg_6_/CLK (DFFSSRX1_HVT)                  0.00       2.00 r
-  library setup time                                     -0.10       1.90
-  data required time                                                 1.90
+  clock clk (rise edge)                                   3.20       3.20
+  clock network delay (ideal)                             0.00       3.20
+  U1/sum_x_reg_3__2__8_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
+  library setup time                                     -0.19       3.01
+  data required time                                                 3.01
   --------------------------------------------------------------------------
-  data required time                                                 1.90
-  data arrival time                                                 -1.90
+  data required time                                                 3.01
+  data arrival time                                                 -2.98
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.00
+  slack (MET)                                                        0.03
 
 
-  Startpoint: pixel_in_r_reg_25_
+  Startpoint: U2/cnt_col_reg_1_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U0/Uc220/med_reg_7_
+  Endpoint: U1/sum_x_reg_8__2__7_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  top                35000                 saed32hvt_ss0p95v125c
-  denoise_BIT_WIDTH8 35000                 saed32hvt_ss0p95v125c
-  median_mydesign_25 8000                  saed32hvt_ss0p95v125c
+  top                540000                saed32hvt_ss0p95v125c
+  HOG_BITWIDTH8      280000                saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  pixel_in_r_reg_25_/CLK (DFFSSRX1_HVT)                   0.00 #     0.00 r
-  pixel_in_r_reg_25_/Q (DFFSSRX1_HVT)                     0.22       0.22 f
-  U0/pix_in[25] (denoise_BIT_WIDTH8)                      0.00       0.22 f
-  U0/U775/Y (INVX0_HVT)                                   0.03       0.26 r
-  U0/U55/Y (INVX0_HVT)                                    0.07       0.33 f
-  U0/Uc220/val_2[1] (median_mydesign_25)                  0.00       0.33 f
-  U0/Uc220/U70/Y (NAND2X0_HVT)                            0.07       0.41 r
-  U0/Uc220/U72/Y (AO22X1_HVT)                             0.14       0.54 r
-  U0/Uc220/U29/Y (AOI222X1_HVT)                           0.20       0.74 f
-  U0/Uc220/U73/Y (OAI222X1_HVT)                           0.15       0.89 r
-  U0/Uc220/U37/Y (AOI222X1_HVT)                           0.20       1.08 f
-  U0/Uc220/U74/Y (OA222X1_HVT)                            0.11       1.20 f
-  U0/Uc220/U15/Y (OA22X1_HVT)                             0.09       1.29 f
-  U0/Uc220/U14/Y (OA22X1_HVT)                             0.10       1.39 f
-  U0/Uc220/U19/Y (INVX0_HVT)                              0.04       1.42 r
-  U0/Uc220/U76/Y (NAND3X0_HVT)                            0.10       1.52 f
-  U0/Uc220/U77/Y (INVX0_HVT)                              0.05       1.57 r
-  U0/Uc220/U80/Y (OR3X1_HVT)                              0.13       1.70 r
-  U0/Uc220/U10/Y (OAI222X1_HVT)                           0.20       1.90 f
-  U0/Uc220/med_reg_7_/D (DFFSSRX1_HVT)                    0.00       1.90 f
-  data arrival time                                                  1.90
+  U2/cnt_col_reg_1_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
+  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
+  U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
+  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
+  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
+  U1/U3190/Y (AND3X1_HVT)                                 0.15       0.50 r
+  U1/U4080/Y (AND2X1_HVT)                                 0.09       0.60 r
+  U1/U670/Y (XNOR2X1_HVT)                                 0.13       0.73 f
+  U1/U1977/Y (AND3X1_HVT)                                 0.11       0.84 f
+  U1/U359/Y (INVX1_HVT)                                   0.04       0.88 r
+  U1/U432/Y (INVX0_HVT)                                   0.06       0.94 f
+  U1/U1535/Y (NAND2X0_HVT)                                0.09       1.03 r
+  U1/U669/Y (INVX0_HVT)                                   0.09       1.11 f
+  U1/U38/Y (NBUFFX2_HVT)                                  0.08       1.19 f
+  U1/U225/Y (INVX0_HVT)                                   0.09       1.29 r
+  U1/U227/Y (INVX2_HVT)                                   0.12       1.40 f
+  U1/U4377/Y (AO22X1_HVT)                                 0.13       1.54 f
+  U1/U4405/Y (NOR4X1_HVT)                                 0.17       1.71 r
+  U1/U591/Y (NAND3X0_HVT)                                 0.15       1.86 f
+  U1/U934/Y (INVX0_HVT)                                   0.10       1.96 r
+  U1/U7807/CO (FADDX1_HVT)                                0.17       2.13 r
+  U1/U7806/CO (FADDX1_HVT)                                0.14       2.27 r
+  U1/U7805/CO (FADDX1_HVT)                                0.14       2.41 r
+  U1/U7804/CO (FADDX1_HVT)                                0.14       2.55 r
+  U1/U7803/CO (FADDX1_HVT)                                0.14       2.70 r
+  U1/U7844/CO (FADDX1_HVT)                                0.14       2.84 r
+  U1/U7845/S (FADDX1_HVT)                                 0.21       3.05 f
+  U1/sum_x_reg_8__2__7_/D (DFFSSRX1_HVT)                  0.00       3.05 f
+  data arrival time                                                  3.05
 
-  clock clk (rise edge)                                   2.00       2.00
-  clock network delay (ideal)                             0.00       2.00
-  U0/Uc220/med_reg_7_/CLK (DFFSSRX1_HVT)                  0.00       2.00 r
-  library setup time                                     -0.10       1.90
-  data required time                                                 1.90
+  clock clk (rise edge)                                   3.20       3.20
+  clock network delay (ideal)                             0.00       3.20
+  U1/sum_x_reg_8__2__7_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
+  library setup time                                     -0.12       3.08
+  data required time                                                 3.08
   --------------------------------------------------------------------------
-  data required time                                                 1.90
-  data arrival time                                                 -1.90
+  data required time                                                 3.08
+  data arrival time                                                 -3.05
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.00
+  slack (MET)                                                        0.03
 
 
 1

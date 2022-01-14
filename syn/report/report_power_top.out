@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : top
 Version: R-2020.09-SP5
-Date   : Wed Jan  5 00:49:06 2022
+Date   : Sat Jan 15 02:47:07 2022
 ****************************************
 
 
@@ -22,105 +22,142 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-top                    35000             saed32hvt_ss0p95v125c
+top                    540000            saed32hvt_ss0p95v125c
 denoise_BIT_WIDTH8     35000             saed32hvt_ss0p95v125c
+HOG_BITWIDTH8          280000            saed32hvt_ss0p95v125c
 hog_counter            ForQA             saed32hvt_ss0p95v125c
-median_mydesign_95     8000              saed32hvt_ss0p95v125c
-median_mydesign_0      8000              saed32hvt_ss0p95v125c
-median_mydesign_1      8000              saed32hvt_ss0p95v125c
-median_mydesign_2      8000              saed32hvt_ss0p95v125c
-median_mydesign_3      8000              saed32hvt_ss0p95v125c
-median_mydesign_4      8000              saed32hvt_ss0p95v125c
-median_mydesign_5      8000              saed32hvt_ss0p95v125c
-median_mydesign_6      8000              saed32hvt_ss0p95v125c
-median_mydesign_7      8000              saed32hvt_ss0p95v125c
-median_mydesign_8      8000              saed32hvt_ss0p95v125c
-median_mydesign_9      8000              saed32hvt_ss0p95v125c
-median_mydesign_10     8000              saed32hvt_ss0p95v125c
-median_mydesign_11     8000              saed32hvt_ss0p95v125c
-median_mydesign_12     8000              saed32hvt_ss0p95v125c
-median_mydesign_13     8000              saed32hvt_ss0p95v125c
-median_mydesign_14     8000              saed32hvt_ss0p95v125c
-median_mydesign_15     8000              saed32hvt_ss0p95v125c
-median_mydesign_16     8000              saed32hvt_ss0p95v125c
-median_mydesign_17     8000              saed32hvt_ss0p95v125c
-median_mydesign_18     8000              saed32hvt_ss0p95v125c
-median_mydesign_19     8000              saed32hvt_ss0p95v125c
-median_mydesign_20     8000              saed32hvt_ss0p95v125c
-median_mydesign_21     8000              saed32hvt_ss0p95v125c
-median_mydesign_22     8000              saed32hvt_ss0p95v125c
-median_mydesign_23     8000              saed32hvt_ss0p95v125c
-median_mydesign_24     8000              saed32hvt_ss0p95v125c
-median_mydesign_25     8000              saed32hvt_ss0p95v125c
-median_mydesign_26     8000              saed32hvt_ss0p95v125c
-median_mydesign_27     8000              saed32hvt_ss0p95v125c
-median_mydesign_28     8000              saed32hvt_ss0p95v125c
-median_mydesign_29     8000              saed32hvt_ss0p95v125c
-median_mydesign_30     8000              saed32hvt_ss0p95v125c
-median_mydesign_31     8000              saed32hvt_ss0p95v125c
-median_mydesign_32     8000              saed32hvt_ss0p95v125c
-median_mydesign_33     8000              saed32hvt_ss0p95v125c
-median_mydesign_34     8000              saed32hvt_ss0p95v125c
-median_mydesign_35     8000              saed32hvt_ss0p95v125c
-median_mydesign_36     8000              saed32hvt_ss0p95v125c
-median_mydesign_37     8000              saed32hvt_ss0p95v125c
-median_mydesign_38     8000              saed32hvt_ss0p95v125c
-median_mydesign_39     8000              saed32hvt_ss0p95v125c
-median_mydesign_40     8000              saed32hvt_ss0p95v125c
-median_mydesign_41     8000              saed32hvt_ss0p95v125c
-median_mydesign_42     8000              saed32hvt_ss0p95v125c
-median_mydesign_43     8000              saed32hvt_ss0p95v125c
-median_mydesign_44     8000              saed32hvt_ss0p95v125c
-median_mydesign_45     8000              saed32hvt_ss0p95v125c
-median_mydesign_46     8000              saed32hvt_ss0p95v125c
-median_mydesign_47     8000              saed32hvt_ss0p95v125c
-median_mydesign_48     8000              saed32hvt_ss0p95v125c
-median_mydesign_49     8000              saed32hvt_ss0p95v125c
-median_mydesign_50     8000              saed32hvt_ss0p95v125c
-median_mydesign_51     8000              saed32hvt_ss0p95v125c
-median_mydesign_52     8000              saed32hvt_ss0p95v125c
-median_mydesign_53     8000              saed32hvt_ss0p95v125c
-median_mydesign_54     8000              saed32hvt_ss0p95v125c
-median_mydesign_55     8000              saed32hvt_ss0p95v125c
-median_mydesign_56     8000              saed32hvt_ss0p95v125c
-median_mydesign_57     8000              saed32hvt_ss0p95v125c
-median_mydesign_58     8000              saed32hvt_ss0p95v125c
-median_mydesign_59     8000              saed32hvt_ss0p95v125c
-median_mydesign_60     8000              saed32hvt_ss0p95v125c
-median_mydesign_61     8000              saed32hvt_ss0p95v125c
-median_mydesign_62     8000              saed32hvt_ss0p95v125c
-median_mydesign_63     8000              saed32hvt_ss0p95v125c
-median_mydesign_64     8000              saed32hvt_ss0p95v125c
-median_mydesign_65     8000              saed32hvt_ss0p95v125c
-median_mydesign_66     8000              saed32hvt_ss0p95v125c
-median_mydesign_67     8000              saed32hvt_ss0p95v125c
-median_mydesign_68     8000              saed32hvt_ss0p95v125c
-median_mydesign_69     8000              saed32hvt_ss0p95v125c
-median_mydesign_70     8000              saed32hvt_ss0p95v125c
-median_mydesign_71     8000              saed32hvt_ss0p95v125c
-median_mydesign_72     8000              saed32hvt_ss0p95v125c
-median_mydesign_73     8000              saed32hvt_ss0p95v125c
-median_mydesign_74     8000              saed32hvt_ss0p95v125c
-median_mydesign_75     8000              saed32hvt_ss0p95v125c
-median_mydesign_76     8000              saed32hvt_ss0p95v125c
-median_mydesign_77     8000              saed32hvt_ss0p95v125c
-median_mydesign_78     8000              saed32hvt_ss0p95v125c
-median_mydesign_79     8000              saed32hvt_ss0p95v125c
-median_mydesign_80     8000              saed32hvt_ss0p95v125c
-median_mydesign_81     8000              saed32hvt_ss0p95v125c
-median_mydesign_82     8000              saed32hvt_ss0p95v125c
-median_mydesign_83     8000              saed32hvt_ss0p95v125c
-median_mydesign_84     8000              saed32hvt_ss0p95v125c
-median_mydesign_85     8000              saed32hvt_ss0p95v125c
-median_mydesign_86     8000              saed32hvt_ss0p95v125c
-median_mydesign_87     8000              saed32hvt_ss0p95v125c
-median_mydesign_88     8000              saed32hvt_ss0p95v125c
-median_mydesign_89     8000              saed32hvt_ss0p95v125c
-median_mydesign_90     8000              saed32hvt_ss0p95v125c
-median_mydesign_91     8000              saed32hvt_ss0p95v125c
-median_mydesign_92     8000              saed32hvt_ss0p95v125c
-median_mydesign_93     8000              saed32hvt_ss0p95v125c
-median_mydesign_94     8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_35       8000              saed32hvt_ss0p95v125c
+median_mydesign_95     ForQA             saed32hvt_ss0p95v125c
+sqrt_mydesign_0        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_1        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_2        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_3        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_4        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_5        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_6        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_7        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_8        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_9        8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_10       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_11       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_12       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_13       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_14       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_15       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_16       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_17       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_18       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_19       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_20       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_21       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_22       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_23       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_24       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_25       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_26       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_27       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_28       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_29       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_30       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_31       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_32       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_33       8000              saed32hvt_ss0p95v125c
+sqrt_mydesign_34       8000              saed32hvt_ss0p95v125c
+median_mydesign_0      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_1      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_2      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_3      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_4      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_5      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_6      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_7      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_8      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_9      ForQA             saed32hvt_ss0p95v125c
+median_mydesign_10     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_11     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_12     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_13     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_14     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_15     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_16     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_17     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_18     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_19     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_20     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_21     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_22     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_23     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_24     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_25     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_26     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_27     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_28     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_29     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_30     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_31     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_32     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_33     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_34     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_35     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_36     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_37     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_38     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_39     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_40     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_41     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_42     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_43     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_44     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_45     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_46     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_47     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_48     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_49     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_50     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_51     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_52     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_53     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_54     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_55     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_56     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_57     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_58     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_59     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_60     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_61     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_62     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_63     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_64     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_65     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_66     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_67     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_68     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_69     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_70     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_71     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_72     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_73     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_74     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_75     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_76     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_77     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_78     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_79     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_80     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_81     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_82     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_83     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_84     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_85     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_86     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_87     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_88     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_89     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_90     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_91     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_92     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_93     ForQA             saed32hvt_ss0p95v125c
+median_mydesign_94     ForQA             saed32hvt_ss0p95v125c
 
 
 Global Operating Voltage = 0.95 
@@ -136,103 +173,140 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-top                                     440.792 4.26e+03 4.37e+08 5.13e+03 100.0
-  U2 (hog_counter)                        1.670   41.835 3.21e+06   46.718   0.9
-  U0 (denoise_BIT_WIDTH8)               394.924 2.73e+03 3.45e+08 3.47e+03  67.5
-    Ud221 (median_mydesign_0)             3.738   28.200 3.41e+06   35.344   0.7
-    Ud220 (median_mydesign_1)             3.482   28.116 3.39e+06   34.990   0.7
-    Ud211 (median_mydesign_2)             3.958   28.297 3.40e+06   35.650   0.7
-    Ud210 (median_mydesign_3)             3.399   27.952 3.44e+06   34.792   0.7
-    Ud201 (median_mydesign_4)             3.738   28.181 3.41e+06   35.326   0.7
-    Ud200 (median_mydesign_5)             3.546   27.954 3.54e+06   35.045   0.7
-    Ud121 (median_mydesign_6)             3.998   28.376 3.43e+06   35.805   0.7
-    Ud120 (median_mydesign_7)             3.751   28.382 3.45e+06   35.578   0.7
-    Ud111 (median_mydesign_8)             3.986   28.312 3.43e+06   35.729   0.7
-    Ud110 (median_mydesign_9)             3.920   28.841 3.67e+06   36.433   0.7
-    Ud101 (median_mydesign_10)            3.863   28.076 3.46e+06   35.400   0.7
-    Ud100 (median_mydesign_11)            3.972   28.519 3.56e+06   36.054   0.7
-    Ud023 (median_mydesign_12)            3.790   28.113 3.51e+06   35.410   0.7
-    Ud022 (median_mydesign_13)            3.604   28.119 3.41e+06   35.136   0.7
-    Ud021 (median_mydesign_14)            3.826   28.661 3.41e+06   35.901   0.7
-    Ud020 (median_mydesign_15)            3.285   27.714 3.41e+06   34.412   0.7
-    Ud013 (median_mydesign_16)            3.989   28.225 3.41e+06   35.623   0.7
-    Ud012 (median_mydesign_17)            3.814   28.457 3.46e+06   35.727   0.7
-    Ud011 (median_mydesign_18)            3.761   28.357 3.44e+06   35.559   0.7
-    Ud010 (median_mydesign_19)            3.390   27.974 3.48e+06   34.846   0.7
-    Ud003 (median_mydesign_20)            3.792   27.871 3.46e+06   35.125   0.7
-    Ud002 (median_mydesign_21)            3.740   28.297 3.47e+06   35.508   0.7
-    Ud001 (median_mydesign_22)            3.757   28.752 3.66e+06   36.167   0.7
-    Ud000 (median_mydesign_23)            3.323   27.775 3.46e+06   34.554   0.7
-    Uc221 (median_mydesign_24)            3.592   27.846 3.38e+06   34.820   0.7
-    Uc220 (median_mydesign_25)            3.255   27.520 3.44e+06   34.217   0.7
-    Uc211 (median_mydesign_26)            3.828   27.929 3.43e+06   35.188   0.7
-    Uc210 (median_mydesign_27)            3.554   28.137 3.43e+06   35.122   0.7
-    Uc201 (median_mydesign_28)            3.665   27.892 3.40e+06   34.961   0.7
-    Uc200 (median_mydesign_29)            3.589   28.183 3.55e+06   35.324   0.7
-    Uc121 (median_mydesign_30)            3.990   28.207 3.41e+06   35.608   0.7
-    Uc120 (median_mydesign_31)            4.039   28.454 3.50e+06   35.998   0.7
-    Uc111 (median_mydesign_32)            3.988   28.188 3.41e+06   35.587   0.7
-    Uc110 (median_mydesign_33)            3.971   28.652 3.47e+06   36.095   0.7
-    Uc101 (median_mydesign_34)            3.874   28.029 3.47e+06   35.369   0.7
-    Uc100 (median_mydesign_35)            4.032   28.764 3.58e+06   36.381   0.7
-    Uc023 (median_mydesign_36)            3.810   28.021 3.45e+06   35.282   0.7
-    Uc022 (median_mydesign_37)            3.631   27.862 3.47e+06   34.965   0.7
-    Uc021 (median_mydesign_38)            3.885   28.286 3.50e+06   35.666   0.7
-    Uc020 (median_mydesign_39)            3.457   27.876 3.46e+06   34.795   0.7
-    Uc013 (median_mydesign_40)            4.259   28.577 3.66e+06   36.495   0.7
-    Uc012 (median_mydesign_41)            3.795   28.451 3.40e+06   35.647   0.7
-    Uc011 (median_mydesign_42)            3.660   28.328 3.44e+06   35.425   0.7
-    Uc010 (median_mydesign_43)            3.369   27.689 3.43e+06   34.490   0.7
-    Uc003 (median_mydesign_44)            3.975   28.208 3.58e+06   35.761   0.7
-    Uc002 (median_mydesign_45)            3.879   28.387 3.54e+06   35.808   0.7
-    Uc001 (median_mydesign_46)            3.778   28.305 3.47e+06   35.549   0.7
-    Uc000 (median_mydesign_47)            3.393   27.695 3.50e+06   34.587   0.7
-    Ub221 (median_mydesign_48)            3.612   27.866 3.39e+06   34.868   0.7
-    Ub220 (median_mydesign_49)            3.481   28.016 3.50e+06   34.999   0.7
-    Ub211 (median_mydesign_50)            3.796   27.951 3.42e+06   35.164   0.7
-    Ub210 (median_mydesign_51)            3.629   28.020 3.45e+06   35.102   0.7
-    Ub201 (median_mydesign_52)            3.628   27.922 3.39e+06   34.941   0.7
-    Ub200 (median_mydesign_53)            3.451   27.968 3.51e+06   34.926   0.7
-    Ub121 (median_mydesign_54)            3.970   28.144 3.41e+06   35.525   0.7
-    Ub120 (median_mydesign_55)            3.677   27.809 3.43e+06   34.913   0.7
-    Ub111 (median_mydesign_56)            3.971   28.329 3.42e+06   35.725   0.7
-    Ub110 (median_mydesign_57)            3.871   27.947 3.45e+06   35.272   0.7
-    Ub101 (median_mydesign_58)            3.961   28.328 3.43e+06   35.714   0.7
-    Ub100 (median_mydesign_59)            3.998   28.441 3.60e+06   36.037   0.7
-    Ub023 (median_mydesign_60)            3.901   28.166 3.43e+06   35.502   0.7
-    Ub022 (median_mydesign_61)            3.839   28.467 3.48e+06   35.786   0.7
-    Ub021 (median_mydesign_62)            3.723   28.362 3.47e+06   35.559   0.7
-    Ub020 (median_mydesign_63)            3.299   27.722 3.47e+06   34.496   0.7
-    Ub013 (median_mydesign_64)            3.957   28.303 3.42e+06   35.681   0.7
-    Ub012 (median_mydesign_65)            3.848   28.365 3.50e+06   35.713   0.7
-    Ub011 (median_mydesign_66)            3.739   28.353 3.47e+06   35.561   0.7
-    Ub010 (median_mydesign_67)            3.491   27.840 3.45e+06   34.785   0.7
-    Ub003 (median_mydesign_68)            3.894   28.167 3.43e+06   35.495   0.7
-    Ub002 (median_mydesign_69)            3.718   28.289 3.47e+06   35.478   0.7
-    Ub001 (median_mydesign_70)            3.680   28.246 3.38e+06   35.311   0.7
-    Ub000 (median_mydesign_71)            3.428   27.832 3.43e+06   34.688   0.7
-    Ua221 (median_mydesign_72)            3.774   27.947 3.42e+06   35.137   0.7
-    Ua220 (median_mydesign_73)            3.603   28.090 3.47e+06   35.165   0.7
-    Ua211 (median_mydesign_74)            3.783   27.913 3.42e+06   35.113   0.7
-    Ua210 (median_mydesign_75)            3.489   28.000 3.37e+06   34.854   0.7
-    Ua201 (median_mydesign_76)            3.771   27.929 3.42e+06   35.118   0.7
-    Ua200 (median_mydesign_77)            3.477   28.316 3.68e+06   35.477   0.7
-    Ua121 (median_mydesign_78)            3.966   28.269 3.43e+06   35.660   0.7
-    Ua120 (median_mydesign_79)            4.077   28.637 3.44e+06   36.156   0.7
-    Ua111 (median_mydesign_80)            3.848   28.081 3.46e+06   35.385   0.7
-    Ua110 (median_mydesign_81)            3.884   28.484 3.41e+06   35.783   0.7
-    Ua101 (median_mydesign_82)            4.022   28.381 3.43e+06   35.828   0.7
-    Ua100 (median_mydesign_83)            3.980   28.964 3.68e+06   36.625   0.7
-    Ua023 (median_mydesign_84)            3.757   28.037 3.46e+06   35.257   0.7
-    Ua022 (median_mydesign_85)            3.900   28.507 3.50e+06   35.906   0.7
-    Ua021 (median_mydesign_86)            3.882   28.532 3.49e+06   35.900   0.7
-    Ua020 (median_mydesign_87)            3.478   27.856 3.44e+06   34.775   0.7
-    Ua013 (median_mydesign_88)            3.986   28.342 3.42e+06   35.749   0.7
-    Ua012 (median_mydesign_89)            3.812   28.407 3.37e+06   35.586   0.7
-    Ua011 (median_mydesign_90)            3.690   28.270 3.42e+06   35.385   0.7
-    Ua010 (median_mydesign_91)            3.388   27.796 3.37e+06   34.549   0.7
-    Ua003 (median_mydesign_92)            3.885   28.286 3.49e+06   35.663   0.7
-    Ua002 (median_mydesign_93)            3.704   28.329 3.52e+06   35.550   0.7
-    Ua001 (median_mydesign_94)            3.665   28.312 3.44e+06   35.415   0.7
-    Ua000 (median_mydesign_95)            3.338   28.134 3.64e+06   35.113   0.7
+top                                    1.68e+03 2.86e+04 4.45e+09 3.47e+04 100.0
+  U38 (sqrt_mydesign_0)                  25.928   39.425 2.52e+07   90.544   0.3
+  U37 (sqrt_mydesign_1)                  25.700   39.202 2.52e+07   90.098   0.3
+  U36 (sqrt_mydesign_2)                  25.622   39.150 2.52e+07   89.967   0.3
+  U35 (sqrt_mydesign_3)                  28.852   41.073 2.50e+07   94.955   0.3
+  U34 (sqrt_mydesign_4)                  28.704   40.888 2.50e+07   94.617   0.3
+  U33 (sqrt_mydesign_5)                  28.790   40.999 2.50e+07   94.819   0.3
+  U32 (sqrt_mydesign_6)                   4.241   20.556 2.54e+07   50.227   0.1
+  U31 (sqrt_mydesign_7)                   4.158   20.452 2.54e+07   50.002   0.1
+  U30 (sqrt_mydesign_8)                   4.266   20.566 2.54e+07   50.238   0.1
+  U29 (sqrt_mydesign_9)                  26.050   39.527 2.52e+07   90.769   0.3
+  U28 (sqrt_mydesign_10)                 25.949   39.374 2.52e+07   90.517   0.3
+  U27 (sqrt_mydesign_11)                 25.988   39.516 2.52e+07   90.701   0.3
+  U26 (sqrt_mydesign_12)                 28.894   41.104 2.50e+07   95.026   0.3
+  U25 (sqrt_mydesign_13)                 28.925   41.036 2.50e+07   94.991   0.3
+  U24 (sqrt_mydesign_14)                 28.878   41.001 2.50e+07   94.910   0.3
+  U23 (sqrt_mydesign_15)                  4.379   20.758 2.54e+07   50.567   0.1
+  U22 (sqrt_mydesign_16)                  4.248   20.535 2.54e+07   50.188   0.1
+  U21 (sqrt_mydesign_17)                  4.354   20.698 2.54e+07   50.456   0.1
+  U20 (sqrt_mydesign_18)                 25.677   39.163 2.52e+07   90.038   0.3
+  U19 (sqrt_mydesign_19)                 26.000   39.528 2.52e+07   90.720   0.3
+  U18 (sqrt_mydesign_20)                 25.962   39.514 2.52e+07   90.680   0.3
+  U17 (sqrt_mydesign_21)                 28.847   41.058 2.50e+07   94.936   0.3
+  U16 (sqrt_mydesign_22)                 28.888   41.047 2.50e+07   94.965   0.3
+  U15 (sqrt_mydesign_23)                 28.554   40.710 2.50e+07   94.284   0.3
+  U14 (sqrt_mydesign_24)                  4.251   20.526 2.54e+07   50.208   0.1
+  U13 (sqrt_mydesign_25)                  4.332   20.661 2.54e+07   50.385   0.1
+  U12 (sqrt_mydesign_26)                  4.327   20.649 2.54e+07   50.380   0.1
+  U11 (sqrt_mydesign_27)                 25.851   39.351 2.52e+07   90.393   0.3
+  U10 (sqrt_mydesign_28)                 28.514   41.769 2.51e+07   95.426   0.3
+  U9 (sqrt_mydesign_29)                  25.451   39.144 2.52e+07   89.809   0.3
+  U8 (sqrt_mydesign_30)                  28.695   40.965 2.50e+07   94.691   0.3
+  U7 (sqrt_mydesign_31)                  29.324   41.542 2.50e+07   95.891   0.3
+  U6 (sqrt_mydesign_32)                  28.829   41.000 2.50e+07   94.858   0.3
+  U5 (sqrt_mydesign_33)                   4.284   20.597 2.54e+07   50.272   0.1
+  U4 (sqrt_mydesign_34)                  12.060   28.649 2.53e+07   66.007   0.2
+  U3 (sqrt_mydesign_35)                   6.740   23.691 2.54e+07   55.813   0.2
+  U2 (hog_counter)                        1.260   26.230 3.27e+06   30.760   0.1
+  U1 (HOG_BITWIDTH8)                    595.045 2.47e+04 3.19e+09 2.85e+04  82.1
+  U0 (denoise_BIT_WIDTH8)               326.034 1.67e+03 2.61e+08 2.26e+03   6.5
+    Ud221 (median_mydesign_0)             3.504   17.519 2.67e+06   23.688   0.1
+    Ud220 (median_mydesign_1)             2.794   16.822 2.65e+06   22.267   0.1
+    Ud211 (median_mydesign_2)             3.487   17.492 2.67e+06   23.643   0.1
+    Ud210 (median_mydesign_3)             2.760   16.771 2.65e+06   22.182   0.1
+    Ud201 (median_mydesign_4)             3.483   17.467 2.67e+06   23.615   0.1
+    Ud200 (median_mydesign_5)             2.763   16.779 2.65e+06   22.192   0.1
+    Ud121 (median_mydesign_6)             3.482   17.466 2.67e+06   23.613   0.1
+    Ud120 (median_mydesign_7)             3.134   17.211 2.65e+06   22.996   0.1
+    Ud111 (median_mydesign_8)             3.496   17.480 2.66e+06   23.640   0.1
+    Ud110 (median_mydesign_9)             3.145   17.210 2.65e+06   23.007   0.1
+    Ud101 (median_mydesign_10)            3.452   17.427 2.66e+06   23.543   0.1
+    Ud100 (median_mydesign_11)            3.123   17.191 2.65e+06   22.964   0.1
+    Ud023 (median_mydesign_12)            3.807   18.184 2.66e+06   24.655   0.1
+    Ud022 (median_mydesign_13)            3.088   17.177 2.65e+06   22.917   0.1
+    Ud021 (median_mydesign_14)            3.237   17.234 2.65e+06   23.123   0.1
+    Ud020 (median_mydesign_15)            2.910   16.956 2.65e+06   22.517   0.1
+    Ud013 (median_mydesign_16)            4.150   18.352 2.66e+06   25.167   0.1
+    Ud012 (median_mydesign_17)            3.068   17.128 2.65e+06   22.847   0.1
+    Ud011 (median_mydesign_18)            3.236   17.228 2.65e+06   23.114   0.1
+    Ud010 (median_mydesign_19)            2.899   16.943 2.65e+06   22.493   0.1
+    Ud003 (median_mydesign_20)            4.048   18.318 2.66e+06   25.030   0.1
+    Ud002 (median_mydesign_21)            3.029   17.088 2.65e+06   22.767   0.1
+    Ud001 (median_mydesign_22)            3.240   17.234 2.65e+06   23.124   0.1
+    Ud000 (median_mydesign_23)            2.873   16.915 2.65e+06   22.437   0.1
+    Uc221 (median_mydesign_24)            3.457   17.448 2.67e+06   23.570   0.1
+    Uc220 (median_mydesign_25)            2.759   16.789 2.65e+06   22.197   0.1
+    Uc211 (median_mydesign_26)            3.501   17.512 2.67e+06   23.678   0.1
+    Uc210 (median_mydesign_27)            2.783   16.801 2.65e+06   22.235   0.1
+    Uc201 (median_mydesign_28)            3.504   17.511 2.67e+06   23.681   0.1
+    Uc200 (median_mydesign_29)            2.804   16.820 2.65e+06   22.277   0.1
+    Uc121 (median_mydesign_30)            3.482   17.471 2.66e+06   23.618   0.1
+    Uc120 (median_mydesign_31)            3.108   17.174 2.65e+06   22.932   0.1
+    Uc111 (median_mydesign_32)            3.479   17.476 2.66e+06   23.619   0.1
+    Uc110 (median_mydesign_33)            3.090   17.153 2.65e+06   22.894   0.1
+    Uc101 (median_mydesign_34)            3.525   17.516 2.66e+06   23.706   0.1
+    Uc100 (median_mydesign_35)            3.103   17.165 2.65e+06   22.920   0.1
+    Uc023 (median_mydesign_36)            4.073   18.367 2.66e+06   25.104   0.1
+    Uc022 (median_mydesign_37)            3.029   17.088 2.65e+06   22.768   0.1
+    Uc021 (median_mydesign_38)            3.233   17.226 2.65e+06   23.110   0.1
+    Uc020 (median_mydesign_39)            2.906   16.953 2.65e+06   22.508   0.1
+    Uc013 (median_mydesign_40)            4.076   18.373 2.67e+06   25.114   0.1
+    Uc012 (median_mydesign_41)            3.047   17.125 2.65e+06   22.822   0.1
+    Uc011 (median_mydesign_42)            3.260   17.256 2.65e+06   23.168   0.1
+    Uc010 (median_mydesign_43)            2.931   16.973 2.65e+06   22.555   0.1
+    Uc003 (median_mydesign_44)            4.088   18.386 2.66e+06   25.139   0.1
+    Uc002 (median_mydesign_45)            3.094   17.160 2.65e+06   22.906   0.1
+    Uc001 (median_mydesign_46)            3.221   17.211 2.65e+06   23.083   0.1
+    Uc000 (median_mydesign_47)            2.942   16.979 2.65e+06   22.571   0.1
+    Ub221 (median_mydesign_48)            3.498   17.501 2.66e+06   23.663   0.1
+    Ub220 (median_mydesign_49)            2.781   16.812 2.65e+06   22.246   0.1
+    Ub211 (median_mydesign_50)            3.498   17.509 2.66e+06   23.672   0.1
+    Ub210 (median_mydesign_51)            2.802   16.831 2.65e+06   22.284   0.1
+    Ub201 (median_mydesign_52)            3.477   17.481 2.66e+06   23.622   0.1
+    Ub200 (median_mydesign_53)            2.796   16.825 2.65e+06   22.272   0.1
+    Ub121 (median_mydesign_54)            3.514   17.502 2.66e+06   23.681   0.1
+    Ub120 (median_mydesign_55)            3.123   17.186 2.65e+06   22.960   0.1
+    Ub111 (median_mydesign_56)            3.477   17.453 2.67e+06   23.596   0.1
+    Ub110 (median_mydesign_57)            3.128   17.176 2.65e+06   22.955   0.1
+    Ub101 (median_mydesign_58)            3.478   17.469 2.66e+06   23.611   0.1
+    Ub100 (median_mydesign_59)            3.133   17.201 2.65e+06   22.984   0.1
+    Ub023 (median_mydesign_60)            4.081   18.380 2.66e+06   25.125   0.1
+    Ub022 (median_mydesign_61)            3.097   17.158 2.65e+06   22.907   0.1
+    Ub021 (median_mydesign_62)            3.218   17.210 2.65e+06   23.079   0.1
+    Ub020 (median_mydesign_63)            2.929   16.974 2.65e+06   22.553   0.1
+    Ub013 (median_mydesign_64)            4.093   18.372 2.66e+06   25.130   0.1
+    Ub012 (median_mydesign_65)            3.076   17.146 2.65e+06   22.872   0.1
+    Ub011 (median_mydesign_66)            3.197   17.185 2.65e+06   23.032   0.1
+    Ub010 (median_mydesign_67)            2.885   16.931 2.65e+06   22.466   0.1
+    Ub003 (median_mydesign_68)            4.086   18.375 2.66e+06   25.125   0.1
+    Ub002 (median_mydesign_69)            3.094   17.157 2.65e+06   22.902   0.1
+    Ub001 (median_mydesign_70)            3.209   17.198 2.65e+06   23.059   0.1
+    Ub000 (median_mydesign_71)            2.879   16.925 2.65e+06   22.454   0.1
+    Ua221 (median_mydesign_72)            3.487   17.488 2.66e+06   23.641   0.1
+    Ua220 (median_mydesign_73)            2.797   16.820 2.65e+06   22.269   0.1
+    Ua211 (median_mydesign_74)            3.505   17.516 2.66e+06   23.686   0.1
+    Ua210 (median_mydesign_75)            2.768   16.788 2.65e+06   22.207   0.1
+    Ua201 (median_mydesign_76)            3.482   17.488 2.66e+06   23.634   0.1
+    Ua200 (median_mydesign_77)            2.752   16.779 2.65e+06   22.181   0.1
+    Ua121 (median_mydesign_78)            3.467   17.460 2.66e+06   23.591   0.1
+    Ua120 (median_mydesign_79)            3.131   17.193 2.65e+06   22.975   0.1
+    Ua111 (median_mydesign_80)            3.478   17.480 2.66e+06   23.623   0.1
+    Ua110 (median_mydesign_81)            3.122   17.187 2.65e+06   22.960   0.1
+    Ua101 (median_mydesign_82)            3.485   17.468 2.66e+06   23.616   0.1
+    Ua100 (median_mydesign_83)            3.111   17.196 2.65e+06   22.959   0.1
+    Ua023 (median_mydesign_84)            4.073   18.372 2.66e+06   25.109   0.1
+    Ua022 (median_mydesign_85)            3.092   17.160 2.65e+06   22.901   0.1
+    Ua021 (median_mydesign_86)            3.232   17.232 2.65e+06   23.115   0.1
+    Ua020 (median_mydesign_87)            2.885   16.932 2.65e+06   22.468   0.1
+    Ua013 (median_mydesign_88)            4.203   18.425 2.67e+06   25.293   0.1
+    Ua012 (median_mydesign_89)            3.078   17.146 2.65e+06   22.875   0.1
+    Ua011 (median_mydesign_90)            3.233   17.235 2.65e+06   23.119   0.1
+    Ua010 (median_mydesign_91)            2.918   16.968 2.65e+06   22.536   0.1
+    Ua003 (median_mydesign_92)            4.067   18.354 2.66e+06   25.085   0.1
+    Ua002 (median_mydesign_93)            3.077   17.153 2.65e+06   22.882   0.1
+    Ua001 (median_mydesign_94)            3.234   17.249 2.65e+06   23.133   0.1
+    Ua000 (median_mydesign_95)            2.924   16.986 2.65e+06   22.559   0.1
 1
