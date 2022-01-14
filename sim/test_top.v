@@ -231,7 +231,7 @@ initial begin
 
 
     if (error == 0) begin
-        $display("Congratulations! Total error = %4d\n All results are correct!", error);
+        $display("Congratulations! Total error = %4d\nAll results are correct!", error);
         $finish;
     end
     else begin

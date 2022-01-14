@@ -18,6 +18,7 @@ analyze -library $TOPLEVEL -format verilog "$HDL_DIR/median.v"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/denoise.v"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/top.v"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/hog_counter.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/HOG.v"
 
 
 # elaborate your design

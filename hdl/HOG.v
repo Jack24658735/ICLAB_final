@@ -12,13 +12,66 @@ module HOG #(
 	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out0, 
 	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out1, 
 	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out2, 
-	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out3
+	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out3, 
 	output reg valid
 );
 
 
-reg signed [8:0] store0_row[0:52][0:11], n_store0_row[0:52][0:11];
-reg signed [8:0] store1_row[0:52][0:11], n_store1_row[0:52][0:11];
+// reg signed [8:0] store0_row[0:52][0:11], n_store0_row[0:52][0:11];
+reg signed [8:0] store0_row_0[0:52];
+reg signed [8:0] store0_row_1[0:52];
+reg signed [8:0] store0_row_2[0:52];
+reg signed [8:0] store0_row_3[0:52];
+reg signed [8:0] store0_row_4[0:52];
+reg signed [8:0] store0_row_5[0:52];
+reg signed [8:0] store0_row_6[0:52];
+reg signed [8:0] store0_row_7[0:52];
+reg signed [8:0] store0_row_8[0:52];
+reg signed [8:0] store0_row_9[0:52];
+reg signed [8:0] store0_row_10[0:52];
+reg signed [8:0] store0_row_11[0:52];
+
+reg signed [8:0] n_store0_row_0[0:52];
+reg signed [8:0] n_store0_row_1[0:52];
+reg signed [8:0] n_store0_row_2[0:52];
+reg signed [8:0] n_store0_row_3[0:52];
+reg signed [8:0] n_store0_row_4[0:52];
+reg signed [8:0] n_store0_row_5[0:52];
+reg signed [8:0] n_store0_row_6[0:52];
+reg signed [8:0] n_store0_row_7[0:52];
+reg signed [8:0] n_store0_row_8[0:52];
+reg signed [8:0] n_store0_row_9[0:52];
+reg signed [8:0] n_store0_row_10[0:52];
+reg signed [8:0] n_store0_row_11[0:52];
+
+// reg signed [8:0] store1_row[0:52][0:11], n_store1_row[0:52][0:11];
+reg signed [8:0] store1_row_0[0:52];
+reg signed [8:0] store1_row_1[0:52];
+reg signed [8:0] store1_row_2[0:52];
+reg signed [8:0] store1_row_3[0:52];
+reg signed [8:0] store1_row_4[0:52];
+reg signed [8:0] store1_row_5[0:52];
+reg signed [8:0] store1_row_6[0:52];
+reg signed [8:0] store1_row_7[0:52];
+reg signed [8:0] store1_row_8[0:52];
+reg signed [8:0] store1_row_9[0:52];
+reg signed [8:0] store1_row_10[0:52];
+reg signed [8:0] store1_row_11[0:52];
+
+reg signed [8:0] n_store1_row_0[0:52];
+reg signed [8:0] n_store1_row_1[0:52];
+reg signed [8:0] n_store1_row_2[0:52];
+reg signed [8:0] n_store1_row_3[0:52];
+reg signed [8:0] n_store1_row_4[0:52];
+reg signed [8:0] n_store1_row_5[0:52];
+reg signed [8:0] n_store1_row_6[0:52];
+reg signed [8:0] n_store1_row_7[0:52];
+reg signed [8:0] n_store1_row_8[0:52];
+reg signed [8:0] n_store1_row_9[0:52];
+reg signed [8:0] n_store1_row_10[0:52];
+reg signed [8:0] n_store1_row_11[0:52];
+
+
 reg signed [8:0] store0_d11[0:52], store1_d10[0:52], store1_d11[0:52];
 reg signed [8:0] n_store0_d11[0:52], n_store1_d10[0:52], n_store1_d11[0:52];
 reg signed [8:0] store0_col[0:2] , n_store0_col[0:2];
@@ -95,45 +148,66 @@ end
 ////////// store data in register ////////////
 always @(*) begin  /// may not be synthesizable , -> use case
 	for(i=0;i<53;i=i+1) begin
-		for(j=0;j<12;j=j+1) begin
-			n_store0_row[i][j] = store0_row[i][j];
-			n_store1_row[i][j] = store1_row[i][j];
-		end
+		n_store0_row_0[i] = store0_row_0[i];
+		n_store0_row_1[i] = store0_row_1[i];
+		n_store0_row_2[i] = store0_row_2[i];
+		n_store0_row_3[i] = store0_row_3[i];
+		n_store0_row_4[i] = store0_row_4[i];
+		n_store0_row_5[i] = store0_row_5[i];
+		n_store0_row_6[i] = store0_row_6[i];
+		n_store0_row_7[i] = store0_row_7[i];
+		n_store0_row_8[i] = store0_row_8[i];
+		n_store0_row_9[i] = store0_row_9[i];
+		n_store0_row_10[i] = store0_row_10[i];
+		n_store0_row_11[i] = store0_row_11[i];
+
+		n_store1_row_0[i] = store1_row_0[i];
+		n_store1_row_1[i] = store1_row_1[i];
+		n_store1_row_2[i] = store1_row_2[i];
+		n_store1_row_3[i] = store1_row_3[i];
+		n_store1_row_4[i] = store1_row_4[i];
+		n_store1_row_5[i] = store1_row_5[i];
+		n_store1_row_6[i] = store1_row_6[i];
+		n_store1_row_7[i] = store1_row_7[i];
+		n_store1_row_8[i] = store1_row_8[i];
+		n_store1_row_9[i] = store1_row_9[i];
+		n_store1_row_10[i] = store1_row_10[i];
+		n_store1_row_11[i] = store1_row_11[i];
 	end
-	n_store0_row[cnt_col][0] = blk0[5];
-	n_store0_row[cnt_col][1] = blk0[4];
-	n_store0_row[cnt_col][2] = blk0[3];
-	n_store0_row[cnt_col][3] = blk1[5];
-	n_store0_row[cnt_col][4] = blk1[4];
-	n_store0_row[cnt_col][5] = blk1[3];
-	n_store0_row[cnt_col][6] = blk2[5];
-	n_store0_row[cnt_col][7] = blk2[4];
-	n_store0_row[cnt_col][8] = blk2[3];
-	n_store0_row[cnt_col][9] = blk3[5];
-	n_store0_row[cnt_col][10] = blk3[4];
-	n_store0_row[cnt_col][11] = blk3[3];
+	n_store0_row_0[cnt_col] = blk0[5];
+	n_store0_row_1[cnt_col] = blk0[4];
+	n_store0_row_2[cnt_col] = blk0[3];
+	n_store0_row_3[cnt_col] = blk1[5];
+	n_store0_row_4[cnt_col] = blk1[4];
+	n_store0_row_5[cnt_col] = blk1[3];
+	n_store0_row_6[cnt_col] = blk2[5];
+	n_store0_row_7[cnt_col] = blk2[4];
+	n_store0_row_8[cnt_col] = blk2[3];
+	n_store0_row_9[cnt_col] = blk3[5];
+	n_store0_row_10[cnt_col] = blk3[4];
+	n_store0_row_11[cnt_col] = blk3[3];
 	/////////////////////////
-	n_store1_row[cnt_col][0] = blk0[2];
-	n_store1_row[cnt_col][1] = blk0[1];
-	n_store1_row[cnt_col][2] = blk0[0];
-	n_store1_row[cnt_col][3] = blk1[2];
-	n_store1_row[cnt_col][4] = blk1[1];
-	n_store1_row[cnt_col][5] = blk1[0];
-	n_store1_row[cnt_col][6] = blk2[2];
-	n_store1_row[cnt_col][7] = blk2[1];
-	n_store1_row[cnt_col][8] = blk2[0];
-	n_store1_row[cnt_col][9] = blk3[2];
-	n_store1_row[cnt_col][10] = blk3[1];
-	n_store1_row[cnt_col][11] = blk3[0];
+	n_store1_row_0[cnt_col] = blk0[2];
+	n_store1_row_1[cnt_col] = blk0[1];
+	n_store1_row_2[cnt_col] = blk0[0];
+	n_store1_row_3[cnt_col] = blk1[2];
+	n_store1_row_4[cnt_col] = blk1[1];
+	n_store1_row_5[cnt_col] = blk1[0];
+	n_store1_row_6[cnt_col] = blk2[2];
+	n_store1_row_7[cnt_col] = blk2[1];
+	n_store1_row_8[cnt_col] = blk2[0];
+	n_store1_row_9[cnt_col] = blk3[2];
+	n_store1_row_10[cnt_col] = blk3[1];
+	n_store1_row_11[cnt_col] = blk3[0];
 	//////////////////////// prevent data vanish //////////////////
 	for(i=0;i<53;i=i+1) begin
-		n_store0_d11[i] = store0_row[i][11];
-		n_store1_d10[i] = store1_row[i][10];
-		n_store1_d11[i] = store1_row[i][11];
+		n_store0_d11[i] = store0_row_11[i];
+		n_store1_d10[i] = store1_row_10[i];
+		n_store1_d11[i] = store1_row_11[i];
 	end
-	n_store0_d11[cnt_col] = store0_row[cnt_col][11];
-	n_store1_d10[cnt_col] = store1_row[cnt_col][10];
-	n_store1_d11[cnt_col] = store1_row[cnt_col][11];
+	n_store0_d11[cnt_col] = store0_row_11[cnt_col];
+	n_store1_d10[cnt_col] = store1_row_10[cnt_col];
+	n_store1_d11[cnt_col] = store1_row_11[cnt_col];
 	////////////////////////
 	n_store0_col[2] = blk3[7];
 	n_store0_col[1] = blk3[4];
@@ -146,30 +220,30 @@ end
 /////////// get gy^2 /////////////
 always @(*) begin
 	temp_y[0][2] = store0_d11[cnt_col - 1] - store1_col[2]; // 0-3 for first row
-	temp_y[0][1] = store0_row[cnt_col][0] - blk0[8];
-	temp_y[0][0] = store0_row[cnt_col][1] - blk0[7];
-	temp_y[1][2] = store0_row[cnt_col][2] - blk0[6];
-	temp_y[1][1] = store0_row[cnt_col][3] - blk1[8];
-	temp_y[1][0] = store0_row[cnt_col][4] - blk1[7];
-	temp_y[2][2] = store0_row[cnt_col][5] - blk1[6];
-	temp_y[2][1] = store0_row[cnt_col][6] - blk2[8];
-	temp_y[2][0] = store0_row[cnt_col][7] - blk2[7];
-	temp_y[3][2] = store0_row[cnt_col][8] - blk2[6];
-	temp_y[3][1] = store0_row[cnt_col][9] - blk3[8];
-	temp_y[3][0] = store0_row[cnt_col][10] - blk3[7];
+	temp_y[0][1] = store0_row_0[cnt_col] - blk0[8];
+	temp_y[0][0] = store0_row_1[cnt_col] - blk0[7];
+	temp_y[1][2] = store0_row_2[cnt_col] - blk0[6];
+	temp_y[1][1] = store0_row_3[cnt_col] - blk1[8];
+	temp_y[1][0] = store0_row_4[cnt_col] - blk1[7];
+	temp_y[2][2] = store0_row_5[cnt_col] - blk1[6];
+	temp_y[2][1] = store0_row_6[cnt_col] - blk2[8];
+	temp_y[2][0] = store0_row_7[cnt_col] - blk2[7];
+	temp_y[3][2] = store0_row_8[cnt_col] - blk2[6];
+	temp_y[3][1] = store0_row_9[cnt_col] - blk3[8];
+	temp_y[3][0] = store0_row_10[cnt_col] - blk3[7];
 	/////////////////////////////////////////  4-7 for second row
 	temp_y[4][2] = store1_d11[cnt_col - 1] - store1_col[1];
-	temp_y[4][1] = store1_row[cnt_col][0] - blk0[5];
-	temp_y[4][0] = store1_row[cnt_col][1] - blk0[4];
-	temp_y[5][2] = store1_row[cnt_col][2] - blk0[3];
-	temp_y[5][1] = store1_row[cnt_col][3] - blk1[5];
-	temp_y[5][0] = store1_row[cnt_col][4] - blk1[4];
-	temp_y[6][2] = store1_row[cnt_col][5] - blk1[3];
-	temp_y[6][1] = store1_row[cnt_col][6] - blk2[5];
-	temp_y[6][0] = store1_row[cnt_col][7] - blk2[4];
-	temp_y[7][2] = store1_row[cnt_col][8] - blk2[3];
-	temp_y[7][1] = store1_row[cnt_col][9] - blk3[5];
-	temp_y[7][0] = store1_row[cnt_col][10] - blk3[4];
+	temp_y[4][1] = store1_row_0[cnt_col] - blk0[5];
+	temp_y[4][0] = store1_row_1[cnt_col] - blk0[4];
+	temp_y[5][2] = store1_row_2[cnt_col] - blk0[3];
+	temp_y[5][1] = store1_row_3[cnt_col] - blk1[5];
+	temp_y[5][0] = store1_row_4[cnt_col] - blk1[4];
+	temp_y[6][2] = store1_row_5[cnt_col] - blk1[3];
+	temp_y[6][1] = store1_row_6[cnt_col] - blk2[5];
+	temp_y[6][0] = store1_row_7[cnt_col] - blk2[4];
+	temp_y[7][2] = store1_row_8[cnt_col] - blk2[3];
+	temp_y[7][1] = store1_row_9[cnt_col] - blk3[5];
+	temp_y[7][0] = store1_row_10[cnt_col] - blk3[4];
 	/////////////////////////////////////////  8-11 for third row
 	temp_y[8][2] = store1_col[2] - store1_col[0];
 	temp_y[8][1] = blk0[8] - blk0[2];
@@ -280,51 +354,51 @@ end
 ///////////// get gx^2 ////////////////////////
 
 always @(*) begin
-	temp_x[0][2] = store1_row[cnt_col][0] - store1_d10[cnt_col - 1];
+	temp_x[0][2] = store1_row_0[cnt_col] - store1_d10[cnt_col - 1];
 	temp_x[0][1] = blk0[8] - store0_col[2];
 	temp_x[0][0] = blk0[5] - store0_col[1];
 	////////////////////////////////////////
-	temp_x[1][2] = store1_row[cnt_col][1] - store1_d11[cnt_col - 1];
+	temp_x[1][2] = store1_row_1[cnt_col] - store1_d11[cnt_col - 1];
 	temp_x[1][1] = blk0[7] - store1_col[2];
 	temp_x[1][0] = blk0[4] - store1_col[1];
 	////////////////////////////////////////
-	temp_x[2][2] = store1_row[cnt_col][2] - store1_row[cnt_col][0];
+	temp_x[2][2] = store1_row_2[cnt_col] - store1_row_0[cnt_col];
 	temp_x[2][1] = blk0[6] - blk0[8];
 	temp_x[2][0] = blk0[3] - blk0[5];
 	////////////////////////////////////////
-	temp_x[3][2] = store1_row[cnt_col][3] - store1_row[cnt_col][1];
+	temp_x[3][2] = store1_row_3[cnt_col] - store1_row_1[cnt_col];
 	temp_x[3][1] = blk1[8] - blk0[7];                              
 	temp_x[3][0] = blk1[5] - blk0[4];                              
 	////////////////////////////////////////
-	temp_x[4][2] = store1_row[cnt_col][4] - store1_row[cnt_col][2];
+	temp_x[4][2] = store1_row_4[cnt_col] - store1_row_2[cnt_col];
 	temp_x[4][1] = blk1[7] - blk0[6];                              
 	temp_x[4][0] = blk1[4] - blk0[3];                              
 	////////////////////////////////////////
-	temp_x[5][2] = store1_row[cnt_col][5] - store1_row[cnt_col][3];
+	temp_x[5][2] = store1_row_5[cnt_col] - store1_row_3[cnt_col];
 	temp_x[5][1] = blk1[6] - blk1[8];                              
 	temp_x[5][0] = blk1[3] - blk1[5];                              
 	////////////////////////////////////////
-	temp_x[6][2] = store1_row[cnt_col][6] - store1_row[cnt_col][4];
+	temp_x[6][2] = store1_row_6[cnt_col] - store1_row_4[cnt_col];
 	temp_x[6][1] = blk2[8] - blk1[7];                              
 	temp_x[6][0] = blk2[5] - blk1[4];                              
 	////////////////////////////////////////
-	temp_x[7][2] = store1_row[cnt_col][7] - store1_row[cnt_col][5];
+	temp_x[7][2] = store1_row_7[cnt_col] - store1_row_5[cnt_col];
 	temp_x[7][1] = blk2[7] - blk1[6];                              
 	temp_x[7][0] = blk2[4] - blk1[3];                              
 	////////////////////////////////////////
-	temp_x[8][2] = store1_row[cnt_col][8] - store1_row[cnt_col][6];
+	temp_x[8][2] = store1_row_8[cnt_col] - store1_row_6[cnt_col];
 	temp_x[8][1] = blk2[6] - blk2[8];                              
 	temp_x[8][0] = blk2[3] - blk2[5];                              
 	////////////////////////////////////////
-	temp_x[9][2] = store1_row[cnt_col][9] - store1_row[cnt_col][7];
+	temp_x[9][2] = store1_row_9[cnt_col] - store1_row_7[cnt_col];
 	temp_x[9][1] = blk3[8] - blk2[7];                              
 	temp_x[9][0] = blk3[5] - blk2[4];                              
 	////////////////////////////////////////
-	temp_x[10][2] = store1_row[cnt_col][10] - store1_row[cnt_col][8];
+	temp_x[10][2] = store1_row_10[cnt_col] - store1_row_8[cnt_col];
 	temp_x[10][1] = blk3[7] - blk2[6];                              
 	temp_x[10][0] = blk3[4] - blk2[3];                              
 	////////////////////////////////////////
-	temp_x[11][2] = store1_row[cnt_col][11] - store1_row[cnt_col][9];
+	temp_x[11][2] = store1_row_11[cnt_col] - store1_row_9[cnt_col];
 	temp_x[11][1] = blk3[6] - blk3[8];                              
 	temp_x[11][0] = blk3[3] - blk3[5];                              
 end
@@ -450,10 +524,30 @@ end
 always @(posedge clk) begin
 	if(~rst_n) begin
 	  for(i=0;i<53;i=i+1) begin
-	  	for(j=0;j<12;j=j+1) begin
-			store0_row[i][j] <= 0;
-			store1_row[i][j] <= 0;
-	  	end
+		store0_row_0[i] <= 0;
+		store0_row_1[i] <= 0;
+		store0_row_2[i] <= 0;
+		store0_row_3[i] <= 0;
+		store0_row_4[i] <= 0;
+		store0_row_5[i] <= 0;
+		store0_row_6[i] <= 0;
+		store0_row_7[i] <= 0;
+		store0_row_8[i] <= 0;
+		store0_row_9[i] <= 0;
+		store0_row_10[i] <= 0;
+		store0_row_11[i] <= 0;
+		store1_row_0[i] <= 0;
+		store1_row_1[i] <= 0;
+		store1_row_2[i] <= 0;
+		store1_row_3[i] <= 0;
+		store1_row_4[i] <= 0;
+		store1_row_5[i] <= 0;
+		store1_row_6[i] <= 0;
+		store1_row_7[i] <= 0;
+		store1_row_8[i] <= 0;
+		store1_row_9[i] <= 0;
+		store1_row_10[i] <= 0;
+		store1_row_11[i] <= 0;
 	  end
 	  for(i=0;i<3;i=i+1) begin
 		store0_col[i] <= 0;
@@ -486,10 +580,32 @@ always @(posedge clk) begin
 	end
 	else begin
 	  for(i=0;i<53;i=i+1) begin
-	  	for(j=0;j<12;j=j+1) begin
-			store0_row[i][j] <= n_store0_row[i][j];
-			store1_row[i][j] <= n_store1_row[i][j];
-	  	end
+		// store0_row[i][j] <= n_store0_row[i][j];
+		store0_row_0[i] <= n_store0_row_0[i];
+		store0_row_1[i] <= n_store0_row_1[i];
+		store0_row_2[i] <= n_store0_row_2[i];
+		store0_row_3[i] <= n_store0_row_3[i];
+		store0_row_4[i] <= n_store0_row_4[i];
+		store0_row_5[i] <= n_store0_row_5[i];
+		store0_row_6[i] <= n_store0_row_6[i];
+		store0_row_7[i] <= n_store0_row_7[i];
+		store0_row_8[i] <= n_store0_row_8[i];
+		store0_row_9[i] <= n_store0_row_9[i];
+		store0_row_10[i] <= n_store0_row_10[i];
+		store0_row_11[i] <= n_store0_row_11[i];
+
+		store1_row_0[i] <= n_store1_row_0[i];
+		store1_row_1[i] <= n_store1_row_1[i];
+		store1_row_2[i] <= n_store1_row_2[i];
+		store1_row_3[i] <= n_store1_row_3[i];
+		store1_row_4[i] <= n_store1_row_4[i];
+		store1_row_5[i] <= n_store1_row_5[i];
+		store1_row_6[i] <= n_store1_row_6[i];
+		store1_row_7[i] <= n_store1_row_7[i];
+		store1_row_8[i] <= n_store1_row_8[i];
+		store1_row_9[i] <= n_store1_row_9[i];
+		store1_row_10[i] <= n_store1_row_10[i];
+		store1_row_11[i] <= n_store1_row_11[i];
 	  end
 	  for(i=0;i<3;i=i+1) begin
 		store0_col[i] <= n_store0_col[i];
