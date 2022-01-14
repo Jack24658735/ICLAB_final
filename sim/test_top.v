@@ -12,9 +12,9 @@ integer ans_start_row, ans_start_col;
 reg clk, rst_n;
 reg [8*70-1:0] pixel_in;
 wire valid;
-wire [2*8*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
+wire [20*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
 // wire [8*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
-reg [8*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
+reg [20*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
 
 // reg [8-1:0] block_out_0_2D [0:9-1];
 // reg [8-1:0] block_out_1_2D [0:9-1];
@@ -25,20 +25,33 @@ wire [8-1:0] cnt_row;
 wire [6-1:0] cnt_col;
 
 
-reg [2*8-1:0] block_out_0_2D [0:9-1];
-reg [2*8-1:0] block_out_1_2D [0:9-1];
-reg [2*8-1:0] block_out_2_2D [0:9-1];
-reg [2*8-1:0] block_out_3_2D [0:9-1];
+reg [20-1:0] block_out_0_2D [0:9-1];
+reg [20-1:0] block_out_1_2D [0:9-1];
+reg [20-1:0] block_out_2_2D [0:9-1];
+reg [20-1:0] block_out_3_2D [0:9-1];
+
+
+reg [20-1:0] ans_block_out_0_2D [0:9-1];
+reg [20-1:0] ans_block_out_1_2D [0:9-1];
+reg [20-1:0] ans_block_out_2_2D [0:9-1];
+reg [20-1:0] ans_block_out_3_2D [0:9-1];
+
+
 always @* begin
     for (k = 8; k >= 0; k = k - 1) begin
         // block_out_0_2D[k] = block_out_0[8*(k+1)-1-:8];
         // block_out_1_2D[k] = block_out_1[8*(k+1)-1-:8];
         // block_out_2_2D[k] = block_out_2[8*(k+1)-1-:8];
         // block_out_3_2D[k] = block_out_3[8*(k+1)-1-:8];
-        block_out_0_2D[k] = block_out_0[2*8*(k+1)-1-:2*8];
-        block_out_1_2D[k] = block_out_1[2*8*(k+1)-1-:2*8];
-        block_out_2_2D[k] = block_out_2[2*8*(k+1)-1-:2*8];
-        block_out_3_2D[k] = block_out_3[2*8*(k+1)-1-:2*8];
+        block_out_0_2D[k] = block_out_0[20*(k+1)-1-:20];
+        block_out_1_2D[k] = block_out_1[20*(k+1)-1-:20];
+        block_out_2_2D[k] = block_out_2[20*(k+1)-1-:20];
+        block_out_3_2D[k] = block_out_3[20*(k+1)-1-:20];
+
+        ans_block_out_0_2D[k] = ans_block_out_0[20*(k+1)-1-:20];
+        ans_block_out_1_2D[k] = ans_block_out_1[20*(k+1)-1-:20];
+        ans_block_out_2_2D[k] = ans_block_out_2[20*(k+1)-1-:20];
+        ans_block_out_3_2D[k] = ans_block_out_3[20*(k+1)-1-:20];
     end
 end
 
@@ -92,15 +105,6 @@ initial begin
     wait(rst_n == 0);
     wait(rst_n == 1);
 
-    // $display("%d ", picture[1][638*8-1:638*8-8]);
-    // $display("%d ", picture[1][638*8-9:638*8-16]);
-    // $display("%d ", picture[1][638*8-17:638*8-24]);
-    // $display("%d ", picture[1][638*8-25:638*8-32]);
-    // $display("%d ", picture[481][638*8-1:638*8-8]);
-    // $display("%d ", picture[481][638*8-9:638*8-16]);
-    // $display("%d ", picture[481][638*8-17:638*8-24]);
-    // $display("%d ", picture[481][638*8-25:638*8-32]);
-
     for (start_row = 0; start_row <= 477; start_row = start_row + 3) begin
         for (start_col = 637; start_col >= 13; start_col = start_col - 12) begin
             @(negedge clk)
@@ -115,38 +119,89 @@ initial begin
 end
 
 
-reg [636*8-1:0] golden [0:480-1];
+reg [636*8-1:0] denoise_golden [0:480-1];
+reg [636*20-1:0] HOG_golden [0:480-1];
 
+
+reg [20-1:0] fuck1;
+reg [20-1:0] fuck2;
+reg [20-1:0] fuck3;
+
+always @(*) begin
+    // fuck1 = HOG_golden[-1][(636+1)*20-1-:60];
+    // fuck2 = HOG_golden[0][(636+1)*20-1-:60];
+    // fuck3 = HOG_golden[1][(636+1)*20-1-:60];
+    fuck1 = HOG_golden[0][12739-:20];
+    fuck2 = HOG_golden[0][12719-:20];
+    fuck3 = HOG_golden[0][12699-:20];
+end
+
+reg [20:0] test;
+reg [20:0] test2;
+always @(*) begin
+    test = ans_start_row+1;
+    test2 = (ans_start_col+1)*20-1;
+end
 // answer check
 initial begin
-    $readmemh("golden/med_of_med_636_480.txt", golden);
+    $readmemh("golden/med_of_med_636_480.txt", denoise_golden);
+    $readmemh("golden/denoise_hog_no_sqrt_636_480.txt", HOG_golden);
     error = 0;
+    ans_start_row = -1;
+    ans_start_col = 636;
     wait(valid == 1);
+    // for denoise
     // #(CYCLE);
     // for (ans_start_row = 0; ans_start_row <= 477; ans_start_row = ans_start_row + 3) begin
     //     for (ans_start_col = 635; ans_start_col >= 11; ans_start_col = ans_start_col - 12) begin
     //         @(negedge clk);
-    //         ans_block_out_0 = {golden[ans_start_row][(ans_start_col+1)*8-1-:24], 
-    //                            golden[ans_start_row+1][(ans_start_col+1)*8-1-:24], 
-    //                            golden[ans_start_row+2][(ans_start_col+1)*8-1-:24]};
-    //         ans_block_out_1 = {golden[ans_start_row][(ans_start_col-3+1)*8-1-:24], 
-    //                            golden[ans_start_row+1][(ans_start_col-3+1)*8-1-:24], 
-    //                            golden[ans_start_row+2][(ans_start_col-3+1)*8-1-:24]};
-    //         ans_block_out_2 = {golden[ans_start_row][(ans_start_col-6+1)*8-1-:24], 
-    //                            golden[ans_start_row+1][(ans_start_col-6+1)*8-1-:24], 
-    //                            golden[ans_start_row+2][(ans_start_col-6+1)*8-1-:24]};
-    //         ans_block_out_3 = {golden[ans_start_row][(ans_start_col-9+1)*8-1-:24], 
-    //                            golden[ans_start_row+1][(ans_start_col-9+1)*8-1-:24], 
-    //                            golden[ans_start_row+2][(ans_start_col-9+1)*8-1-:24]};
+    //         ans_block_out_0 = {denoise_golden[ans_start_row][(ans_start_col+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+1][(ans_start_col+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+2][(ans_start_col+1)*8-1-:24]};
+    //         ans_block_out_1 = {denoise_golden[ans_start_row][(ans_start_col-3+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+1][(ans_start_col-3+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+2][(ans_start_col-3+1)*8-1-:24]};
+    //         ans_block_out_2 = {denoise_golden[ans_start_row][(ans_start_col-6+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+1][(ans_start_col-6+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+2][(ans_start_col-6+1)*8-1-:24]};
+    //         ans_block_out_3 = {denoise_golden[ans_start_row][(ans_start_col-9+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+1][(ans_start_col-9+1)*8-1-:24], 
+    //                            denoise_golden[ans_start_row+2][(ans_start_col-9+1)*8-1-:24]};
     //         if (block_out_0 == ans_block_out_0 && block_out_1 == ans_block_out_1 && block_out_2 == ans_block_out_2 && block_out_3 == ans_block_out_3) begin
     //             $display("Position at (%3d, %3d) correct!", ans_start_row, ans_start_col);
     //         end
     //         else begin
-    //             $display("Position at (%3d, %3d) WRONG! golden = %h, result = %h", ans_start_row, ans_start_col, ans_block_out_0, block_out_0);
+    //             $display("Position at (%3d, %3d) WRONG! denoise_golden = %h, result = %h", ans_start_row, ans_start_col, ans_block_out_0, block_out_0);
     //             error = error + 1;
     //         end
     //     end
     // end
+    
+    
+    for (ans_start_row = -1; ans_start_row <= 476; ans_start_row = ans_start_row + 3) begin
+        for (ans_start_col = 636; ans_start_col >= 12; ans_start_col = ans_start_col - 12) begin
+            @(negedge clk);
+            
+            ans_block_out_0 = {HOG_golden[ans_start_row][(ans_start_col+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+1][(ans_start_col+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+2][(ans_start_col+1)*20-1-:60]};
+            ans_block_out_1 = {HOG_golden[ans_start_row][(ans_start_col-3+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+1][(ans_start_col-3+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+2][(ans_start_col-3+1)*20-1-:60]};
+            ans_block_out_2 = {HOG_golden[ans_start_row][(ans_start_col-6+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+1][(ans_start_col-6+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+2][(ans_start_col-6+1)*20-1-:60]};
+            ans_block_out_3 = {HOG_golden[ans_start_row][(ans_start_col-9+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+1][(ans_start_col-9+1)*20-1-:60], 
+                               HOG_golden[ans_start_row+2][(ans_start_col-9+1)*20-1-:60]};
+            if (ans_start_col == -1 && ans_start_col != 636) begin
+                
+            end
+        end
+    end
+
+
+
     if (error == 0) begin
         $display("Congratulations! All results are correct!");
         $finish;
