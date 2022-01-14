@@ -12,9 +12,11 @@ integer ans_start_row, ans_start_col;
 reg clk, rst_n;
 reg [8*70-1:0] pixel_in;
 wire valid;
-wire [20*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
+// wire [20*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
 // wire [8*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
-reg [20*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
+wire [12*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
+// reg [20*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
+reg [12*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
 
 // reg [8-1:0] block_out_0_2D [0:9-1];
 // reg [8-1:0] block_out_1_2D [0:9-1];
@@ -122,6 +124,7 @@ end
 reg [636*8-1:0] denoise_golden [0:480-1];
 // reg [636*20-1:0] HOG_golden [0:480-1];
 reg [640*20-1:0] HOG_golden [0:480-1];
+reg [640*12-1:0] sqrt_golden [0:480-1];
 
 
 
@@ -130,6 +133,7 @@ reg [640*20-1:0] HOG_golden [0:480-1];
 initial begin
     $readmemh("golden/med_of_med_636_480.txt", denoise_golden);
     $readmemh("golden/denoise_hog_no_sqrt_636_480.txt", HOG_golden);
+    $readmemh("golden/denoise_hog_with_sqrt_636_480.txt", sqrt_golden);
     error = 0;
     wait(valid == 1);
     // for denoise
@@ -159,27 +163,96 @@ initial begin
     //     end
     // end
     
-    
+    // for only median + HOG
+    // for (ans_start_row = -1; ans_start_row <= 476; ans_start_row = ans_start_row + 3) begin
+    //     for (ans_start_col = 636; ans_start_col >= 12; ans_start_col = ans_start_col - 12) begin
+    //         @(negedge clk);
+    //         ans_block_out_0 = {HOG_golden[ans_start_row][(ans_start_col+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+1][(ans_start_col+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+2][(ans_start_col+1)*20-1-:60]};
+    //         ans_block_out_1 = {HOG_golden[ans_start_row][(ans_start_col-3+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+1][(ans_start_col-3+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+2][(ans_start_col-3+1)*20-1-:60]};
+    //         ans_block_out_2 = {HOG_golden[ans_start_row][(ans_start_col-6+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+1][(ans_start_col-6+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+2][(ans_start_col-6+1)*20-1-:60]};
+    //         ans_block_out_3 = {HOG_golden[ans_start_row][(ans_start_col-9+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+1][(ans_start_col-9+1)*20-1-:60], 
+    //                            HOG_golden[ans_start_row+2][(ans_start_col-9+1)*20-1-:60]};
+    //         if (ans_start_row == -1 && ans_start_col == 636) begin
+    //             if (ans_block_out_0[20-1:0] === block_out_0[20-1:0]
+    //             && ans_block_out_1[20*3-1:0] === block_out_1[20*3-1:0] 
+    //             && ans_block_out_2[20*3-1:0] === block_out_2[20*3-1:0]
+    //             && ans_block_out_3[20*3-1:0] === block_out_3[20*3-1:0]) begin
+    //                 $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+    //             end
+    //             else begin
+    //                 $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+    //                 error = error + 1;
+    //             end
+    //         end
+    //         else if (ans_start_row == -1) begin
+    //             if (ans_block_out_0[20*3-1:0] === block_out_0[20*3-1:0]
+    //             && ans_block_out_1[20*3-1:0] === block_out_1[20*3-1:0] 
+    //             && ans_block_out_2[20*3-1:0] === block_out_2[20*3-1:0]
+    //             && ans_block_out_3[20*3-1:0] === block_out_3[20*3-1:0]) begin
+    //                 $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+    //             end
+    //             else begin
+    //                 $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+    //                 error = error + 1;
+    //             end
+    //         end
+    //         else if (ans_start_col == 636) begin
+    //             if (ans_block_out_0[20*7-1-:20] === block_out_0[20*7-1-:20]
+    //             && ans_block_out_0[20*4-1-:20] === block_out_0[20*4-1-:20]
+    //             && ans_block_out_0[20*1-1-:20] === block_out_0[20*1-1-:20]
+    //             && ans_block_out_1 === block_out_1 
+    //             && ans_block_out_2 === block_out_2
+    //             && ans_block_out_3 === block_out_3) begin
+    //                 $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+    //             end
+    //             else begin
+    //                 $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+    //                 error = error + 1;
+    //             end
+    //         end
+    //         else begin
+    //             if (ans_block_out_0 === block_out_0
+    //             && ans_block_out_1 === block_out_1 
+    //             && ans_block_out_2 === block_out_2
+    //             && ans_block_out_3 === block_out_3) begin
+    //                 $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+    //             end
+    //             else begin
+    //                 $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+    //                 error = error + 1;
+    //             end
+    //         end
+    //     end
+    // end
+
+    // for median + HOG + sqrt
     for (ans_start_row = -1; ans_start_row <= 476; ans_start_row = ans_start_row + 3) begin
         for (ans_start_col = 636; ans_start_col >= 12; ans_start_col = ans_start_col - 12) begin
             @(negedge clk);
-            ans_block_out_0 = {HOG_golden[ans_start_row][(ans_start_col+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+1][(ans_start_col+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+2][(ans_start_col+1)*20-1-:60]};
-            ans_block_out_1 = {HOG_golden[ans_start_row][(ans_start_col-3+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+1][(ans_start_col-3+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+2][(ans_start_col-3+1)*20-1-:60]};
-            ans_block_out_2 = {HOG_golden[ans_start_row][(ans_start_col-6+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+1][(ans_start_col-6+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+2][(ans_start_col-6+1)*20-1-:60]};
-            ans_block_out_3 = {HOG_golden[ans_start_row][(ans_start_col-9+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+1][(ans_start_col-9+1)*20-1-:60], 
-                               HOG_golden[ans_start_row+2][(ans_start_col-9+1)*20-1-:60]};
+            ans_block_out_0 = {sqrt_golden[ans_start_row][(ans_start_col+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+1][(ans_start_col+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+2][(ans_start_col+1)*12-1-:36]};
+            ans_block_out_1 = {sqrt_golden[ans_start_row][(ans_start_col-3+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+1][(ans_start_col-3+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+2][(ans_start_col-3+1)*12-1-:36]};
+            ans_block_out_2 = {sqrt_golden[ans_start_row][(ans_start_col-6+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+1][(ans_start_col-6+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+2][(ans_start_col-6+1)*12-1-:36]};
+            ans_block_out_3 = {sqrt_golden[ans_start_row][(ans_start_col-9+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+1][(ans_start_col-9+1)*12-1-:36], 
+                               sqrt_golden[ans_start_row+2][(ans_start_col-9+1)*12-1-:36]};
             if (ans_start_row == -1 && ans_start_col == 636) begin
-                if (ans_block_out_0[20-1:0] === block_out_0[20-1:0]
-                && ans_block_out_1[20*3-1:0] === block_out_1[20*3-1:0] 
-                && ans_block_out_2[20*3-1:0] === block_out_2[20*3-1:0]
-                && ans_block_out_3[20*3-1:0] === block_out_3[20*3-1:0]) begin
+                if (ans_block_out_0[12-1:0] === block_out_0[12-1:0]
+                && ans_block_out_1[12*3-1:0] === block_out_1[12*3-1:0] 
+                && ans_block_out_2[12*3-1:0] === block_out_2[12*3-1:0]
+                && ans_block_out_3[12*3-1:0] === block_out_3[12*3-1:0]) begin
                     $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
                 end
                 else begin
@@ -188,10 +261,10 @@ initial begin
                 end
             end
             else if (ans_start_row == -1) begin
-                if (ans_block_out_0[20*3-1:0] === block_out_0[20*3-1:0]
-                && ans_block_out_1[20*3-1:0] === block_out_1[20*3-1:0] 
-                && ans_block_out_2[20*3-1:0] === block_out_2[20*3-1:0]
-                && ans_block_out_3[20*3-1:0] === block_out_3[20*3-1:0]) begin
+                if (ans_block_out_0[12*3-1:0] === block_out_0[12*3-1:0]
+                && ans_block_out_1[12*3-1:0] === block_out_1[12*3-1:0] 
+                && ans_block_out_2[12*3-1:0] === block_out_2[12*3-1:0]
+                && ans_block_out_3[12*3-1:0] === block_out_3[12*3-1:0]) begin
                     $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
                 end
                 else begin
@@ -200,9 +273,9 @@ initial begin
                 end
             end
             else if (ans_start_col == 636) begin
-                if (ans_block_out_0[20*7-1-:20] === block_out_0[20*7-1-:20]
-                && ans_block_out_0[20*4-1-:20] === block_out_0[20*4-1-:20]
-                && ans_block_out_0[20*1-1-:20] === block_out_0[20*1-1-:20]
+                if (ans_block_out_0[12*7-1-:12] === block_out_0[12*7-1-:12]
+                && ans_block_out_0[12*4-1-:12] === block_out_0[12*4-1-:12]
+                && ans_block_out_0[12*1-1-:12] === block_out_0[12*1-1-:12]
                 && ans_block_out_1 === block_out_1 
                 && ans_block_out_2 === block_out_2
                 && ans_block_out_3 === block_out_3) begin

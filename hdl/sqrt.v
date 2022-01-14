@@ -1,11 +1,11 @@
 module sqrt(
     input clk,
     input rst_n, 
-    input [9-1:0] num, 
-    output reg [5-1:0] sqrt_num
+    input [20-1:0] num, 
+    output reg [12-1:0] sqrt_num
 );
 
-reg [5-1:0] sqrt_num_next;
+reg [12-1:0] sqrt_num_next;
 
 always @* begin
     if (num < 1)

@@ -513,7 +513,8 @@ always @(*) begin
 end
 
 always @* begin
-	if (cnt_row == 0 && cnt_col == 2)
+	// if (cnt_row == 0 && cnt_col == 2)
+	if (cnt_row == 0 && cnt_col == 3)
 		valid_next = 1;
 	else if (valid == 1)
 		valid_next = 1;
