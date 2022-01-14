@@ -9,17 +9,18 @@ module HOG #(
 	input [9*BITWIDTH-1:0] block1, 
 	input [9*BITWIDTH-1:0] block2, 
 	input [9*BITWIDTH-1:0] block3, // 3*3*BITWIDTH // 71:0
-	output reg [9*2*BITWIDTH-1:0] HOG_out0, 
-	output reg [9*2*BITWIDTH-1:0] HOG_out1, 
-	output reg [9*2*BITWIDTH-1:0] HOG_out2, 
-	output reg [9*2*BITWIDTH-1:0] HOG_out3, 
+	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out0, 
+	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out1, 
+	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out2, 
+	output reg [9*(2*BITWIDTH + 4)-1:0] HOG_out3
 	output reg valid
 );
 
-reg valid_next;
 
 reg signed [8:0] store0_row[0:52][0:11], n_store0_row[0:52][0:11];
 reg signed [8:0] store1_row[0:52][0:11], n_store1_row[0:52][0:11];
+reg signed [8:0] store0_d11[0:52], store1_d10[0:52], store1_d11[0:52];
+reg signed [8:0] n_store0_d11[0:52], n_store1_d10[0:52], n_store1_d11[0:52];
 reg signed [8:0] store0_col[0:2] , n_store0_col[0:2];
 reg signed [8:0] store1_col[0:2] , n_store1_col[0:2];
 reg signed [8:0] blk0[0:8];
@@ -28,12 +29,13 @@ reg signed [8:0] blk2[0:8];
 reg signed [8:0] blk3[0:8];
 reg signed [8:0] sum_y[0:11][0:2], n_sum_y[0:11][0:2], temp_y[0:11][0:2];
 reg signed [8:0] sum_x[0:11][0:2], n_sum_x[0:11][0:2], temp_x[0:11][0:2];
-reg signed [15:0] square_y[0:11][0:2], n_square_y[0:11][0:2];
-reg signed [15:0] square_x[0:11][0:2], n_square_x[0:11][0:2];
-reg signed [15:0] square_sum0[0:8], n_square_sum0[0:8];
-reg signed [15:0] square_sum1[0:8], n_square_sum1[0:8];
-reg signed [15:0] square_sum2[0:8], n_square_sum2[0:8];
-reg signed [15:0] square_sum3[0:8], n_square_sum3[0:8];
+reg [15:0] square_y[0:11][0:2], n_square_y[0:11][0:2];
+reg [15:0] square_x[0:11][0:2], n_square_x[0:11][0:2];
+reg [19:0] square_sum0[0:8], n_square_sum0[0:8];
+reg [19:0] square_sum1[0:8], n_square_sum1[0:8];
+reg [19:0] square_sum2[0:8], n_square_sum2[0:8];
+reg [19:0] square_sum3[0:8], n_square_sum3[0:8];
+reg valid_next;
 
 integer i,j;
 
@@ -123,6 +125,15 @@ always @(*) begin  /// may not be synthesizable , -> use case
 	n_store1_row[cnt_col][9] = blk3[2];
 	n_store1_row[cnt_col][10] = blk3[1];
 	n_store1_row[cnt_col][11] = blk3[0];
+	//////////////////////// prevent data vanish //////////////////
+	for(i=0;i<53;i=i+1) begin
+		n_store0_d11[i] = store0_row[i][11];
+		n_store1_d10[i] = store1_row[i][10];
+		n_store1_d11[i] = store1_row[i][11];
+	end
+	n_store0_d11[cnt_col] = store0_row[cnt_col][11];
+	n_store1_d10[cnt_col] = store1_row[cnt_col][10];
+	n_store1_d11[cnt_col] = store1_row[cnt_col][11];
 	////////////////////////
 	n_store0_col[2] = blk3[7];
 	n_store0_col[1] = blk3[4];
@@ -132,34 +143,9 @@ always @(*) begin  /// may not be synthesizable , -> use case
 	n_store1_col[1] = blk3[3];
 	n_store1_col[0] = blk3[0];
 end
-//n_store0_row[cnt_col][0] = blk0[5];
-//n_store0_row[cnt_col][1] = blk0[4];
-//n_store0_row[cnt_col][2] = blk0[3];
-//n_store0_row[cnt_col][3] = blk1[5];
-//n_store0_row[cnt_col][4] = blk1[4];
-//n_store0_row[cnt_col][5] = blk1[3];
-//n_store0_row[cnt_col][6] = blk2[5];
-//n_store0_row[cnt_col][7] = blk2[4];
-//n_store0_row[cnt_col][8] = blk2[3];
-//n_store0_row[cnt_col][9] = blk3[5];
-//n_store0_row[cnt_col][10] = blk3[4];
-//n_store0_row[cnt_col][11] = blk3[3];
-///////////////////////////
-//n_store1_row[cnt_col][0] = blk0[2];
-//n_store1_row[cnt_col][1] = blk0[1];
-//n_store1_row[cnt_col][2] = blk0[0];
-//n_store1_row[cnt_col][3] = blk1[2];
-//n_store1_row[cnt_col][4] = blk1[1];
-//n_store1_row[cnt_col][5] = blk1[0];
-//n_store1_row[cnt_col][6] = blk2[2];
-//n_store1_row[cnt_col][7] = blk2[1];
-//n_store1_row[cnt_col][8] = blk2[0];
-//n_store1_row[cnt_col][9] = blk3[2];
-//n_store1_row[cnt_col][10] = blk3[1];
-//n_store1_row[cnt_col][11] = blk3[0];
 /////////// get gy^2 /////////////
 always @(*) begin
-	temp_y[0][2] = store0_row[cnt_col - 1][11] - store1_col[2]; // 0-3 for first row
+	temp_y[0][2] = store0_d11[cnt_col - 1] - store1_col[2]; // 0-3 for first row
 	temp_y[0][1] = store0_row[cnt_col][0] - blk0[8];
 	temp_y[0][0] = store0_row[cnt_col][1] - blk0[7];
 	temp_y[1][2] = store0_row[cnt_col][2] - blk0[6];
@@ -172,7 +158,7 @@ always @(*) begin
 	temp_y[3][1] = store0_row[cnt_col][9] - blk3[8];
 	temp_y[3][0] = store0_row[cnt_col][10] - blk3[7];
 	/////////////////////////////////////////  4-7 for second row
-	temp_y[4][2] = store1_row[cnt_col - 1][11] - store1_col[1];
+	temp_y[4][2] = store1_d11[cnt_col - 1] - store1_col[1];
 	temp_y[4][1] = store1_row[cnt_col][0] - blk0[5];
 	temp_y[4][0] = store1_row[cnt_col][1] - blk0[4];
 	temp_y[5][2] = store1_row[cnt_col][2] - blk0[3];
@@ -243,11 +229,11 @@ always @(*) begin
 		n_sum_y[11][0] = temp_y[11][0];
 	end
 	else begin
-		for(i=0;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				n_sum_y[i][j] = temp_y[i][j];
-			end
+	  for(i=0;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			n_sum_y[i][j] = temp_y[i][j];
 		end
+	  end
 	end
 end
 
@@ -294,11 +280,11 @@ end
 ///////////// get gx^2 ////////////////////////
 
 always @(*) begin
-	temp_x[0][2] = store1_row[cnt_col][0] - store1_row[cnt_col - 1][10];
+	temp_x[0][2] = store1_row[cnt_col][0] - store1_d10[cnt_col - 1];
 	temp_x[0][1] = blk0[8] - store0_col[2];
 	temp_x[0][0] = blk0[5] - store0_col[1];
 	////////////////////////////////////////
-	temp_x[1][2] = store1_row[cnt_col][1] - store1_row[cnt_col - 1][11];
+	temp_x[1][2] = store1_row[cnt_col][1] - store1_d11[cnt_col - 1];
 	temp_x[1][1] = blk0[7] - store1_col[2];
 	temp_x[1][0] = blk0[4] - store1_col[1];
 	////////////////////////////////////////
@@ -347,26 +333,26 @@ end
 //////////// select n_sum_x ////////////////
 always @(*) begin
 	if(cnt_col == 0) begin
-		n_sum_x[0][2] = 0;
-		n_sum_x[0][1] = 0;
-		n_sum_x[0][0] = 0;
-		///////////////////////
-		n_sum_x[1][2] = blk0[7];
-		n_sum_x[1][1] = blk0[4];
-		n_sum_x[1][0] = blk0[1];
-		///////////////////////
-		for(i=2;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				n_sum_x[i][j] = temp_x[i][j];
-			end
+	  n_sum_x[0][2] = 0;
+	  n_sum_x[0][1] = 0;
+	  n_sum_x[0][0] = 0;
+	  ///////////////////////
+	  n_sum_x[1][2] = blk0[7];
+	  n_sum_x[1][1] = blk0[4];
+	  n_sum_x[1][0] = blk0[1];
+	  ///////////////////////
+	  for(i=2;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			n_sum_x[i][j] = temp_x[i][j];
 		end
+	  end
 	end
 	else begin
-		for(i=0;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				n_sum_x[i][j] = temp_x[i][j];
-			end
+	  for(i=0;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			n_sum_x[i][j] = temp_x[i][j];
 		end
+	  end
 	end
 end
 
@@ -452,8 +438,6 @@ always @(*) begin
 	n_square_sum3[0] = square_y[11][0] + square_x[11][0];
 end
 
-
-// add valid signal
 always @* begin
 	if (cnt_row == 0 && cnt_col == 2)
 		valid_next = 1;
@@ -463,70 +447,78 @@ always @* begin
 		valid_next = 0;
 end
 
-
-
 always @(posedge clk) begin
 	if(~rst_n) begin
-		for(i=0;i<53;i=i+1) begin
-			for(j=0;j<12;j=j+1) begin
-				store0_row[i][j] <= 0;
-				store1_row[i][j] <= 0;
-			end
+	  for(i=0;i<53;i=i+1) begin
+	  	for(j=0;j<12;j=j+1) begin
+			store0_row[i][j] <= 0;
+			store1_row[i][j] <= 0;
+	  	end
+	  end
+	  for(i=0;i<3;i=i+1) begin
+		store0_col[i] <= 0;
+		store1_col[i] <= 0;
+	  end
+	  for(i=0;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			sum_y[i][j] <= 0;
+			sum_x[i][j] <= 0;
 		end
-		for(i=0;i<3;i=i+1) begin
-			store0_col[i] <= 0;
-			store1_col[i] <= 0;
+	  end
+	  for(i=0;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			square_y[i][j] <= 0;
+			square_x[i][j] <= 0;
 		end
-		for(i=0;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				sum_y[i][j] <= 0;
-				sum_x[i][j] <= 0;
-			end
-		end
-		for(i=0;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				square_y[i][j] <= 0;
-				square_x[i][j] <= 0;
-			end
-		end
-		for(i=0;i<9;i=i+1) begin
-			square_sum0[i] <= 0;
-			square_sum1[i] <= 0;
-			square_sum2[i] <= 0;
-			square_sum3[i] <= 0;
-		end
-		valid <= 0;
+	  end
+	  for(i=0;i<9;i=i+1) begin
+		square_sum0[i] <= 0;
+		square_sum1[i] <= 0;
+		square_sum2[i] <= 0;
+		square_sum3[i] <= 0;
+	  end
+	  for(i=0;i<53;i=i+1) begin
+		  store0_d11[i] <= 0;
+		  store1_d10[i] <= 0;
+		  store1_d11[i] <= 0;
+	  end
+	  valid <= 0;
 	end
 	else begin
-		for(i=0;i<53;i=i+1) begin
-			for(j=0;j<12;j=j+1) begin
-				store0_row[i][j] <= n_store0_row[i][j];
-				store1_row[i][j] <= n_store1_row[i][j];
-			end
+	  for(i=0;i<53;i=i+1) begin
+	  	for(j=0;j<12;j=j+1) begin
+			store0_row[i][j] <= n_store0_row[i][j];
+			store1_row[i][j] <= n_store1_row[i][j];
+	  	end
+	  end
+	  for(i=0;i<3;i=i+1) begin
+		store0_col[i] <= n_store0_col[i];
+		store1_col[i] <= n_store1_col[i];
+	  end
+	  for(i=0;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			sum_y[i][j] <= n_sum_y[i][j];
+			sum_x[i][j] <= n_sum_x[i][j];
 		end
-		for(i=0;i<3;i=i+1) begin
-			store0_col[i] <= n_store0_col[i];
-			store1_col[i] <= n_store1_col[i];
+	  end
+	  for(i=0;i<12;i=i+1) begin
+		for(j=0;j<3;j=j+1) begin
+			square_y[i][j] <= n_square_y[i][j];
+			square_x[i][j] <= n_square_x[i][j];
 		end
-		for(i=0;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				sum_y[i][j] <= n_sum_y[i][j];
-				sum_x[i][j] <= n_sum_x[i][j];
-			end
-		end
-		for(i=0;i<12;i=i+1) begin
-			for(j=0;j<3;j=j+1) begin
-				square_y[i][j] <= n_square_y[i][j];
-				square_x[i][j] <= n_square_x[i][j];
-			end
-		end
-		for(i=0;i<9;i=i+1) begin
-			square_sum0[i] <= n_square_sum0[i];
-			square_sum1[i] <= n_square_sum1[i];
-			square_sum2[i] <= n_square_sum2[i];
-			square_sum3[i] <= n_square_sum3[i];
-		end
-		valid <= valid_next;
+	  end
+	  for(i=0;i<9;i=i+1) begin
+		square_sum0[i] <= n_square_sum0[i];
+		square_sum1[i] <= n_square_sum1[i];
+		square_sum2[i] <= n_square_sum2[i];
+		square_sum3[i] <= n_square_sum3[i];
+	  end
+	  for(i=0;i<53;i=i+1) begin
+		  store0_d11[i] <= n_store0_d11[i];
+		  store1_d10[i] <= n_store1_d10[i];
+		  store1_d11[i] <= n_store1_d11[i];
+	  end
+	  valid <= valid_next;
 	end
 end
 

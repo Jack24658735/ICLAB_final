@@ -9,10 +9,10 @@ module top(
     // output [8*9-1:0] block_out_1, 
     // output [8*9-1:0] block_out_2, 
     // output [8*9-1:0] block_out_3
-    output [2*8*9-1:0] block_out_0, 
-    output [2*8*9-1:0] block_out_1, 
-    output [2*8*9-1:0] block_out_2, 
-    output [2*8*9-1:0] block_out_3
+    output [(2*8+4)*9-1:0] block_out_0, 
+    output [(2*8+4)*9-1:0] block_out_1, 
+    output [(2*8+4)*9-1:0] block_out_2, 
+    output [(2*8+4)*9-1:0] block_out_3
 );
 
 
@@ -24,7 +24,7 @@ wire denoise_valid, HOG_valid;
 // wire [6-1:0] cnt_col;
 wire [8*9-1:0] denoise_block_out_0, denoise_block_out_1, denoise_block_out_2, denoise_block_out_3;
 
-assign valid = 0;
+assign valid = HOG_valid;
 
 
 denoise #(

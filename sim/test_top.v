@@ -120,35 +120,17 @@ end
 
 
 reg [636*8-1:0] denoise_golden [0:480-1];
-reg [636*20-1:0] HOG_golden [0:480-1];
+// reg [636*20-1:0] HOG_golden [0:480-1];
+reg [640*20-1:0] HOG_golden [0:480-1];
 
 
-reg [20-1:0] fuck1;
-reg [20-1:0] fuck2;
-reg [20-1:0] fuck3;
 
-always @(*) begin
-    // fuck1 = HOG_golden[-1][(636+1)*20-1-:60];
-    // fuck2 = HOG_golden[0][(636+1)*20-1-:60];
-    // fuck3 = HOG_golden[1][(636+1)*20-1-:60];
-    fuck1 = HOG_golden[0][12739-:20];
-    fuck2 = HOG_golden[0][12719-:20];
-    fuck3 = HOG_golden[0][12699-:20];
-end
 
-reg [20:0] test;
-reg [20:0] test2;
-always @(*) begin
-    test = ans_start_row+1;
-    test2 = (ans_start_col+1)*20-1;
-end
 // answer check
 initial begin
     $readmemh("golden/med_of_med_636_480.txt", denoise_golden);
     $readmemh("golden/denoise_hog_no_sqrt_636_480.txt", HOG_golden);
     error = 0;
-    ans_start_row = -1;
-    ans_start_col = 636;
     wait(valid == 1);
     // for denoise
     // #(CYCLE);
@@ -167,11 +149,11 @@ initial begin
     //         ans_block_out_3 = {denoise_golden[ans_start_row][(ans_start_col-9+1)*8-1-:24], 
     //                            denoise_golden[ans_start_row+1][(ans_start_col-9+1)*8-1-:24], 
     //                            denoise_golden[ans_start_row+2][(ans_start_col-9+1)*8-1-:24]};
-    //         if (block_out_0 == ans_block_out_0 && block_out_1 == ans_block_out_1 && block_out_2 == ans_block_out_2 && block_out_3 == ans_block_out_3) begin
+    //         if (block_out_0 === ans_block_out_0 && block_out_1 === ans_block_out_1 && block_out_2 === ans_block_out_2 && block_out_3 === ans_block_out_3) begin
     //             $display("Position at (%3d, %3d) correct!", ans_start_row, ans_start_col);
     //         end
     //         else begin
-    //             $display("Position at (%3d, %3d) WRONG! denoise_golden = %h, result = %h", ans_start_row, ans_start_col, ans_block_out_0, block_out_0);
+    //             $display("Position at (%3d, %3d) WRONG! (block0) denoise_golden = %h, result = %h", ans_start_row, ans_start_col, ans_block_out_0, block_out_0);
     //             error = error + 1;
     //         end
     //     end
@@ -181,7 +163,6 @@ initial begin
     for (ans_start_row = -1; ans_start_row <= 476; ans_start_row = ans_start_row + 3) begin
         for (ans_start_col = 636; ans_start_col >= 12; ans_start_col = ans_start_col - 12) begin
             @(negedge clk);
-            
             ans_block_out_0 = {HOG_golden[ans_start_row][(ans_start_col+1)*20-1-:60], 
                                HOG_golden[ans_start_row+1][(ans_start_col+1)*20-1-:60], 
                                HOG_golden[ans_start_row+2][(ans_start_col+1)*20-1-:60]};
@@ -194,8 +175,55 @@ initial begin
             ans_block_out_3 = {HOG_golden[ans_start_row][(ans_start_col-9+1)*20-1-:60], 
                                HOG_golden[ans_start_row+1][(ans_start_col-9+1)*20-1-:60], 
                                HOG_golden[ans_start_row+2][(ans_start_col-9+1)*20-1-:60]};
-            if (ans_start_col == -1 && ans_start_col != 636) begin
-                
+            if (ans_start_row == -1 && ans_start_col == 636) begin
+                if (ans_block_out_0[20-1:0] === block_out_0[20-1:0]
+                && ans_block_out_1[20*3-1:0] === block_out_1[20*3-1:0] 
+                && ans_block_out_2[20*3-1:0] === block_out_2[20*3-1:0]
+                && ans_block_out_3[20*3-1:0] === block_out_3[20*3-1:0]) begin
+                    $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+                end
+                else begin
+                    $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+                    error = error + 1;
+                end
+            end
+            else if (ans_start_row == -1) begin
+                if (ans_block_out_0[20*3-1:0] === block_out_0[20*3-1:0]
+                && ans_block_out_1[20*3-1:0] === block_out_1[20*3-1:0] 
+                && ans_block_out_2[20*3-1:0] === block_out_2[20*3-1:0]
+                && ans_block_out_3[20*3-1:0] === block_out_3[20*3-1:0]) begin
+                    $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+                end
+                else begin
+                    $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+                    error = error + 1;
+                end
+            end
+            else if (ans_start_col == 636) begin
+                if (ans_block_out_0[20*7-1-:20] === block_out_0[20*7-1-:20]
+                && ans_block_out_0[20*4-1-:20] === block_out_0[20*4-1-:20]
+                && ans_block_out_0[20*1-1-:20] === block_out_0[20*1-1-:20]
+                && ans_block_out_1 === block_out_1 
+                && ans_block_out_2 === block_out_2
+                && ans_block_out_3 === block_out_3) begin
+                    $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+                end
+                else begin
+                    $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+                    error = error + 1;
+                end
+            end
+            else begin
+                if (ans_block_out_0 === block_out_0
+                && ans_block_out_1 === block_out_1 
+                && ans_block_out_2 === block_out_2
+                && ans_block_out_3 === block_out_3) begin
+                    $display("Position at (%3d, %3d) correct!", ans_start_row + 1, ans_start_col - 1);
+                end
+                else begin
+                    $display("Position at (%3d, %3d) WRONG! (block0) hog_golden = %h, result = %h", ans_start_row + 1, ans_start_col - 1, ans_block_out_0, block_out_0);
+                    error = error + 1;
+                end
             end
         end
     end
@@ -203,11 +231,11 @@ initial begin
 
 
     if (error == 0) begin
-        $display("Congratulations! All results are correct!");
+        $display("Congratulations! Total error = %4d\n All results are correct!", error);
         $finish;
     end
     else begin
-        $display("total error = %d", error);
+        $display("total error = %4d", error);
         $finish;
     end
 end
