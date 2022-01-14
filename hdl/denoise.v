@@ -6,18 +6,14 @@ module denoise
     input clk,
     input rst_n,
     input [5*14*BIT_WIDTH-1:0] pix_in, // 70*8-1 = 559
-    output reg [9*BIT_WIDTH-1:0] block_out_0,
-    output reg [9*BIT_WIDTH-1:0] block_out_1,
-    output reg [9*BIT_WIDTH-1:0] block_out_2,
-    output reg [9*BIT_WIDTH-1:0] block_out_3, 
-
-
+    output [9*BIT_WIDTH-1:0] block_out_0,
+    output [9*BIT_WIDTH-1:0] block_out_1,
+    output [9*BIT_WIDTH-1:0] block_out_2,
+    output [9*BIT_WIDTH-1:0] block_out_3, 
     // output reg [9*20-1:0] hog_block_out_0,
     // output reg [9*20-1:0] hog_block_out_1,
     // output reg [9*20-1:0] hog_block_out_2,
     // output reg [9*20-1:0] hog_block_out_3,
-
-
 
     output reg valid
 );
@@ -340,12 +336,12 @@ always @(*) begin
     block_in_3[24] = pix_in[7:0];
 end
 
-always @(*) begin
-    block_out_0 = {b0_out0, b0_out1, b0_out2, b0_out3, b0_out4, b0_out5, b0_out6, b0_out7, b0_out8};
-    block_out_1 = {b1_out0, b1_out1, b1_out2, b1_out3, b1_out4, b1_out5, b1_out6, b1_out7, b1_out8};
-    block_out_2 = {b2_out0, b2_out1, b2_out2, b2_out3, b2_out4, b2_out5, b2_out6, b2_out7, b2_out8};
-    block_out_3 = {b3_out0, b3_out1, b3_out2, b3_out3, b3_out4, b3_out5, b3_out6, b3_out7, b3_out8};
-end
+// always @(*) begin
+assign block_out_0 = {b0_out0, b0_out1, b0_out2, b0_out3, b0_out4, b0_out5, b0_out6, b0_out7, b0_out8};
+assign block_out_1 = {b1_out0, b1_out1, b1_out2, b1_out3, b1_out4, b1_out5, b1_out6, b1_out7, b1_out8};
+assign block_out_2 = {b2_out0, b2_out1, b2_out2, b2_out3, b2_out4, b2_out5, b2_out6, b2_out7, b2_out8};
+assign block_out_3 = {b3_out0, b3_out1, b3_out2, b3_out3, b3_out4, b3_out5, b3_out6, b3_out7, b3_out8};
+// end
 
 always @(posedge clk) begin
     if (~rst_n) begin

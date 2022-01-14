@@ -17,6 +17,7 @@ wire valid;
 wire [12*9-1:0] block_out_0, block_out_1, block_out_2, block_out_3;
 // reg [20*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
 reg [12*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
+// reg [8*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_3;
 
 // reg [8-1:0] block_out_0_2D [0:9-1];
 // reg [8-1:0] block_out_1_2D [0:9-1];
@@ -102,6 +103,20 @@ end
 
 always #(CYCLE/2) clk = ~clk;
 
+integer cycle_cnt = 0;
+
+initial begin
+    wait(rst_n == 0);
+    wait(rst_n == 1);
+    @(negedge clk)
+
+    while(1) begin 
+        cycle_cnt = cycle_cnt + 1;
+        @(negedge clk);
+    end
+
+end
+
 initial begin
     $readmemh("pix/noise_638_482.txt", picture);
     wait(rst_n == 0);
@@ -132,12 +147,12 @@ reg [640*12-1:0] sqrt_golden [0:480-1];
 // answer check
 initial begin
     $readmemh("golden/med_of_med_636_480.txt", denoise_golden);
+    // $readmemh("golden/gaussian_denoise_636_480.txt", denoise_golden);
     $readmemh("golden/denoise_hog_no_sqrt_636_480.txt", HOG_golden);
     $readmemh("golden/denoise_hog_with_sqrt_636_480.txt", sqrt_golden);
     error = 0;
     wait(valid == 1);
     // for denoise
-    // #(CYCLE);
     // for (ans_start_row = 0; ans_start_row <= 477; ans_start_row = ans_start_row + 3) begin
     //     for (ans_start_col = 635; ans_start_col >= 11; ans_start_col = ans_start_col - 12) begin
     //         @(negedge clk);
@@ -157,7 +172,7 @@ initial begin
     //             $display("Position at (%3d, %3d) correct!", ans_start_row, ans_start_col);
     //         end
     //         else begin
-    //             $display("Position at (%3d, %3d) WRONG! (block0) denoise_golden = %h, result = %h", ans_start_row, ans_start_col, ans_block_out_0, block_out_0);
+    //             $display("Position at (%3d, %3d) WRONG! (block0) de noise_golden = %h, result = %h", ans_start_row, ans_start_col, ans_block_out_0, block_out_0);
     //             error = error + 1;
     //         end
     //     end
@@ -305,6 +320,7 @@ initial begin
 
     if (error == 0) begin
         $display("Congratulations! Total error = %4d\nAll results are correct!", error);
+        $display("Total cycle count = %0d", cycle_cnt);
         $finish;
     end
     else begin

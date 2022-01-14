@@ -6,5 +6,6 @@ test_top.v
 ../hdl/sqrt.v
 ../hdl/HOG.v
 ../hdl/hog_counter.v
+../hdl/Gaussian.v
 
 +access+r

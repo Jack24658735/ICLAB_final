@@ -29,6 +29,9 @@ wire denoise_valid, HOG_valid;
 wire [8*9-1:0] denoise_block_out_0, denoise_block_out_1, denoise_block_out_2, denoise_block_out_3;
 wire [20*9-1:0] HOG_block_out_0, HOG_block_out_1, HOG_block_out_2, HOG_block_out_3;
 
+// set valid signal
+    // HOG means final valid!
+    // denoise means temporary valid
 assign valid = HOG_valid;
 
 
@@ -49,6 +52,24 @@ denoise #(
     .block_out_3(denoise_block_out_3),
     .valid(denoise_valid)
 );
+
+// Gaussian #(
+//     .BIT_WIDTH(8)
+// ) U0
+// (
+//     .clk(clk),
+//     .rst_n(rst_n),
+//     .pix_in(pixel_in_r),
+//     .block_out_0(block_out_0),
+//     .block_out_1(block_out_1),
+//     .block_out_2(block_out_2),
+//     .block_out_3(block_out_3),
+//     // .block_out_0(denoise_block_out_0),
+//     // .block_out_1(denoise_block_out_1),
+//     // .block_out_2(denoise_block_out_2),
+//     // .block_out_3(denoise_block_out_3),
+//     .valid(denoise_valid)
+// );
 
 
 HOG #(
