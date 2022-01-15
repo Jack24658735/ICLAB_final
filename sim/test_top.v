@@ -96,6 +96,7 @@ reg [638*8-1:0] picture [0:482-1];
 `endif
 
 
+
 initial begin
     clk = 0;
     rst_n = 1;
@@ -124,7 +125,18 @@ initial begin
     $readmemh("pix/noise_638_482.txt", picture);
     wait(rst_n == 0);
     wait(rst_n == 1);
-    mode = 1; // change this line to select mode
+    // 0: median, 1: gaussian
+    `ifdef MED
+        mode = 0;
+        $display("Mode: Median filter");
+    `elsif GAUSS
+        mode = 1;
+        $display("Mode: Gaussian filter");
+    `else
+        mode = 0;
+        $display("Mode: Median filter");
+    `endif
+    // mode = 1; // change this line to select mode
     for (start_row = 0; start_row <= 477; start_row = start_row + 3) begin
         for (start_col = 637; start_col >= 13; start_col = start_col - 12) begin
             @(negedge clk)
@@ -387,7 +399,10 @@ initial begin
         end
     end
 
-
+    if (mode == 0)
+        $display("Mode: Median filter");
+    else
+        $display("Mode: Gaussian filter");
 
     if (error == 0) begin
         $display("Congratulations! Total error = %4d\nAll results are correct!", error);
