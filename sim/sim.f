@@ -7,5 +7,6 @@ test_top.v
 ../hdl/HOG.v
 ../hdl/hog_counter.v
 ../hdl/Gaussian.v
+../hdl/MUX.v
 
 +access+r
