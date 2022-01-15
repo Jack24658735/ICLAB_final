@@ -1,6 +1,7 @@
 module top(
     input clk, 
     input rst_n, 
+    input mode, 
     input [8*70-1:0] pixel_in,
     output valid,
     output [8-1:0] cnt_row, 
@@ -22,10 +23,12 @@ module top(
 
 reg [8*70-1:0] pixel_in_r;
 
-wire denoise_valid, HOG_valid;
-
+wire denoise_valid, median_valid, gaussian_valid, HOG_valid;
+assign denoise_valid = mode == 0 ? median_valid : gaussian_valid;
 // wire [8-1:0] cnt_row; 
 // wire [6-1:0] cnt_col;
+wire [8*9-1:0] M_denoise_block_out_0, M_denoise_block_out_1, M_denoise_block_out_2, M_denoise_block_out_3;
+wire [8*9-1:0] G_denoise_block_out_0, G_denoise_block_out_1, G_denoise_block_out_2, G_denoise_block_out_3;
 wire [8*9-1:0] denoise_block_out_0, denoise_block_out_1, denoise_block_out_2, denoise_block_out_3;
 wire [20*9-1:0] HOG_block_out_0, HOG_block_out_1, HOG_block_out_2, HOG_block_out_3;
 
@@ -46,31 +49,50 @@ denoise #(
     // .block_out_1(block_out_1),
     // .block_out_2(block_out_2),
     // .block_out_3(block_out_3),
-    .block_out_0(denoise_block_out_0),
-    .block_out_1(denoise_block_out_1),
-    .block_out_2(denoise_block_out_2),
-    .block_out_3(denoise_block_out_3),
-    .valid(denoise_valid)
+    .block_out_0(M_denoise_block_out_0),
+    .block_out_1(M_denoise_block_out_1),
+    .block_out_2(M_denoise_block_out_2),
+    .block_out_3(M_denoise_block_out_3),
+    .valid(median_valid)
 );
 
-// Gaussian #(
-//     .BIT_WIDTH(8)
-// ) U0
-// (
-//     .clk(clk),
-//     .rst_n(rst_n),
-//     .pix_in(pixel_in_r),
-//     .block_out_0(block_out_0),
-//     .block_out_1(block_out_1),
-//     .block_out_2(block_out_2),
-//     .block_out_3(block_out_3),
-//     // .block_out_0(denoise_block_out_0),
-//     // .block_out_1(denoise_block_out_1),
-//     // .block_out_2(denoise_block_out_2),
-//     // .block_out_3(denoise_block_out_3),
-//     .valid(denoise_valid)
-// );
+Gaussian #(
+    .BIT_WIDTH(8)
+) U0_g
+(
+    .clk(clk),
+    .rst_n(rst_n),
+    .pix_in(pixel_in_r),
+    //.block_out_0(block_out_0),
+    //.block_out_1(block_out_1),
+    //.block_out_2(block_out_2),
+    //.block_out_3(block_out_3),
+    .block_out_0(G_denoise_block_out_0),
+    .block_out_1(G_denoise_block_out_1),
+    .block_out_2(G_denoise_block_out_2),
+    .block_out_3(G_denoise_block_out_3),
+    .valid(gaussian_valid)
+);
 
+MUX #(
+    .BITWIDTH(8)
+) U0_m
+(
+    .mode(mode), // 0: median , 1: gaussian
+    .M_denoise_block_out_0(M_denoise_block_out_0),
+    .M_denoise_block_out_1(M_denoise_block_out_1),
+    .M_denoise_block_out_2(M_denoise_block_out_2),
+    .M_denoise_block_out_3(M_denoise_block_out_3),
+    .G_denoise_block_out_0(G_denoise_block_out_0),
+    .G_denoise_block_out_1(G_denoise_block_out_1),
+    .G_denoise_block_out_2(G_denoise_block_out_2),
+    .G_denoise_block_out_3(G_denoise_block_out_3),
+    /////////////// output ////////////////////
+    .denoise_block_out_0(denoise_block_out_0), 
+	.denoise_block_out_1(denoise_block_out_1), 
+	.denoise_block_out_2(denoise_block_out_2), 
+	.denoise_block_out_3(denoise_block_out_3)
+);
 
 HOG #(
 	.BITWIDTH(8)
