@@ -1,4 +1,4 @@
-module Gaussian1
+module Gaussian
 #(
     parameter BIT_WIDTH = 8
 )
