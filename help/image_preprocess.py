@@ -116,7 +116,7 @@ for i in range(len(med_of_med)):
         denoise_hog_tmp[i][j] = int(sqrt(gx ** 2 + gy ** 2))
         denoise_hog_tmp_no_sqrt[i][j] = (gx ** 2 + gy ** 2)
 writefile_long(denoise_hog_tmp_no_sqrt, 'denoise_hog_no_sqrt_636_480')
-writefile(denoise_hog, 'denoise_hog_with_sqrt_636_480')
+writefile(denoise_hog_tmp, 'denoise_hog_with_sqrt_636_480')
 
 # cv2.imwrite(f'{IMAGE_NAME[:-4]}_output.jpg', ans)
 for i in range(len(denoise_hog_tmp)):
