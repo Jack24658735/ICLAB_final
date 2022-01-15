@@ -20,6 +20,8 @@ analyze -library $TOPLEVEL -format verilog "$HDL_DIR/top.v"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/hog_counter.v"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/sqrt.v"
 analyze -library $TOPLEVEL -format verilog "$HDL_DIR/HOG.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/MUX.v"
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/Gaussian.v"
 
 
 # elaborate your design

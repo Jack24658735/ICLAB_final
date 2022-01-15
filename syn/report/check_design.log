@@ -2,16 +2,17 @@
 ****************************************
 check_design summary:
 Version:     R-2020.09-SP5
-Date:        Sat Jan 15 02:23:19 2022
+Date:        Sat Jan 15 16:38:37 2022
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Cells                                                             195
-    Cells do not drive (LINT-1)                                   195
+Cells                                                             196
+    Cells do not drive (LINT-1)                                   196
 --------------------------------------------------------------------------------
 
 Warning: In design 'denoise_BIT_WIDTH8', cell 'B_0' does not drive any nets. (LINT-1)
+Warning: In design 'Gaussian_BIT_WIDTH8', cell 'B_0' does not drive any nets. (LINT-1)
 Warning: In design 'hog_counter', cell 'C109' does not drive any nets. (LINT-1)
 Warning: In design 'hog_counter', cell 'C110' does not drive any nets. (LINT-1)
 Warning: In design 'median_mydesign_95', cell 'B_3' does not drive any nets. (LINT-1)

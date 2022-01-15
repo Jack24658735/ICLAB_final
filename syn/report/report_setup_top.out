@@ -6,7 +6,7 @@ Report : timing
         -max_paths 4
 Design : top
 Version: R-2020.09-SP5
-Date   : Sat Jan 15 02:46:52 2022
+Date   : Sat Jan 15 17:05:16 2022
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -16,7 +16,7 @@ Wire Load Model Mode: enclosed
 
   Startpoint: U2/cnt_col_reg_1_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U1/sum_x_reg_3__2__7_
+  Endpoint: U1/sum_x_reg_11__2__7_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
@@ -31,48 +31,47 @@ Wire Load Model Mode: enclosed
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
   U2/cnt_col_reg_1_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
-  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
-  U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
-  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
-  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
-  U1/U3190/Y (AND3X1_HVT)                                 0.15       0.50 r
-  U1/U4080/Y (AND2X1_HVT)                                 0.09       0.60 r
-  U1/U670/Y (XNOR2X1_HVT)                                 0.15       0.75 r
-  U1/U1977/Y (AND3X1_HVT)                                 0.12       0.87 r
-  U1/U388/Y (AND2X4_HVT)                                  0.18       1.05 r
-  U1/U358/Y (INVX2_HVT)                                   0.12       1.16 f
-  U1/U390/Y (INVX4_HVT)                                   0.11       1.28 r
-  U1/U387/Y (INVX8_HVT)                                   0.06       1.34 f
-  U1/U1426/Y (INVX4_HVT)                                  0.07       1.41 r
-  U1/U3232/Y (AOI22X1_HVT)                                0.16       1.57 f
-  U1/U3256/Y (AND3X1_HVT)                                 0.07       1.64 f
-  U1/U3332/Y (AND4X1_HVT)                                 0.11       1.75 f
-  U1/U3463/Y (NAND3X0_HVT)                                0.08       1.83 r
-  U1/U403/Y (INVX0_HVT)                                   0.07       1.90 f
-  U1/U7538/Y (NAND2X0_HVT)                                0.09       1.99 r
-  U1/U7543/CO (FADDX1_HVT)                                0.17       2.16 r
-  U1/U7542/CO (FADDX1_HVT)                                0.14       2.31 r
-  U1/U7541/CO (FADDX1_HVT)                                0.14       2.45 r
-  U1/U7540/CO (FADDX1_HVT)                                0.14       2.59 r
-  U1/U7539/CO (FADDX1_HVT)                                0.14       2.73 r
-  U1/U7544/CO (FADDX1_HVT)                                0.14       2.87 r
-  U1/U7545/S (FADDX1_HVT)                                 0.21       3.08 f
-  U1/sum_x_reg_3__2__7_/D (DFFSSRX1_HVT)                  0.00       3.08 f
-  data arrival time                                                  3.08
+  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.25       0.25 r
+  U2/cnt_col[1] (hog_counter)                             0.00       0.25 r
+  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.25 r
+  U1/U777/Y (INVX0_HVT)                                   0.08       0.32 f
+  U1/U821/Y (AND3X1_HVT)                                  0.15       0.48 f
+  U1/U4151/Y (NAND2X0_HVT)                                0.08       0.55 r
+  U1/U4152/SO (HADDX1_HVT)                                0.17       0.72 f
+  U1/U3200/Y (AND3X1_HVT)                                 0.12       0.84 f
+  U1/U1634/Y (NAND2X0_HVT)                                0.12       0.96 r
+  U1/U855/Y (INVX0_HVT)                                   0.13       1.09 f
+  U1/U799/Y (INVX0_HVT)                                   0.15       1.24 r
+  U1/U1398/Y (INVX4_HVT)                                  0.12       1.36 f
+  U1/U1078/Y (AOI22X1_HVT)                                0.17       1.52 r
+  U1/U3740/Y (NAND3X0_HVT)                                0.06       1.59 f
+  U1/U7838/Y (NOR4X1_HVT)                                 0.16       1.75 r
+  U1/U2057/Y (AND3X1_HVT)                                 0.11       1.86 r
+  U1/U2058/Y (INVX0_HVT)                                  0.07       1.93 f
+  U1/U9085/Y (NAND2X0_HVT)                                0.08       2.01 r
+  U1/U9090/CO (FADDX1_HVT)                                0.14       2.15 r
+  U1/U9089/CO (FADDX1_HVT)                                0.14       2.29 r
+  U1/U9088/CO (FADDX1_HVT)                                0.14       2.44 r
+  U1/U9087/CO (FADDX1_HVT)                                0.14       2.58 r
+  U1/U9086/CO (FADDX1_HVT)                                0.14       2.72 r
+  U1/U9127/CO (FADDX1_HVT)                                0.14       2.86 r
+  U1/U9128/S (FADDX1_HVT)                                 0.21       3.07 f
+  U1/sum_x_reg_11__2__7_/D (DFFSSRX1_HVT)                 0.00       3.07 f
+  data arrival time                                                  3.07
 
   clock clk (rise edge)                                   3.20       3.20
   clock network delay (ideal)                             0.00       3.20
-  U1/sum_x_reg_3__2__7_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
+  U1/sum_x_reg_11__2__7_/CLK (DFFSSRX1_HVT)               0.00       3.20 r
   library setup time                                     -0.12       3.08
   data required time                                                 3.08
   --------------------------------------------------------------------------
   data required time                                                 3.08
-  data arrival time                                                 -3.08
+  data arrival time                                                 -3.07
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.00
+  slack (MET)                                                        0.02
 
 
-  Startpoint: U2/cnt_col_reg_1_
+  Startpoint: U2/cnt_col_reg_0_
               (rising edge-triggered flip-flop clocked by clk)
   Endpoint: U1/sum_y_reg_0__2__7_
             (rising edge-triggered flip-flop clocked by clk)
@@ -88,48 +87,50 @@ Wire Load Model Mode: enclosed
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  U2/cnt_col_reg_1_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
-  U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
-  U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
-  U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
-  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
-  U1/U3194/Y (AND3X1_HVT)                                 0.15       0.51 r
-  U1/U35/Y (AND2X4_HVT)                                   0.18       0.69 r
-  U1/U4166/Y (NBUFFX2_HVT)                                0.15       0.84 r
-  U1/U1525/Y (NAND2X0_HVT)                                0.27       1.11 f
-  U1/U463/Y (INVX4_HVT)                                   0.21       1.32 r
-  U1/U12142/Y (AO22X1_HVT)                                0.18       1.50 r
-  U1/U12143/Y (OR4X1_HVT)                                 0.16       1.66 r
-  U1/U12161/Y (NOR4X1_HVT)                                0.13       1.79 f
-  U1/U12167/Y (NAND4X0_HVT)                               0.06       1.85 r
-  U1/U553/Y (INVX0_HVT)                                   0.04       1.89 f
-  U1/U19360/Y (NAND2X0_HVT)                               0.06       1.96 r
-  U1/U19398/CO (FADDX1_HVT)                               0.14       2.10 r
-  U1/U19436/CO (FADDX1_HVT)                               0.14       2.24 r
-  U1/U19474/CO (FADDX1_HVT)                               0.14       2.39 r
-  U1/U19512/CO (FADDX1_HVT)                               0.14       2.53 r
-  U1/U19550/CO (FADDX1_HVT)                               0.14       2.67 r
-  U1/U19588/CO (FADDX1_HVT)                               0.14       2.81 r
-  U1/U19590/S (FADDX1_HVT)                                0.21       3.02 f
-  U1/U19589/Y (AND2X1_HVT)                                0.07       3.09 f
-  U1/sum_y_reg_0__2__7_/D (DFFSSRX1_HVT)                  0.00       3.09 f
-  data arrival time                                                  3.09
+  U2/cnt_col_reg_0_/CLK (DFFSSRX1_HVT)                    0.00 #     0.00 r
+  U2/cnt_col_reg_0_/Q (DFFSSRX1_HVT)                      0.25       0.25 r
+  U2/cnt_col[0] (hog_counter)                             0.00       0.25 r
+  U1/cnt_col[0] (HOG_BITWIDTH8)                           0.00       0.25 r
+  U1/U776/Y (INVX0_HVT)                                   0.08       0.33 f
+  U1/U637/Y (AND3X1_HVT)                                  0.15       0.48 f
+  U1/U4168/Y (AND2X1_HVT)                                 0.11       0.58 f
+  U1/U4272/Y (NBUFFX4_HVT)                                0.14       0.73 f
+  U1/U587/Y (AND2X1_HVT)                                  0.18       0.91 f
+  U1/U585/Y (INVX0_HVT)                                   0.15       1.06 r
+  U1/U572/Y (INVX4_HVT)                                   0.16       1.22 f
+  U1/U763/Y (AO22X1_HVT)                                  0.15       1.38 f
+  U1/U12695/Y (NOR4X1_HVT)                                0.16       1.54 r
+  U1/U12706/Y (NAND4X0_HVT)                               0.09       1.63 f
+  U1/U12707/Y (NOR4X1_HVT)                                0.14       1.77 r
+  U1/U12712/Y (NAND4X0_HVT)                               0.14       1.91 f
+  U1/U684/Y (INVX0_HVT)                                   0.05       1.96 r
+  U1/U19497/Y (NAND2X0_HVT)                               0.09       2.05 f
+  U1/U19534/CO (FADDX1_HVT)                               0.13       2.18 f
+  U1/U19570/CO (FADDX1_HVT)                               0.11       2.29 f
+  U1/U19607/CO (FADDX1_HVT)                               0.11       2.40 f
+  U1/U19644/CO (FADDX1_HVT)                               0.11       2.52 f
+  U1/U19682/CO (FADDX1_HVT)                               0.11       2.63 f
+  U1/U19719/CO (FADDX1_HVT)                               0.11       2.74 f
+  U1/U19721/S (FADDX1_HVT)                                0.19       2.94 r
+  U1/U19720/Y (AND2X1_HVT)                                0.08       3.01 r
+  U1/sum_y_reg_0__2__7_/D (DFFSSRX1_HVT)                  0.00       3.01 r
+  data arrival time                                                  3.01
 
   clock clk (rise edge)                                   3.20       3.20
   clock network delay (ideal)                             0.00       3.20
   U1/sum_y_reg_0__2__7_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
-  library setup time                                     -0.10       3.10
-  data required time                                                 3.10
+  library setup time                                     -0.16       3.04
+  data required time                                                 3.04
   --------------------------------------------------------------------------
-  data required time                                                 3.10
-  data arrival time                                                 -3.09
+  data required time                                                 3.04
+  data arrival time                                                 -3.01
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.01
+  slack (MET)                                                        0.02
 
 
   Startpoint: U2/cnt_col_reg_1_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U1/sum_x_reg_3__2__8_
+  Endpoint: U1/sum_y_reg_3__1__7_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
@@ -147,41 +148,43 @@ Wire Load Model Mode: enclosed
   U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
   U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
   U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
-  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
-  U1/U3190/Y (AND3X1_HVT)                                 0.15       0.50 r
-  U1/U4080/Y (AND2X1_HVT)                                 0.09       0.60 r
-  U1/U670/Y (XNOR2X1_HVT)                                 0.13       0.73 f
-  U1/U1977/Y (AND3X1_HVT)                                 0.11       0.84 f
-  U1/U388/Y (AND2X4_HVT)                                  0.18       1.02 f
-  U1/U358/Y (INVX2_HVT)                                   0.11       1.13 r
-  U1/U390/Y (INVX4_HVT)                                   0.12       1.24 f
-  U1/U387/Y (INVX8_HVT)                                   0.06       1.30 r
-  U1/U1426/Y (INVX4_HVT)                                  0.08       1.38 f
-  U1/U3232/Y (AOI22X1_HVT)                                0.15       1.53 r
-  U1/U3256/Y (AND3X1_HVT)                                 0.08       1.61 r
-  U1/U3332/Y (AND4X1_HVT)                                 0.14       1.75 r
-  U1/U3463/Y (NAND3X0_HVT)                                0.16       1.91 f
-  U1/U403/Y (INVX0_HVT)                                   0.10       2.01 r
-  U1/U7538/Y (NAND2X0_HVT)                                0.12       2.13 f
-  U1/U7543/CO (FADDX1_HVT)                                0.15       2.28 f
-  U1/U7542/CO (FADDX1_HVT)                                0.12       2.39 f
-  U1/U7541/CO (FADDX1_HVT)                                0.12       2.51 f
-  U1/U7540/CO (FADDX1_HVT)                                0.11       2.62 f
-  U1/U7539/CO (FADDX1_HVT)                                0.11       2.73 f
-  U1/U7544/CO (FADDX1_HVT)                                0.11       2.85 f
-  U1/U7545/CO (FADDX1_HVT)                                0.10       2.95 f
-  U1/U350/Y (INVX1_HVT)                                   0.03       2.98 r
-  U1/sum_x_reg_3__2__8_/D (DFFSSRX1_HVT)                  0.00       2.98 r
-  data arrival time                                                  2.98
+  U1/U777/Y (INVX0_HVT)                                   0.08       0.35 r
+  U1/U821/Y (AND3X1_HVT)                                  0.16       0.51 r
+  U1/U4151/Y (NAND2X0_HVT)                                0.08       0.59 f
+  U1/U4152/SO (HADDX1_HVT)                                0.16       0.75 r
+  U1/U3200/Y (AND3X1_HVT)                                 0.12       0.88 r
+  U1/U1079/Y (AND2X4_HVT)                                 0.12       1.00 r
+  U1/U79/Y (INVX1_HVT)                                    0.04       1.04 f
+  U1/U463/Y (INVX2_HVT)                                   0.05       1.09 r
+  U1/U61/Y (INVX0_HVT)                                    0.04       1.13 f
+  U1/U108/Y (INVX1_HVT)                                   0.07       1.20 r
+  U1/U110/Y (INVX1_HVT)                                   0.12       1.32 f
+  U1/U1496/Y (INVX4_HVT)                                  0.11       1.42 r
+  U1/U1121/Y (AOI22X1_HVT)                                0.18       1.60 f
+  U1/U12653/Y (NAND3X0_HVT)                               0.04       1.64 r
+  U1/U12675/Y (NOR4X1_HVT)                                0.15       1.78 f
+  U1/U12681/Y (NAND3X0_HVT)                               0.05       1.83 r
+  U1/U17298/Y (INVX0_HVT)                                 0.04       1.87 f
+  U1/U17299/Y (NAND2X0_HVT)                               0.06       1.93 r
+  U1/U17337/CO (FADDX1_HVT)                               0.15       2.08 r
+  U1/U17375/CO (FADDX1_HVT)                               0.14       2.22 r
+  U1/U17412/CO (FADDX1_HVT)                               0.14       2.37 r
+  U1/U17450/CO (FADDX1_HVT)                               0.14       2.51 r
+  U1/U17487/CO (FADDX1_HVT)                               0.14       2.65 r
+  U1/U17524/CO (FADDX1_HVT)                               0.14       2.79 r
+  U1/U17526/S (FADDX1_HVT)                                0.21       3.00 f
+  U1/U17525/Y (AND2X1_HVT)                                0.07       3.07 f
+  U1/sum_y_reg_3__1__7_/D (DFFSSRX1_HVT)                  0.00       3.07 f
+  data arrival time                                                  3.07
 
   clock clk (rise edge)                                   3.20       3.20
   clock network delay (ideal)                             0.00       3.20
-  U1/sum_x_reg_3__2__8_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
-  library setup time                                     -0.19       3.01
-  data required time                                                 3.01
+  U1/sum_y_reg_3__1__7_/CLK (DFFSSRX1_HVT)                0.00       3.20 r
+  library setup time                                     -0.10       3.10
+  data required time                                                 3.10
   --------------------------------------------------------------------------
-  data required time                                                 3.01
-  data arrival time                                                 -2.98
+  data required time                                                 3.10
+  data arrival time                                                 -3.07
   --------------------------------------------------------------------------
   slack (MET)                                                        0.03
 
@@ -206,31 +209,32 @@ Wire Load Model Mode: enclosed
   U2/cnt_col_reg_1_/Q (DFFSSRX1_HVT)                      0.27       0.27 f
   U2/cnt_col[1] (hog_counter)                             0.00       0.27 f
   U1/cnt_col[1] (HOG_BITWIDTH8)                           0.00       0.27 f
-  U1/U513/Y (INVX0_HVT)                                   0.08       0.35 r
-  U1/U3190/Y (AND3X1_HVT)                                 0.15       0.50 r
-  U1/U4080/Y (AND2X1_HVT)                                 0.09       0.60 r
-  U1/U670/Y (XNOR2X1_HVT)                                 0.13       0.73 f
-  U1/U1977/Y (AND3X1_HVT)                                 0.11       0.84 f
-  U1/U359/Y (INVX1_HVT)                                   0.04       0.88 r
-  U1/U432/Y (INVX0_HVT)                                   0.06       0.94 f
-  U1/U1535/Y (NAND2X0_HVT)                                0.09       1.03 r
-  U1/U669/Y (INVX0_HVT)                                   0.09       1.11 f
-  U1/U38/Y (NBUFFX2_HVT)                                  0.08       1.19 f
-  U1/U225/Y (INVX0_HVT)                                   0.09       1.29 r
-  U1/U227/Y (INVX2_HVT)                                   0.12       1.40 f
-  U1/U4377/Y (AO22X1_HVT)                                 0.13       1.54 f
-  U1/U4405/Y (NOR4X1_HVT)                                 0.17       1.71 r
-  U1/U591/Y (NAND3X0_HVT)                                 0.15       1.86 f
-  U1/U934/Y (INVX0_HVT)                                   0.10       1.96 r
-  U1/U7807/CO (FADDX1_HVT)                                0.17       2.13 r
-  U1/U7806/CO (FADDX1_HVT)                                0.14       2.27 r
-  U1/U7805/CO (FADDX1_HVT)                                0.14       2.41 r
-  U1/U7804/CO (FADDX1_HVT)                                0.14       2.55 r
-  U1/U7803/CO (FADDX1_HVT)                                0.14       2.70 r
-  U1/U7844/CO (FADDX1_HVT)                                0.14       2.84 r
-  U1/U7845/S (FADDX1_HVT)                                 0.21       3.05 f
-  U1/sum_x_reg_8__2__7_/D (DFFSSRX1_HVT)                  0.00       3.05 f
-  data arrival time                                                  3.05
+  U1/U777/Y (INVX0_HVT)                                   0.08       0.35 r
+  U1/U821/Y (AND3X1_HVT)                                  0.16       0.51 r
+  U1/U4151/Y (NAND2X0_HVT)                                0.08       0.59 f
+  U1/U4152/SO (HADDX1_HVT)                                0.16       0.75 r
+  U1/U3200/Y (AND3X1_HVT)                                 0.12       0.88 r
+  U1/U1079/Y (AND2X4_HVT)                                 0.12       1.00 r
+  U1/U79/Y (INVX1_HVT)                                    0.04       1.04 f
+  U1/U463/Y (INVX2_HVT)                                   0.05       1.09 r
+  U1/U61/Y (INVX0_HVT)                                    0.04       1.13 f
+  U1/U108/Y (INVX1_HVT)                                   0.07       1.20 r
+  U1/U111/Y (INVX1_HVT)                                   0.12       1.32 f
+  U1/U1494/Y (INVX4_HVT)                                  0.12       1.44 r
+  U1/U4491/Y (AO22X1_HVT)                                 0.14       1.58 r
+  U1/U4520/Y (NOR4X1_HVT)                                 0.17       1.75 f
+  U1/U3502/Y (NAND3X0_HVT)                                0.07       1.82 r
+  U1/U536/Y (INVX0_HVT)                                   0.08       1.90 f
+  U1/U8728/Y (NAND2X0_HVT)                                0.08       1.98 r
+  U1/U8733/CO (FADDX1_HVT)                                0.14       2.12 r
+  U1/U8732/CO (FADDX1_HVT)                                0.14       2.26 r
+  U1/U8731/CO (FADDX1_HVT)                                0.14       2.41 r
+  U1/U8730/CO (FADDX1_HVT)                                0.14       2.55 r
+  U1/U8729/CO (FADDX1_HVT)                                0.14       2.69 r
+  U1/U8735/CO (FADDX1_HVT)                                0.14       2.83 r
+  U1/U8736/S (FADDX1_HVT)                                 0.21       3.04 f
+  U1/sum_x_reg_8__2__7_/D (DFFSSRX1_HVT)                  0.00       3.04 f
+  data arrival time                                                  3.04
 
   clock clk (rise edge)                                   3.20       3.20
   clock network delay (ideal)                             0.00       3.20
@@ -239,9 +243,9 @@ Wire Load Model Mode: enclosed
   data required time                                                 3.08
   --------------------------------------------------------------------------
   data required time                                                 3.08
-  data arrival time                                                 -3.05
+  data arrival time                                                 -3.04
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.03
+  slack (MET)                                                        0.04
 
 
 1
