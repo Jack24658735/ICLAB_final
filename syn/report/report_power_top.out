@@ -27,7 +27,7 @@ denoise_BIT_WIDTH8     35000             saed32hvt_ss0p95v125c
 Gaussian_BIT_WIDTH8    35000             saed32hvt_ss0p95v125c
 MUX_BITWIDTH8          8000              saed32hvt_ss0p95v125c
 HOG_BITWIDTH8          280000            saed32hvt_ss0p95v125c
-hog_counter            ForQA             saed32hvt_ss0p95v125c
+hog_counter            8000              saed32hvt_ss0p95v125c
 sqrt_mydesign_35       8000              saed32hvt_ss0p95v125c
 sqrt_mydesign_34       8000              saed32hvt_ss0p95v125c
 sqrt_mydesign_33       8000              saed32hvt_ss0p95v125c
