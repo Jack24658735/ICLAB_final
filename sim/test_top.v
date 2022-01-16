@@ -25,39 +25,39 @@ reg [12*9-1:0] ans_block_out_0, ans_block_out_1, ans_block_out_2, ans_block_out_
 // reg [8-1:0] block_out_2_2D [0:9-1];
 // reg [8-1:0] block_out_3_2D [0:9-1];
 
-wire [8-1:0] cnt_row; 
-wire [6-1:0] cnt_col;
+// wire [8-1:0] cnt_row; 
+// wire [6-1:0] cnt_col;
 
 
-reg [20-1:0] block_out_0_2D [0:9-1];
-reg [20-1:0] block_out_1_2D [0:9-1];
-reg [20-1:0] block_out_2_2D [0:9-1];
-reg [20-1:0] block_out_3_2D [0:9-1];
+// reg [20-1:0] block_out_0_2D [0:9-1];
+// reg [20-1:0] block_out_1_2D [0:9-1];
+// reg [20-1:0] block_out_2_2D [0:9-1];
+// reg [20-1:0] block_out_3_2D [0:9-1];
 
 
-reg [20-1:0] ans_block_out_0_2D [0:9-1];
-reg [20-1:0] ans_block_out_1_2D [0:9-1];
-reg [20-1:0] ans_block_out_2_2D [0:9-1];
-reg [20-1:0] ans_block_out_3_2D [0:9-1];
+// reg [20-1:0] ans_block_out_0_2D [0:9-1];
+// reg [20-1:0] ans_block_out_1_2D [0:9-1];
+// reg [20-1:0] ans_block_out_2_2D [0:9-1];
+// reg [20-1:0] ans_block_out_3_2D [0:9-1];
 
 
-always @* begin
-    for (k = 8; k >= 0; k = k - 1) begin
-        // block_out_0_2D[k] = block_out_0[8*(k+1)-1-:8];
-        // block_out_1_2D[k] = block_out_1[8*(k+1)-1-:8];
-        // block_out_2_2D[k] = block_out_2[8*(k+1)-1-:8];
-        // block_out_3_2D[k] = block_out_3[8*(k+1)-1-:8];
-        block_out_0_2D[k] = block_out_0[20*(k+1)-1-:20];
-        block_out_1_2D[k] = block_out_1[20*(k+1)-1-:20];
-        block_out_2_2D[k] = block_out_2[20*(k+1)-1-:20];
-        block_out_3_2D[k] = block_out_3[20*(k+1)-1-:20];
+// always @* begin
+//     for (k = 8; k >= 0; k = k - 1) begin
+//         // block_out_0_2D[k] = block_out_0[8*(k+1)-1-:8];
+//         // block_out_1_2D[k] = block_out_1[8*(k+1)-1-:8];
+//         // block_out_2_2D[k] = block_out_2[8*(k+1)-1-:8];
+//         // block_out_3_2D[k] = block_out_3[8*(k+1)-1-:8];
+//         block_out_0_2D[k] = block_out_0[20*(k+1)-1-:20];
+//         block_out_1_2D[k] = block_out_1[20*(k+1)-1-:20];
+//         block_out_2_2D[k] = block_out_2[20*(k+1)-1-:20];
+//         block_out_3_2D[k] = block_out_3[20*(k+1)-1-:20];
 
-        ans_block_out_0_2D[k] = ans_block_out_0[20*(k+1)-1-:20];
-        ans_block_out_1_2D[k] = ans_block_out_1[20*(k+1)-1-:20];
-        ans_block_out_2_2D[k] = ans_block_out_2[20*(k+1)-1-:20];
-        ans_block_out_3_2D[k] = ans_block_out_3[20*(k+1)-1-:20];
-    end
-end
+//         ans_block_out_0_2D[k] = ans_block_out_0[20*(k+1)-1-:20];
+//         ans_block_out_1_2D[k] = ans_block_out_1[20*(k+1)-1-:20];
+//         ans_block_out_2_2D[k] = ans_block_out_2[20*(k+1)-1-:20];
+//         ans_block_out_3_2D[k] = ans_block_out_3[20*(k+1)-1-:20];
+//     end
+// end
 
 reg [638*8-1:0] picture [0:482-1];
 
@@ -71,8 +71,8 @@ reg [638*8-1:0] picture [0:482-1];
         .mode(mode), 
         .pixel_in(pixel_in), 
         .valid(valid), 
-        .cnt_row(cnt_row), 
-        .cnt_col(cnt_col), 
+        // .cnt_row(cnt_row), 
+        // .cnt_col(cnt_col), 
         .block_out_0(block_out_0), 
         .block_out_1(block_out_1), 
         .block_out_2(block_out_2), 
@@ -86,8 +86,8 @@ reg [638*8-1:0] picture [0:482-1];
         .mode(mode), 
         .pixel_in(pixel_in), 
         .valid(valid), 
-        .cnt_row(cnt_row), 
-        .cnt_col(cnt_col), 
+        // .cnt_row(cnt_row), 
+        // .cnt_col(cnt_col), 
         .block_out_0(block_out_0), 
         .block_out_1(block_out_1), 
         .block_out_2(block_out_2), 

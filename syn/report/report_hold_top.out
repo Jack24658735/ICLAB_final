@@ -6,13 +6,47 @@ Report : timing
         -max_paths 4
 Design : top
 Version: R-2020.09-SP5
-Date   : Sat Jan 15 17:05:16 2022
+Date   : Sun Jan 16 17:03:06 2022
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
 
 Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
 Wire Load Model Mode: enclosed
+
+  Startpoint: U1/sum_x_reg_9__2__0_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: U1/square_x_reg_9__2__0_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  top                540000                saed32hvt_ss0p95v125c
+  HOG_BITWIDTH8      280000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  U1/sum_x_reg_9__2__0_/CLK (DFFSSRX1_HVT)                0.00 #     0.00 r
+  U1/sum_x_reg_9__2__0_/QN (DFFSSRX1_HVT)                 0.14       0.14 r
+  U1/U2206/Y (INVX0_HVT)                                  0.05       0.20 f
+  U1/square_x_reg_9__2__0_/D (DFFSSRX1_HVT)               0.00       0.20 f
+  data arrival time                                                  0.20
+
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  U1/square_x_reg_9__2__0_/CLK (DFFSSRX1_HVT)             0.00       0.00 r
+  library hold time                                      -0.06      -0.06
+  data required time                                                -0.06
+  --------------------------------------------------------------------------
+  data required time                                                -0.06
+  data arrival time                                                 -0.20
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.25
+
 
   Startpoint: U1/sum_y_reg_9__0__0_
               (rising edge-triggered flip-flop clocked by clk)
@@ -32,7 +66,7 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)                             0.00       0.00
   U1/sum_y_reg_9__0__0_/CLK (DFFSSRX1_HVT)                0.00 #     0.00 r
   U1/sum_y_reg_9__0__0_/QN (DFFSSRX1_HVT)                 0.14       0.14 r
-  U1/U1989/Y (INVX0_HVT)                                  0.06       0.20 f
+  U1/U2233/Y (INVX0_HVT)                                  0.06       0.20 f
   U1/square_y_reg_9__0__0_/D (DFFSSRX1_HVT)               0.00       0.20 f
   data arrival time                                                  0.20
 
@@ -66,7 +100,7 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)                             0.00       0.00
   U1/sum_y_reg_3__1__0_/CLK (DFFSSRX1_HVT)                0.00 #     0.00 r
   U1/sum_y_reg_3__1__0_/QN (DFFSSRX1_HVT)                 0.14       0.14 r
-  U1/U1981/Y (INVX0_HVT)                                  0.06       0.20 f
+  U1/U2222/Y (INVX0_HVT)                                  0.06       0.20 f
   U1/square_y_reg_3__1__0_/D (DFFSSRX1_HVT)               0.00       0.20 f
   data arrival time                                                  0.20
 
@@ -100,7 +134,7 @@ Wire Load Model Mode: enclosed
   clock network delay (ideal)                             0.00       0.00
   U1/sum_x_reg_8__0__0_/CLK (DFFSSRX1_HVT)                0.00 #     0.00 r
   U1/sum_x_reg_8__0__0_/QN (DFFSSRX1_HVT)                 0.14       0.14 r
-  U1/U1977/Y (INVX0_HVT)                                  0.06       0.20 f
+  U1/U2218/Y (INVX0_HVT)                                  0.06       0.20 f
   U1/square_x_reg_8__0__0_/D (DFFSSRX1_HVT)               0.00       0.20 f
   data arrival time                                                  0.20
 
@@ -112,39 +146,6 @@ Wire Load Model Mode: enclosed
   --------------------------------------------------------------------------
   data required time                                                -0.06
   data arrival time                                                 -0.20
-  --------------------------------------------------------------------------
-  slack (MET)                                                        0.26
-
-
-  Startpoint: pixel_in_r_reg_17_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: U0_g/pix_in_DFF_reg_17_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  top                540000                saed32hvt_ss0p95v125c
-
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock clk (rise edge)                                   0.00       0.00
-  clock network delay (ideal)                             0.00       0.00
-  pixel_in_r_reg_17_/CLK (DFFSSRX1_HVT)                   0.00 #     0.00 r
-  pixel_in_r_reg_17_/Q (DFFSSRX1_HVT)                     0.21       0.21 f
-  U0_g/pix_in[17] (Gaussian_BIT_WIDTH8)                   0.00       0.21 f
-  U0_g/pix_in_DFF_reg_17_/D (DFFSSRX1_HVT)                0.00       0.21 f
-  data arrival time                                                  0.21
-
-  clock clk (rise edge)                                   0.00       0.00
-  clock network delay (ideal)                             0.00       0.00
-  U0_g/pix_in_DFF_reg_17_/CLK (DFFSSRX1_HVT)              0.00       0.00 r
-  library hold time                                      -0.05      -0.05
-  data required time                                                -0.05
-  --------------------------------------------------------------------------
-  data required time                                                -0.05
-  data arrival time                                                 -0.21
   --------------------------------------------------------------------------
   slack (MET)                                                        0.26
 
