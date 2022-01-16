@@ -71,13 +71,6 @@ reg [638*8-1:0] picture [0:482-1];
         .mode(mode), 
         .pixel_in(pixel_in), 
         .valid(valid), 
-<<<<<<< HEAD
-        //.cnt_row(cnt_row), 
-        //.cnt_col(cnt_col), 
-=======
-        // .cnt_row(cnt_row), 
-        // .cnt_col(cnt_col), 
->>>>>>> 87a540690145199fdacbfaf75bc9455f5aa45611
         .block_out_0(block_out_0), 
         .block_out_1(block_out_1), 
         .block_out_2(block_out_2), 
@@ -91,13 +84,6 @@ reg [638*8-1:0] picture [0:482-1];
         .mode(mode), 
         .pixel_in(pixel_in), 
         .valid(valid), 
-<<<<<<< HEAD
-        //.cnt_row(cnt_row), 
-        //.cnt_col(cnt_col), 
-=======
-        // .cnt_row(cnt_row), 
-        // .cnt_col(cnt_col), 
->>>>>>> 87a540690145199fdacbfaf75bc9455f5aa45611
         .block_out_0(block_out_0), 
         .block_out_1(block_out_1), 
         .block_out_2(block_out_2), 
