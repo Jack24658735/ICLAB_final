@@ -1,5 +1,12 @@
 # read file
 read_file -type verilog top.v
+read_file -type verilog sqrt.v
+read_file -type verilog MUX.v
+read_file -type verilog median.v
+read_file -type verilog hog_counter.v
+read_file -type verilog HOG.v
+read_file -type verilog Gaussian.v
+read_file -type verilog denoise.v
 
 
 # goal setup (lint_rtl)
