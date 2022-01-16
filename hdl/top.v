@@ -4,8 +4,8 @@ module top(
     input mode, 
     input [8*70-1:0] pixel_in,
     output valid,
-    output [8-1:0] cnt_row, 
-    output [6-1:0] cnt_col, 
+    // output [8-1:0] cnt_row, 
+    // output [6-1:0] cnt_col, 
     // output [8*9-1:0] block_out_0, 
     // output [8*9-1:0] block_out_1, 
     // output [8*9-1:0] block_out_2, 
@@ -25,8 +25,8 @@ reg [8*70-1:0] pixel_in_r;
 
 wire denoise_valid, median_valid, gaussian_valid, HOG_valid;
 assign denoise_valid = mode == 0 ? median_valid : gaussian_valid;
-// wire [8-1:0] cnt_row; 
-// wire [6-1:0] cnt_col;
+wire [8-1:0] cnt_row; 
+wire [6-1:0] cnt_col;
 wire [8*9-1:0] M_denoise_block_out_0, M_denoise_block_out_1, M_denoise_block_out_2, M_denoise_block_out_3;
 wire [8*9-1:0] G_denoise_block_out_0, G_denoise_block_out_1, G_denoise_block_out_2, G_denoise_block_out_3;
 wire [8*9-1:0] denoise_block_out_0, denoise_block_out_1, denoise_block_out_2, denoise_block_out_3;

@@ -14,8 +14,8 @@ set_clock_gating_style -max_fanout 10
 # Synthesis all design (using : compile_ultra)
 # you can add "-gate_clock" to do gated-clock
 # you can add "-incremental" for higher performance
-# compile_ultra -gate_clock -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
-compile_ultra -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+compile_ultra -gate_clock -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+# compile_ultra -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
 #compile_ultra -incremental -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
 
 # remove dummy ports
