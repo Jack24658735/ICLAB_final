@@ -1,0 +1,72 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : top
+Version: R-2020.09-SP5
+Date   : Sun Jan 16 21:58:03 2022
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: U2/cnt_col_reg_2_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: U1/sum_x_reg_8__2__7_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  hog_counter        ForQA                 saed32hvt_ss0p95v125c
+  top                540000                saed32hvt_ss0p95v125c
+  HOG_BITWIDTH8      280000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  U2/cnt_col_reg_2_/CLK (DFFSSRX1_HVT)                  0.0000     0.0000 r
+  U2/cnt_col_reg_2_/Q (DFFSSRX1_HVT)                    0.2466     0.2466 f
+  U2/cnt_col[2] (hog_counter)                           0.0000     0.2466 f
+  U1/cnt_col[2] (HOG_BITWIDTH8)                         0.0000     0.2466 f
+  U1/U3055/Y (INVX1_HVT)                                0.0576     0.3042 r
+  U1/U529/Y (INVX0_HVT)                                 0.0687     0.3729 f
+  U1/U525/Y (AND3X1_HVT)                                0.1388     0.5118 f
+  U1/U3104/Y (AND3X1_HVT)                               0.1122     0.6240 f
+  U1/U361/Y (NBUFFX2_HVT)                               0.0970     0.7209 f
+  U1/U966/Y (INVX0_HVT)                                 0.0817     0.8026 r
+  U1/U2430/Y (INVX0_HVT)                                0.1571     0.9598 f
+  U1/U6506/Y (AO22X1_HVT)                               0.1178     1.0775 f
+  U1/U6510/Y (OR4X1_HVT)                                0.1970     1.2745 f
+  U1/U6511/Y (NOR4X1_HVT)                               0.1212     1.3957 r
+  U1/U449/Y (NAND4X0_HVT)                               0.2256     1.6214 f
+  U1/U6903/Y (NAND2X0_HVT)                              0.1580     1.7793 r
+  U1/U6908/CO (FADDX1_HVT)                              0.1745     1.9538 r
+  U1/U6907/CO (FADDX1_HVT)                              0.1440     2.0978 r
+  U1/U6906/CO (FADDX1_HVT)                              0.1421     2.2399 r
+  U1/U6905/CO (FADDX1_HVT)                              0.1420     2.3819 r
+  U1/U6904/CO (FADDX1_HVT)                              0.1420     2.5239 r
+  U1/U6910/CO (FADDX1_HVT)                              0.1420     2.6658 r
+  U1/U6911/S (FADDX1_HVT)                               0.2079     2.8737 f
+  U1/sum_x_reg_8__2__7_/D (DFFSSRX1_HVT)                0.0000     2.8737 f
+  data arrival time                                                2.8737
+
+  clock clk (rise edge)                                 3.0000     3.0000
+  clock network delay (ideal)                           0.0000     3.0000
+  U1/sum_x_reg_8__2__7_/CLK (DFFSSRX1_HVT)              0.0000     3.0000 r
+  library setup time                                   -0.1242     2.8758
+  data required time                                               2.8758
+  --------------------------------------------------------------------------
+  data required time                                               2.8758
+  data arrival time                                               -2.8737
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0021
+
+
+1

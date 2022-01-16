@@ -1,0 +1,161 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 4
+Design : top
+Version: R-2020.09-SP5
+Date   : Sun Jan 16 21:58:03 2022
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: U0/clk_gate_cnt_reg/latch
+              (positive level-sensitive latch clocked by clk')
+  Endpoint: U0/clk_gate_cnt_reg/main_gate
+            (gating element for clock clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SNPS_CLOCK_GATE_HIGH_denoise_BIT_WIDTH8
+                     ForQA                 saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U0/clk_gate_cnt_reg/latch/CLK (LATCHX1_HVT)             0.00       1.50 r
+  U0/clk_gate_cnt_reg/latch/Q (LATCHX1_HVT)               0.11       1.61 f
+  U0/clk_gate_cnt_reg/main_gate/A1 (AND2X1_HVT)           0.00       1.61 f
+  data arrival time                                                  1.61
+
+  clock clk (fall edge)                                   1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U0/clk_gate_cnt_reg/main_gate/A2 (AND2X1_HVT)           0.00       1.50 f
+  clock gating hold time                                  0.00       1.50
+  data required time                                                 1.50
+  --------------------------------------------------------------------------
+  data required time                                                 1.50
+  data arrival time                                                 -1.61
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: U1/clk_gate_store0_row_0_reg_0_/latch
+              (positive level-sensitive latch clocked by clk')
+  Endpoint: U1/clk_gate_store0_row_0_reg_0_/main_gate
+            (gating element for clock clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SNPS_CLOCK_GATE_HIGH_HOG_BITWIDTH8_mydesign_1165
+                     ForQA                 saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U1/clk_gate_store0_row_0_reg_0_/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.50 r
+  U1/clk_gate_store0_row_0_reg_0_/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.61 f
+  U1/clk_gate_store0_row_0_reg_0_/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.61 f
+  data arrival time                                                  1.61
+
+  clock clk (fall edge)                                   1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U1/clk_gate_store0_row_0_reg_0_/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.50 f
+  clock gating hold time                                  0.00       1.50
+  data required time                                                 1.50
+  --------------------------------------------------------------------------
+  data required time                                                 1.50
+  data arrival time                                                 -1.61
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: U1/clk_gate_store0_row_0_reg_1_/latch
+              (positive level-sensitive latch clocked by clk')
+  Endpoint: U1/clk_gate_store0_row_0_reg_1_/main_gate
+            (gating element for clock clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SNPS_CLOCK_GATE_HIGH_HOG_BITWIDTH8_mydesign_1143
+                     ForQA                 saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U1/clk_gate_store0_row_0_reg_1_/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.50 r
+  U1/clk_gate_store0_row_0_reg_1_/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.61 f
+  U1/clk_gate_store0_row_0_reg_1_/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.61 f
+  data arrival time                                                  1.61
+
+  clock clk (fall edge)                                   1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U1/clk_gate_store0_row_0_reg_1_/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.50 f
+  clock gating hold time                                  0.00       1.50
+  data required time                                                 1.50
+  --------------------------------------------------------------------------
+  data required time                                                 1.50
+  data arrival time                                                 -1.61
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: U1/clk_gate_store0_row_0_reg_2_/latch
+              (positive level-sensitive latch clocked by clk')
+  Endpoint: U1/clk_gate_store0_row_0_reg_2_/main_gate
+            (gating element for clock clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SNPS_CLOCK_GATE_HIGH_HOG_BITWIDTH8_mydesign_1121
+                     ForQA                 saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U1/clk_gate_store0_row_0_reg_2_/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.50 r
+  U1/clk_gate_store0_row_0_reg_2_/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.61 f
+  U1/clk_gate_store0_row_0_reg_2_/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.61 f
+  data arrival time                                                  1.61
+
+  clock clk (fall edge)                                   1.50       1.50
+  clock network delay (ideal)                             0.00       1.50
+  U1/clk_gate_store0_row_0_reg_2_/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.50 f
+  clock gating hold time                                  0.00       1.50
+  data required time                                                 1.50
+  --------------------------------------------------------------------------
+  data required time                                                 1.50
+  data arrival time                                                 -1.61
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+1
