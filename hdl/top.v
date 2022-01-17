@@ -22,9 +22,10 @@ module top(
 
 
 reg [8*70-1:0] pixel_in_r;
+reg mode_r;
 
 wire denoise_valid, median_valid, gaussian_valid, HOG_valid;
-assign denoise_valid = mode == 0 ? median_valid : gaussian_valid;
+assign denoise_valid = mode_r == 0 ? median_valid : gaussian_valid;
 wire [8-1:0] cnt_row; 
 wire [6-1:0] cnt_col;
 wire [8*9-1:0] M_denoise_block_out_0, M_denoise_block_out_1, M_denoise_block_out_2, M_denoise_block_out_3;
@@ -78,7 +79,7 @@ MUX #(
     .BITWIDTH(8)
 ) U0_m
 (
-    .mode(mode), // 0: median , 1: gaussian
+    .mode(mode_r), // 0: median , 1: gaussian
     .M_denoise_block_out_0(M_denoise_block_out_0),
     .M_denoise_block_out_1(M_denoise_block_out_1),
     .M_denoise_block_out_2(M_denoise_block_out_2),
@@ -354,10 +355,14 @@ sqrt U38(
 
 
 always @(posedge clk) begin
-    if (~rst_n)
+    if (~rst_n) begin
         pixel_in_r <= 0;
-    else 
+	mode_r <= 0;
+    end
+    else begin
         pixel_in_r <= pixel_in;
+	mode_r <= mode;
+    end
 end
 
 endmodule
