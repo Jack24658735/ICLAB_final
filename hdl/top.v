@@ -4,8 +4,6 @@ module top(
     input mode, 
     input [8*70-1:0] pixel_in,
     output valid,
-    // output [8-1:0] cnt_row, 
-    // output [6-1:0] cnt_col, 
     // output [8*9-1:0] block_out_0, 
     // output [8*9-1:0] block_out_1, 
     // output [8*9-1:0] block_out_2, 
