@@ -355,11 +355,11 @@ sqrt U38(
 always @(posedge clk) begin
     if (~rst_n) begin
         pixel_in_r <= 0;
-	mode_r <= 0;
+	    mode_r <= 0;
     end
     else begin
         pixel_in_r <= pixel_in;
-	mode_r <= mode;
+	    mode_r <= mode;
     end
 end
 
