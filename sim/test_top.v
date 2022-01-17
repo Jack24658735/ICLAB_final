@@ -420,7 +420,14 @@ initial begin
 end
 
 initial begin
-    $fsdbDumpfile("final.fsdb");
+    `ifdef MED
+    	$fsdbDumpfile("final_MED.fsdb");
+    `elsif GAUSS
+	$fsdbDumpfile("final_GAUSS.fsdb");
+    `else
+	$fsdbDumpfile("final_MED.fsdb");
+    `endif
+
     $fsdbDumpvars("+mda");
 end
 
