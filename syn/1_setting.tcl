@@ -14,7 +14,7 @@ set_ideal_network [get_ports clk]
 set_dont_touch_network [all_clocks]
 
 # I/O delay should depend on the real enironment. Here only shows an example of setting
-set_input_delay 1 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+set_input_delay 0 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
 set_output_delay [expr $TEST_CYCLE*0.5] -clock clk [all_outputs]
 set_fix_hold [get_clocks clk]
 # Setting DRC Constraint
