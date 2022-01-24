@@ -5,23 +5,32 @@
 
 ## Motivation and Objective
 &emsp;After the department store closes, some thieves will sneak into the store. So, we develop a system that can detect the edges in an image. When a thief sneaks into a store, the edges in the monitor screen will change drastically, indicating that something unusual has happened in the store.
+
 ## Functionality
 The function we want to implement in our hardware is below:
 * Normal mode
-1. Extract feature vectors: by calculating gradient, we can obtain the feature vectors.
-2. Obtain theta to derive histogram: we can detect the number of objects with histogram.
-3. Object detection: detect the target objects, such as people, animals or boxs.
-* Advanced mode
-1. Detection with noise figures
-> median filter </br> Gaussian denoiser </br> Non-local means denoiser
+    1. Calculating gradient
+* Advanced mode (Detection with noise figures)
+    1. median filter 
+    2. Gaussian denoiser
 
 ## Specification
 * image: 640*480 pixels
-* input: 36 pixels per cycle (each pixel is 8-bit)
+* input: 70 pixels per cycle (each pixel is 8-bit)
 * output: 36 pixels pixel per cycle
-* timing : 3ns
-* area : 750,000 um^2
-* cycle count : 10000
+* cycle count : 8487
+
+
+## Synthesis Performance
+* timing : 3 ns
+* area : 504,438 um^2
+* power: 31.8 mW
+
+## Chip Performance
+* timing : 5 ns
+* area : 562,169 um^2
+* power: 28.3 mW (ICC)
+* core utilization: 0.7
 
 ## Implementation:
 1. Survey the algorithms on Internet, and decide to implement classical HOG (Histogram of Oriented Gradient) algorithm
@@ -31,12 +40,16 @@ The function we want to implement in our hardware is below:
 5. Collect HOG’s over detection window
 6. The combined vectors are fed to a linear SVM for object/non-object classification (Python based)
 
-## Verification:
+## Verification
 1. Verify the calculated value with the golden file.
 2. `$fwrite` the value into a log file (processed output result).
 3. Visualize the result after whole processed data is written. We expect to see the edges being highlighted.
 
-## Reference:
+## Result
+1. input image (with 30000 random noises)
+![]("src/flower_638_482_noise.jpg")
+
+## Reference
 [1] Histograms of Oriented Gradients for Human Detection, by Navneet Dalal and Bill Triggs, CVPR 2005</br>
 [2] Image super-resolution as sparse representation of raw image patches, by J. Yang et al, CVPR 2008.</br>
 [3] A non-local algorithm for image denoising, CVPR 2005</br>
