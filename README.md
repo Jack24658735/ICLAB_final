@@ -47,7 +47,7 @@ The function we want to implement in our hardware is below:
 
 ## Result
 1. input image (with 30000 random noises)
-![]("src/flower_638_482_noise.jpg")
+![]("flower_638_482_noise.jpg")
 
 ## Reference
 [1] Histograms of Oriented Gradients for Human Detection, by Navneet Dalal and Bill Triggs, CVPR 2005</br>
