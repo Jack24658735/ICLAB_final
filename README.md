@@ -5,7 +5,7 @@
 
 ## Contributors
 This project exists thanks to all the people who contribute.
-![](../../graphs/contributors)
+![](https://github.com/LeoTheBestCoder/ICLAB_final/graphs/contributors)
 
 ## Motivation and Objective
 &emsp;After the department store closes, some thieves will sneak into the store. So, we develop a system that can detect the edges in an image. When a thief sneaks into a store, the edges in the monitor screen will change drastically, indicating that something unusual has happened in the store.
