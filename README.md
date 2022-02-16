@@ -3,6 +3,10 @@
 ## 利用方向梯度直方圖演算法實現圖像邊緣檢測及物件識別
 #### Instructor: Prof. Chao Tsung Huang</br>Team Members: 林暄傑、劉亦傑、謝霖泳
 
+## Contributors
+This project exists thanks to all the people who contribute.
+![](../../graphs/contributors)
+
 ## Motivation and Objective
 &emsp;After the department store closes, some thieves will sneak into the store. So, we develop a system that can detect the edges in an image. When a thief sneaks into a store, the edges in the monitor screen will change drastically, indicating that something unusual has happened in the store.
 
